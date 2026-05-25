@@ -29,14 +29,14 @@ export class ProjectService {
   // Transforma el objeto crudo de GitHub a nuestra interfaz Proyect de forma dinámica.
   private mapToProyect(repo: any): Proyect {
     
-    // Usamos los 'topics' de GitHub. Si no hay, usamos el 'language' principal.
+    // Usamos los tags de GitHub. Si no hay, usamos los mios.
     const extractedTechs = (repo.topics && repo.topics.length > 0) 
       ? repo.topics 
       : (repo.language ? [repo.language] : ['Code']);
 
     // Convertimos a minúsculas y quitamos espacios para estandarizar el nombre del archivo
     const safeName = repo.name.toLowerCase().trim();
-    const imagePath = `/assets/${safeName}.jpg`;
+    const imagePath = `/projects/${safeName}.jpg`;
 
     return {
       title: repo.name,

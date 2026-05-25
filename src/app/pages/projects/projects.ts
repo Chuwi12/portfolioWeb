@@ -1,11 +1,12 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { Proyect } from '../../core/models/project.model';
 import { ProjectService } from '../../core/services/project.service';
+import  { IconComponent } from '../../shared/components/icon/icon';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [],
+  imports: [IconComponent],
   templateUrl: './projects.html'
 })
 export class Projects implements OnInit {
