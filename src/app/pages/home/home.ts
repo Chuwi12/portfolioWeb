@@ -2,10 +2,12 @@ import Typed from 'typed.js';
 import { Component, AfterViewInit, ViewChild, ElementRef, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { About } from '../about/about';
+import { Projects } from '../projects/projects';
+
 
 @Component({
   selector: 'app-home',
-  imports: [About],
+  imports: [About, Projects],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
