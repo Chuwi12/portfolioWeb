@@ -1,59 +1,13 @@
-# PortfolioWeb
+## Licencia y Uso
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.12.
+El código fuente (arquitectura de Angular, componentes, integraciones y Tailwind CSS) de este sitio web está bajo la **licencia MIT** (ver el archivo `LICENSE`). Eres libre de bifurcar (*fork*) este repositorio, aprender de la arquitectura y usar el código para construir tu propio portfolio personal.
 
-## Development server
+### Importante (Excepciones a la licencia)
 
-To start a local development server, run:
+Las fotografías, logotipos, textos, información de proyectos (incluyendo descripciones y enlaces), la historia personal y el diseño visual (UI) son propiedad exclusiva de **Sergio Rodríguez** (Copyright © 2026) y **no están cubiertos por la licencia MIT**. No tienes permiso para reutilizarlos, distribuirlos ni publicarlos.
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Si decides usar este código como base para tu propia web, te exijo amablemente que:**
+1. Elimines mi información personal y profesional.
+2. Quites mi fotografía de avatar.
+3. Cambies los colores y tipografías para crear tu propia identidad.
+4. No intentes hacer pasar mis proyectos como tuyos.

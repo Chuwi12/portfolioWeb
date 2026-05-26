@@ -1,0 +1,20 @@
+<section class="max-w-6xl mx-auto py-16 px-6">
+  <h2 class="text-3xl md:text-5xl font-bold text-white mb-10 text-center">
+    Mi <span class="text-teal-400">Stack</span> Tecnológico
+  </h2>
+  <div class="flex flex-wrap justify-center gap-4">
+    @for (skill of skillList; track skill) {
+      <button 
+        (click)="toggleFilter(skill)"
+        [class.active-skill]="activeFilter()?.toLowerCase() === skill.toLowerCase()"
+        class="skill-button group"
+      >
+        <app-icon [name]="skill" class="w-6 h-6 transition-transform group-hover:scale-110"></app-icon>
+        <span class="font-medium tracking-wide">{{ skill }}</span>
+      </button>
+    }
+  </div>
+  <p class="text-gray-500 text-center mt-8 text-sm italic">
+    * Pulsa una tecnología para filtrar mis proyectos.
+  </p>
+</section>

@@ -1,0 +1,19 @@
+@reference "tailwindcss";
+
+.skill-button {
+  @apply flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/10 
+         bg-gray-900/40 backdrop-blur-sm text-gray-400 transition-all duration-300;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.skill-button:hover {
+  @apply border-teal-500/30 text-teal-300 -translate-y-1;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+/* El estado cuando el botón está activado */
+.active-skill {
+  @apply border-teal-500 bg-teal-500/10 text-teal-400;
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.2);
+  transform: scale(1.05);
+}

@@ -1,13 +1,16 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { Proyect } from '../models/project.model';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin, map } from 'rxjs'; 
+import { Observable, forkJoin, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
-  private http = inject(HttpClient); 
+  private http = inject(HttpClient);
+
+  // Variable publica para almacenar que esta seleccionado y que no
+  public selectedFilter = signal<string | null>(null);
   
   // Lista de las APIs de los proyectos (Para añadir uno nuevo, solo añades la URL aquí)
   private apiUrls: string[] = [
