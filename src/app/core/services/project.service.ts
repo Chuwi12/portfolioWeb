@@ -12,6 +12,10 @@ export class ProjectService {
   // Lista de las APIs de los proyectos (Para añadir uno nuevo, solo añades la URL aquí)
   private apiUrls: string[] = [
     'https://api.github.com/repos/Chuwi12/TFG-',
+    'https://api.github.com/repos/Tau5/pizzeria-design',
+    'https://api.github.com/repos/Tau5/dedede',
+    'https://api.github.com/repos/Tau5/dedede-jdbc',
+    'https://api.github.com/repos/Chuwi12/Art-Space'
   ];
 
   // FUncion para obtener y devolver los proyectosj
