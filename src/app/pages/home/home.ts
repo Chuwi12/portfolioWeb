@@ -3,16 +3,16 @@ import { Component, AfterViewInit, ViewChild, ElementRef, PLATFORM_ID, inject } 
 import { isPlatformBrowser } from '@angular/common';
 import { About } from '../about/about';
 import { Projects } from '../projects/projects';
-
+import  { Skills } from '../skills/skills';
 
 @Component({
   selector: 'app-home',
-  imports: [About, Projects],
+  imports: [About, Projects, Skills],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 
-// Clase de inicio
+// Clase inicio
 // Implemente AfterViewInit, interfaz estandar de Angular, para eventos una vez se haya cargado la pagina
 export class Home implements AfterViewInit {
   

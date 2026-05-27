@@ -13,7 +13,10 @@
         "@angular/platform-server": "^21.2.0",
         "@angular/router": "^21.2.0",
         "@angular/ssr": "^21.2.12",
+        "angular-i18next": "^20.0.1",
         "express": "^5.1.0",
+        "i18next": "^26.3.0",
+        "i18next-http-backend": "^4.0.0",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
         "typed.js": "^3.0.0",
@@ -572,6 +575,8 @@
 
     "algoliasearch": ["algoliasearch@5.48.1", "", { "dependencies": { "@algolia/abtesting": "1.14.1", "@algolia/client-abtesting": "5.48.1", "@algolia/client-analytics": "5.48.1", "@algolia/client-common": "5.48.1", "@algolia/client-insights": "5.48.1", "@algolia/client-personalization": "5.48.1", "@algolia/client-query-suggestions": "5.48.1", "@algolia/client-search": "5.48.1", "@algolia/ingestion": "1.48.1", "@algolia/monitoring": "1.48.1", "@algolia/recommend": "5.48.1", "@algolia/requester-browser-xhr": "5.48.1", "@algolia/requester-fetch": "5.48.1", "@algolia/requester-node-http": "5.48.1" } }, "sha512-Rf7xmeuIo7nb6S4mp4abW2faW8DauZyE2faBIKFaUfP3wnpOvNSbiI5AwVhqBNj0jPgBWEvhyCu0sLjN2q77Rg=="],
 
+    "angular-i18next": ["angular-i18next@20.0.1", "", { "dependencies": { "tslib": "^2.8.1" }, "optionalDependencies": { "@angular/platform-server": "^20.2.1", "@angular/ssr": "^20.2.0" }, "peerDependencies": { "@angular/common": "^20.2.1", "@angular/core": "^20.2.1", "@angular/platform-browser": "^20.2.1", "i18next": "^25.4.0", "rxjs": "^7.8.2" } }, "sha512-1MhJHZ3UFVB0dCiLJgx9kyowGauuKOj8qM+D02/md1KxqGWRlXR1swtK5RDeAG1bAXgpE9blvrLDILIl/XA0UQ=="],
+
     "ansi-escapes": ["ansi-escapes@7.3.0", "", { "dependencies": { "environment": "^1.0.0" } }, "sha512-BvU8nYgGQBxcmMuEeUEmNTvrMVjJNSH7RgW24vXexN4Ven6qCvy4TntnvlnwnMLTVlcRQQdbRY8NKnaIoeWDNg=="],
 
     "ansi-regex": ["ansi-regex@6.2.2", "", {}, "sha512-Bq3SmSpyFHaWjPk8If9yc6svM8c56dB5BAtW4Qbw5jHTwwXXcTLoRMkpDJp6VL0XzlWaCHTXrkFURMYmD0sLqg=="],
@@ -781,6 +786,10 @@
     "http-proxy-agent": ["http-proxy-agent@7.0.2", "", { "dependencies": { "agent-base": "^7.1.0", "debug": "^4.3.4" } }, "sha512-T1gkAiYYDWYx3V5Bmyu7HcfcvL7mUrTWiM6yOfa3PIphViJ/gFPbvidQ+veqSOHci/PxBcDabeUNCzpOODJZig=="],
 
     "https-proxy-agent": ["https-proxy-agent@7.0.6", "", { "dependencies": { "agent-base": "^7.1.2", "debug": "4" } }, "sha512-vK9P5/iUfdl95AI+JVyUuIcVtd4ofvtrOr3HNtM2yxC9bnMbEdp3x01OhQNnjb8IJYi38VlTE3mBXwcfvywuSw=="],
+
+    "i18next": ["i18next@26.3.0", "", { "peerDependencies": { "typescript": "^5 || ^6" }, "optionalPeers": ["typescript"] }, "sha512-gHSgGpUXVmuqE2El1W61DmxeyeTlFfZgdJRWMo9jScAn5pu7TuTuiccb1zh3E2J9hEBVGJ23+96x0ieBhfuIHA=="],
+
+    "i18next-http-backend": ["i18next-http-backend@4.0.0", "", {}, "sha512-EgSjO3Q1G6f2Q5oy7u9mmxuesE0oSfzAD97NFBjC8EmkK4guBSYLljM0Fng3DarMWIIkU70jfo4+mUzmyVISTA=="],
 
     "iconv-lite": ["iconv-lite@0.7.2", "", { "dependencies": { "safer-buffer": ">= 2.1.2 < 3.0.0" } }, "sha512-im9DjEDQ55s9fL4EYzOAv0yMqmMBSZp6G0VvFyTMPKWxiSBHUj9NW/qqLmXUwXrrM7AvqSlTCfvqRb0cM8yYqw=="],
 
@@ -1223,6 +1232,10 @@
     "@tailwindcss/oxide-wasm32-wasi/tslib": ["tslib@2.8.1", "", { "bundled": true }, "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="],
 
     "@vitest/utils/convert-source-map": ["convert-source-map@2.0.0", "", {}, "sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg=="],
+
+    "angular-i18next/@angular/platform-server": ["@angular/platform-server@20.3.21", "", { "dependencies": { "tslib": "^2.3.0", "xhr2": "^0.2.0" }, "peerDependencies": { "@angular/common": "20.3.21", "@angular/compiler": "20.3.21", "@angular/core": "20.3.21", "@angular/platform-browser": "20.3.21", "rxjs": "^6.5.3 || ^7.4.0" } }, "sha512-+Pbjs4zHBRLt6EG+s5vXxQWuVIn+N7jIQuiTf2VIM5MhgcIQxY2r0iIx+wgcLvqtnjwPRK7Be+ITsRnNFgKs1A=="],
+
+    "angular-i18next/@angular/ssr": ["@angular/ssr@20.3.26", "", { "dependencies": { "tslib": "^2.3.0" }, "peerDependencies": { "@angular/common": "^20.0.0", "@angular/core": "^20.0.0", "@angular/platform-server": "^20.0.0", "@angular/router": "^20.0.0" }, "optionalPeers": ["@angular/platform-server"] }, "sha512-xb0oJqDyErAN/bWTEIRX29KEoOEaWK2UYOf8MFcOBFSfX9KeH6MzEp1QSux7EqiqOiBi2uSSvaz6rjUsWyI3sw=="],
 
     "cli-truncate/string-width": ["string-width@8.2.1", "", { "dependencies": { "get-east-asian-width": "^1.5.0", "strip-ansi": "^7.1.2" } }, "sha512-IIaP0g3iy9Cyy18w3M9YcaDudujEAVHKt3a3QJg1+sr/oX96TbaGUubG0hJyCjCBThFH+tFpcIyoUHUn1ogaLA=="],
 

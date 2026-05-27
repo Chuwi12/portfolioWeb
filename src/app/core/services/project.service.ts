@@ -10,7 +10,7 @@ export class ProjectService {
   private http = inject(HttpClient);
 
   // Variable publica para almacenar que esta seleccionado y que no
-  public selectedFilter = signal<string | null>(null);
+  public selectedFilters = signal<string[]>([]);
   
   // Lista de las APIs de los proyectos (Para añadir uno nuevo, solo añades la URL aquí)
   private apiUrls: string[] = [

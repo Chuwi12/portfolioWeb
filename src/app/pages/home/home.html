@@ -3,29 +3,33 @@
     <img 
       src="/avatar.jpg" 
       alt="Foto de Sergio Rodríguez" 
-      class="w-58 h-58 md:w-70 md:h-70 rounded-full object-cover border-4 border-gray-800 shadow-2xl transform transition hover:scale-105 duration-300"
+      class="w-58 h-58 md:w-70 md:h-70 rounded-full object-cover border-4 border-gray-200 dark:border-gray-800 shadow-2xl transform transition hover:scale-105 duration-300"
     >
     <div class="flex flex-col items-center md:items-start text-center md:text-left">
-      <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tight">
+      <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight transition-colors duration-300">
         Sergio Rodríguez
       </h1>
-      <p class="text-2xl md:text-4xl text-gray-400 font-light h-12 flex items-center gap-2">
+      <p class="text-2xl md:text-4xl text-gray-600 dark:text-gray-400 font-light h-12 flex items-center gap-2 transition-colors duration-300">
         <span>Soy</span> 
-        <span #typingElement class="text-teal-400 font-medium"></span>
+        <span #typingElement class="text-teal-500 dark:text-teal-400 font-medium"></span>
       </p>
     </div>
   </div>
-  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-600">
+  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-400 dark:text-gray-600 transition-colors duration-300">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
       <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
     </svg>
   </div>
 </section>
+
 <section id="informacion">
   <app-about></app-about>
 </section>
-<section id="proyectos" class="min-h-screen py-20 px-6 bg-gray-950">
-  <div class="max-w-6xl mx-auto">
-    <app-projects></app-projects>
-  </div>
+
+<section id="habilidades" class="py-12 flex flex-col items-center justify-center">
+  <app-skills></app-skills>
+</section>
+
+<section id="proyectos" class="py-12">
+  <app-projects></app-projects>
 </section>

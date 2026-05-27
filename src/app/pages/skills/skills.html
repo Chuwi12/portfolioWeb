@@ -5,13 +5,15 @@
   <div class="flex flex-wrap justify-center gap-4">
     @for (skill of skillList; track skill) {
       <button 
-        (click)="toggleFilter(skill)"
-        [class.active-skill]="activeFilter()?.toLowerCase() === skill.toLowerCase()"
-        class="skill-button group"
+      (click)="toggleFilter(skill)"
+      class="group flex items-center gap-3 px-6 py-3 rounded-2xl border transition-all duration-300 shadow-md hover:shadow-lg"
+      [ngClass]="activeFilters().includes(skill) 
+      ? 'border-teal-500 bg-teal-500/10 text-teal-400 scale-105 shadow-[0_0_20px_rgba(20,184,166,0.2)]' 
+      : 'border-white/10 bg-gray-900/40 backdrop-blur-sm text-gray-400 hover:border-teal-500/30 hover:text-teal-300 hover:-translate-y-1'"
       >
-        <app-icon [name]="skill" class="w-6 h-6 transition-transform group-hover:scale-110"></app-icon>
+        <app-icon [name]="skill.toLowerCase()" class="w-6 h-6 transition-transform group-hover:scale-110"></app-icon>
         <span class="font-medium tracking-wide">{{ skill }}</span>
-      </button>
+      f</button>
     }
   </div>
   <p class="text-gray-500 text-center mt-8 text-sm italic">
