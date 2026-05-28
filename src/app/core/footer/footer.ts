@@ -14,7 +14,7 @@ export class Footer {
   protected readonly numTelefono: String = '+34 640 870 770';
   protected readonly email: String = 'srperez04122004@gmail.com';
   protected readonly github: String = 'https://github.com/Chuwi12';
-  protected readonly linkedin: String = 'https://www.linkedin.com/in/sergio-rodr%C3%ADguez-p%C3%A9rez-a57240392/?locale=en_US';
+  protected readonly linkedin: String = 'https://es.linkedin.com/in/sergio-rodr%C3%ADguez-p%C3%A9rez-a57240392';
 
   // Variable para traquear si esta copiado en el portapapeles
   protected isCopied = false;
