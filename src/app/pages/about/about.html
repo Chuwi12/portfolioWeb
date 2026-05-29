@@ -1,16 +1,16 @@
-<section id="sobre-mi" class="min-h-screen flex items-center justify-center px-6 py-20 bg-gray-950">
-  <div class="max-w-4xl w-full bg-gray-900/40 backdrop-blur-md border border-white/10 p-8 md:p-12 rounded-3xl shadow-2xl transform transition hover:border-white/20 duration-500">
+<section id="sobre-mi" class="min-h-screen flex items-center justify-center px-6 py-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
+  <div class="max-w-4xl w-full bg-white/60 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-white/10 p-8 md:p-12 rounded-3xl shadow-2xl transform transition hover:border-gray-300 dark:hover:border-white/20 duration-500">
     <div class="flex flex-col md:flex-row gap-12 items-center">
       <div class="flex-1">
-        <h2 class="text-indigo-400 font-mono text-sm mb-4 uppercase tracking-widest">Presentación</h2>
-        <h3 class="text-4xl md:text-5xl font-bold text-white mb-6">
-          Desarrollandome, <span class="text-teal-400">línea a línea.</span>
+        <h2 class="text-indigo-600 dark:text-indigo-400 font-mono text-sm mb-4 uppercase tracking-widest transition-colors duration-300">Presentación</h2>
+        <h3 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
+          Desarrollandome, <span class="text-teal-600 dark:text-teal-400 transition-colors duration-300">línea a línea.</span>
         </h3>
-        <p [innerHTML]="biography" class="text-gray-400 text-lg leading-relaxed mb-8"></p>
+        <p [innerHTML]="biography" class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8 transition-colors duration-300"></p>
         <div class="flex gap-4">
-            <span class="px-4 py-2 bg-indigo-500/10 text-indigo-300 rounded-full text-sm border border-indigo-500/20">Proactivo</span>
-            <span class="px-4 py-2 bg-teal-500/10 text-teal-300 rounded-full text-sm border border-teal-500/20">Resolutivo</span>
-            <span class="px-4 py-2 bg-pink-500/10 text-pink-300 rounded-full text-sm border border-pink-500/20">Backend</span>
+            <span class="px-4 py-2 bg-indigo-100 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 rounded-full text-sm border border-indigo-200 dark:border-indigo-500/20 transition-colors duration-300">Proactivo</span>
+            <span class="px-4 py-2 bg-teal-100 dark:bg-teal-500/10 text-teal-700 dark:text-teal-300 rounded-full text-sm border border-teal-200 dark:border-teal-500/20 transition-colors duration-300">Resolutivo</span>
+            <span class="px-4 py-2 bg-pink-100 dark:bg-pink-500/10 text-pink-700 dark:text-pink-300 rounded-full text-sm border border-pink-200 dark:border-pink-500/20 transition-colors duration-300">Backend</span>
         </div>
       </div>
       <div class="md:w-1/3 flex flex-col items-center text-center space-y-6">
@@ -19,7 +19,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
           </svg>
         </div>
-        <a href="/CV.pdf" target="_blank" class="text-teal-400 border-b border-teal-400/30 hover:border-teal-400 transition-all pb-1 font-semibold">
+        <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" class="text-teal-600 dark:text-teal-400 border-b border-teal-600/30 dark:border-teal-400/30 hover:border-teal-600 dark:hover:border-teal-400 transition-all pb-1 font-semibold">
           Descargar CV (PDF)
         </a>
       </div>

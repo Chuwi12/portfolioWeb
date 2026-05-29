@@ -12,20 +12,20 @@ import  { Skills } from '../skills/skills';
   styleUrl: './home.css',
 })
 
-// Clase inicio
-// Implemente AfterViewInit, interfaz estandar de Angular, para eventos una vez se haya cargado la pagina
+// Home class
+// Implements AfterViewInit, standard Angular interface, for events after the page has loaded
 export class Home implements AfterViewInit {
   
-  // Obtener el elemento HTML para realizar la animación
+  // Get the HTML element to perform the animation
   @ViewChild('typingElement') typingElement!: ElementRef;
 
-  // Variable en la que almacenamos si estamos en el servidor o en la web 
+  // Variable where we store if we are on the server or in the browser 
   private platformId = inject(PLATFORM_ID);
 
-  // Funcion para realizar la animacion para mostrar la informacion en el Home
+  // Function to perform the animation to show the information on the Home
   ngAfterViewInit(): void {
 
-    // Realiza la animación solo si nos encontramos en el navegador y no en un runtime en el servidor
+    // Perform the animation only if we are in the browser and not in a server runtime
     if (isPlatformBrowser(this.platformId)) {
       const options = { 
         strings: [

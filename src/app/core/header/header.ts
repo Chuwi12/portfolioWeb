@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 export class Header {
   isMobileMenuOpen = false;
   
-  // Variables para controlar el Tema y el Idioma
+  // Variables to control the Theme and Language
   isDarkMode = signal<boolean>(true); 
   currentLang = signal<string>('ES');
 
@@ -21,16 +21,16 @@ export class Header {
     { name: 'Contacto', url: '#contacto' }
   ];
 
-  // Despliega el menú en móviles
+  // Toggles the mobile menu
   toggleMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
-  // Alterna entre modo claro y oscuro
+  // Toggles between light and dark mode
   toggleTheme() {
     this.isDarkMode.set(!this.isDarkMode());
     
-    // Si isDarkMode es true, ponemos la clase dark. Si no, la quitamos.
+    // If isDarkMode is true, we add the dark class. Otherwise, we remove it.
     if (this.isDarkMode()) {
       document.documentElement.classList.add('dark');
     } else {

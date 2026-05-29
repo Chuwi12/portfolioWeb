@@ -9,10 +9,10 @@ import { Observable, forkJoin, map } from 'rxjs';
 export class ProjectService {
   private http = inject(HttpClient);
 
-  // Variable publica para almacenar que esta seleccionado y que no
+  // Public variable to store what is selected and what is not
   public selectedFilters = signal<string[]>([]);
   
-  // Lista de las APIs de los proyectos (Para añadir uno nuevo, solo añades la URL aquí)
+  // List of project APIs (To add a new one, just add the URL here)
   private apiUrls: string[] = [
     'https://api.github.com/repos/Chuwi12/TFG-',
     'https://api.github.com/repos/Tau5/pizzeria-design',
@@ -21,27 +21,27 @@ export class ProjectService {
     'https://api.github.com/repos/Chuwi12/Art-Space'
   ];
 
-  // FUncion para obtener y devolver los proyectosj
+  // Function to fetch and return the projects
   getProjects(): Observable<Proyect[]> {
     const requests = this.apiUrls.map(url => this.http.get<any>(url));
     
     return forkJoin(requests).pipe(
       map((githubRepos: any[]) => {
-        // Mapeamos cada JSON de GitHub pasándolo por nuestra función adaptadora
+        // Map each GitHub JSON by passing it through our adapter function
         return githubRepos.map(repo => this.mapToProyect(repo));
       })
     );
   }
 
-  // Transforma el objeto crudo de GitHub a nuestra interfaz Proyect de forma dinámica.
+  // Transforms the raw GitHub object to our Project interface dynamically.
   private mapToProyect(repo: any): Proyect {
     
-    // Usamos los tags de GitHub. Si no hay, usamos los mios.
+    // We use GitHub tags. If there are none, we use mine.
     const extractedTechs = (repo.topics && repo.topics.length > 0) 
       ? repo.topics 
       : (repo.language ? [repo.language] : ['Code']);
 
-    // Convertimos a minúsculas y quitamos espacios para estandarizar el nombre del archivo
+    // Convert to lowercase and remove spaces to standardize the file name
     const safeName = repo.name.toLowerCase().trim();
     const imagePath = `/projects/${safeName}.jpg`;
 

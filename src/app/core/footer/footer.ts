@@ -7,26 +7,26 @@ import { Component } from '@angular/core';
   styleUrl: './footer.css',
 })
 
-// Clase para ver mis datos de contacto
+// Class to view my contact data
 export class Footer {
   
-  // Datos de contacto
+  // Contact data
   protected readonly numTelefono: String = '+34 640 870 770';
   protected readonly email: String = 'srperez04122004@gmail.com';
   protected readonly github: String = 'https://github.com/Chuwi12';
   protected readonly linkedin: String = 'https://es.linkedin.com/in/sergio-rodr%C3%ADguez-p%C3%A9rez-a57240392';
 
-  // Variable para traquear si esta copiado en el portapapeles
+  // Variable to track if it is copied to the clipboard
   protected isCopied = false;
 
-  // Función para que cuando se clicke sobre el número de télefono se copie en el portapapeles
+  // Function to copy the phone number to the clipboard when clicked
   copyNum() {
     navigator.clipboard.writeText(this.numTelefono.toString()).then ( () => {
 
-      // Ponemos la variable en tru, para lanzar un aviso
+      // Set the variable to true to trigger a notification
       this.isCopied = true;
       
-      // Esperamos unos segundo y la volvemos a poner en fals
+      // Wait a few seconds and set it back to false
       setTimeout(() => {
         this.isCopied = false;
       }, 3000);

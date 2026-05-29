@@ -7,7 +7,7 @@ import { IconComponent } from '../../shared/components/icon/icon';
 @Component({
   selector: 'app-projects',
   standalone: true,
-  // 2. Registramos el IconComponent aquí
+  // 2. Register the IconComponent here
   imports: [CommonModule, IconComponent], 
   templateUrl: './projects.html',
   styleUrl: './projects.css'
@@ -17,7 +17,7 @@ export class Projects implements OnInit {
 
   rawProjects = signal<Proyect[]>([]);
   
-  // Variables para comprobar si ha sido cargado o si ha habido un error
+  // Variables to check if it has been loaded or if there was an error
   isLoading = signal<boolean>(true);
   hasError = signal<boolean>(false);
 
@@ -44,7 +44,7 @@ export class Projects implements OnInit {
       },
       error: (err) => {
         console.error('Error al cargar los repositorios de GitHub:', err);
-        // Si hay un error, mostramos tu mensaje rojo y apagamos la carga
+        // If there is an error, we show your red message and turn off loading
         this.hasError.set(true);
         this.isLoading.set(false);
       }
