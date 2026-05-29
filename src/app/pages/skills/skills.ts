@@ -19,7 +19,7 @@ export class Skills {
 
   // Lista de habilidadades principales
   protected skillList = [
-    'Angular', 'TypeScript', 'Python', 'Java', 'MySQL', 'NodeJS', 'CSS', 'HTML', 'TailwindCSS'
+    'Angular', 'TypeScript', 'Python', 'Java', 'Kotlin', 'MySQL', 'NodeJS', 'ShellScript', 'CSS', 'HTML', 'TailwindCSS'
   ];
 
   // Función para activar/desactivar múltiples filtros

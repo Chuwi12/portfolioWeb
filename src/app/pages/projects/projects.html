@@ -28,7 +28,7 @@
                 <div class="flex flex-wrap gap-2 mb-6">
                     @for (tech of project.technologies; track tech) {
                         <span class="flex items-center gap-1.5 text-xs font-mono px-3 py-1 bg-teal-100 dark:bg-teal-500/10 text-teal-700 dark:text-teal-300 rounded-full border border-teal-200 dark:border-teal-500/20 capitalize transition-colors duration-300">
-                        <app-icon [name]="tech"></app-icon>
+                        <app-icon [name]="tech" class="w-4 h-4"></app-icon>
                             {{ tech }}
                         </span>
                     }
