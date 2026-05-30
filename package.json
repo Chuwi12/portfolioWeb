@@ -20,6 +20,8 @@
     "@angular/platform-server": "^21.2.0",
     "@angular/router": "^21.2.0",
     "@angular/ssr": "^21.2.12",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "angular-i18next": "^20.0.1",
     "express": "^5.1.0",
     "i18next": "^26.3.0",
