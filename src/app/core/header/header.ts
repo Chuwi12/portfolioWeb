@@ -16,6 +16,7 @@ export class Header {
 
   navLinks = [
     { name: 'Sobre mí', url: '#informacion' },
+    { name: 'Experiencia', url: '#experiencia-laboral' },
     { name: 'Skills', url: '#habilidades' },
     { name: 'Proyectos', url: '#proyectos' },
     { name: 'Contacto', url: '#contacto' }

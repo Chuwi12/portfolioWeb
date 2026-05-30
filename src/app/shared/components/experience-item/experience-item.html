@@ -1,0 +1,23 @@
+<div class="relative pl-8 sm:pl-32 py-6 group">
+  <!-- Line connecting dots -->
+  <div class="absolute left-[0.45rem] sm:left-[6.5rem] top-0 bottom-0 w-px bg-gray-300 dark:bg-gray-700 group-last:bottom-auto group-last:h-full"></div>
+  
+  <div class="flex flex-col sm:flex-row items-start mb-1">
+    <!-- Duration tag (left side on sm+, top on mobile) -->
+    <div class="sm:absolute left-0 w-24 flex sm:justify-end mb-3 sm:mb-0 z-10">
+      <time class="inline-flex items-center justify-center text-xs font-bold uppercase px-3 py-1 text-teal-700 bg-teal-100 dark:text-teal-300 dark:bg-teal-900/40 rounded-full shadow-sm whitespace-nowrap">
+        {{ duration }}
+      </time>
+    </div>
+    
+    <!-- Dot in the middle -->
+    <div class="absolute left-2 sm:left-[6.5rem] w-4 h-4 rounded-full bg-white dark:bg-gray-900 border-4 border-indigo-500 dark:border-indigo-400 shadow -translate-x-1/2 mt-1 sm:mt-1.5 z-10 transform transition-transform duration-300 group-hover:scale-125 group-hover:border-teal-500 dark:group-hover:border-teal-400"></div>
+
+    <!-- Content (Right side) -->
+    <div class="w-full sm:pl-8">
+      <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1 transition-colors duration-300">{{ position }}</h3>
+      <div class="text-indigo-600 dark:text-indigo-400 font-medium mb-3 transition-colors duration-300">{{ company }}</div>
+      <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300">{{ description }}</p>
+    </div>
+  </div>
+</div>
