@@ -30,9 +30,10 @@ export class Projects implements OnInit {
     }
 
     return allProjects.filter(project => 
-      project.technologies.some(tech => 
-        filters.map(f => f.toLowerCase()).includes(tech.toLowerCase())
-      )
+      project.technologies.some(tech => {
+        const cleanTech = tech.toLowerCase().replace(/[^a-z0-9]/g, '');
+        return filters.some(f => f.toLowerCase().replace(/[^a-z0-9]/g, '') === cleanTech);
+      })
     );
   });
 

@@ -11,7 +11,7 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
 }
 
-/* El estado cuando el botón está activado */
+/* State when the button is active */
 .active-skill {
   @apply border-teal-500 bg-teal-500/10 text-teal-400;
   box-shadow: 0 0 20px rgba(20, 184, 166, 0.2);

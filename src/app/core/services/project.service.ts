@@ -36,10 +36,18 @@ export class ProjectService {
   // Transforms the raw GitHub object to our Project interface dynamically.
   private mapToProyect(repo: any): Proyect {
     
-    // We use GitHub tags. If there are none, we use mine.
-    const extractedTechs = (repo.topics && repo.topics.length > 0) 
-      ? repo.topics 
-      : (repo.language ? [repo.language] : ['Code']);
+    // Merge the primary language and GitHub topics so no tags are lost
+    const extractedTechs = new Set<string>();
+    
+    if (repo.language) {
+      extractedTechs.add(repo.language.toLowerCase());
+    }
+    
+    if (repo.topics && repo.topics.length > 0) {
+      repo.topics.forEach((t: string) => extractedTechs.add(t.toLowerCase()));
+    }
+
+    const finalTechs = extractedTechs.size > 0 ? Array.from(extractedTechs) : ['code'];
 
     // Convert to lowercase and remove spaces to standardize the file name
     const safeName = repo.name.toLowerCase().trim();
@@ -49,7 +57,7 @@ export class ProjectService {
       title: repo.name,
       description: repo.description || 'Repositorio sin descripción.',
       img: imagePath,
-      technologies: extractedTechs,
+      technologies: finalTechs,
       repoUrl: repo.html_url,
       demoUrl: repo.homepage || undefined
     };

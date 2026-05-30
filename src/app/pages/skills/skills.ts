@@ -11,33 +11,33 @@ import { IconComponent } from '../../shared/components/icon/icon';
   styleUrl: './skills.css'
 })
 export class Skills {
-  // Inyectamos el servicio para controlar el filtro
+  // Inject the service to control the filter
   private projectService = inject(ProjectService);
   
-  // Accedemos al signal del array del servicio (recuerda que en el servicio debe llamarse selectedFilters)
+  // Access the service's array signal (remember that in the service it must be called selectedFilters)
   protected activeFilters = this.projectService.selectedFilters;
 
-  // Lista de habilidadades principales
+  // List of core skills
   protected skillList = [
     'Angular', 'TypeScript', 'Python', 'Java', 'Kotlin', 'MySQL', 'NodeJS', 'ShellScript', 'CSS', 'HTML', 'TailwindCSS'
   ];
 
-  // Función para activar/desactivar múltiples filtros
+  // Function to toggle multiple filters
   toggleFilter(tech: string) {
     const currentFilters = this.activeFilters();
     
-    // Comprobamos si la tecnología ya está seleccionada (ignorando mayúsculas/minúsculas)
+    // Check if the technology is already selected (ignoring case)
     const isSelected = currentFilters.some(
       (filter) => filter.toLowerCase() === tech.toLowerCase()
     );
 
     if (isSelected) {
-      // Si ya está seleccionada, la quitamos del array
+      // If already selected, remove it from the array
       this.projectService.selectedFilters.set(
         currentFilters.filter((filter) => filter.toLowerCase() !== tech.toLowerCase())
       );
     } else {
-      // Si no está seleccionada, creamos un nuevo array con las que ya había + la nueva
+      // If not selected, create a new array with the existing ones + the new one
       this.projectService.selectedFilters.set([...currentFilters, tech]);
     }
   }
