@@ -1,4 +1,12 @@
-<div class="flex flex-col min-h-screen bg-gray-100 text-gray-900 dark:bg-gray-950 dark:text-white transition-colors duration-300">
+<div class="flex flex-col min-h-screen bg-gray-100 text-gray-900 dark:bg-gray-950 dark:text-white transition-colors duration-300 relative">
+  
+  <!-- Animated Background Blobs -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+    <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-teal-400/20 dark:bg-teal-900/30 rounded-full blur-[100px] animate-blob will-change-transform"></div>
+    <div class="absolute top-[40%] right-[-10%] w-80 h-80 bg-cyan-400/20 dark:bg-cyan-900/30 rounded-full blur-[100px] animate-blob-slow will-change-transform"></div>
+    <div class="absolute bottom-[-10%] left-[20%] w-[30rem] h-[30rem] bg-emerald-400/20 dark:bg-emerald-900/20 rounded-full blur-[120px] animate-blob will-change-transform"></div>
+  </div>
+
   <app-header></app-header>
   <main class="flex-grow">
     <router-outlet></router-outlet>

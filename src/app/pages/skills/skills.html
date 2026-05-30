@@ -1,4 +1,4 @@
-<section class="max-w-6xl mx-auto py-16 px-6">
+<section class="section-optimize max-w-6xl mx-auto py-16 px-6">
   <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-10 text-center transition-colors duration-300">
     Mi <span class="text-teal-600 dark:text-teal-400 transition-colors duration-300">Stack</span> Tecnológico
   </h2>
@@ -6,7 +6,7 @@
     @for (skill of skillList; track skill) {
       <button 
       (click)="toggleFilter(skill)"
-      class="group flex items-center gap-3 px-6 py-3 rounded-2xl border transition-all duration-300 shadow-md hover:shadow-lg"
+      class="group flex items-center gap-3 px-6 py-3 rounded-2xl border transition duration-300 shadow-md hover:shadow-lg"
       [ngClass]="activeFilters().includes(skill) 
       ? 'border-teal-500 bg-teal-50 text-teal-700 dark:bg-teal-500/10 dark:text-teal-400 scale-105 shadow-[0_0_20px_rgba(20,184,166,0.2)]' 
       : 'border-gray-200 dark:border-white/10 bg-white/60 dark:bg-gray-900/40 backdrop-blur-sm text-gray-600 dark:text-gray-400 hover:border-teal-300 dark:hover:border-teal-500/30 hover:text-teal-600 dark:hover:text-teal-300 hover:-translate-y-1'"
