@@ -51,7 +51,7 @@ export class ProjectService {
 
     // Convert to lowercase and remove spaces to standardize the file name
     const safeName = repo.name.toLowerCase().trim();
-    const imagePath = `/projects/${safeName}.jpg`;
+    const imagePath = `/projects/${safeName}.webp`;
 
     return {
       title: repo.name,
