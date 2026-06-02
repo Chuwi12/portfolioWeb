@@ -15,6 +15,7 @@ export class Footer {
   protected readonly email: String = 'srperez04122004@gmail.com';
   protected readonly github: String = 'https://github.com/Chuwi12';
   protected readonly linkedin: String = 'https://es.linkedin.com/in/sergio-rodr%C3%ADguez-p%C3%A9rez-a57240392';
+  protected readonly currentYear: number = new Date().getFullYear();
 
   // Variable to track if it is copied to the clipboard
   protected isCopied = false;
