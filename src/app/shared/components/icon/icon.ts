@@ -11,7 +11,7 @@ export class IconComponent {
   // Valid icons set
   private validIcons = new Set([
     'angular', 'python', 'css', 'typescript', 'java', 'mysql', 'nodejs', 
-    'react', 'html', 'tailwindcss', 'kotlin', 'shellscript', 'code'
+    'react', 'html', 'tailwindcss', 'kotlin', 'go', 'shellscript', 'code'
   ]);
 
   // Function to return the corresponding SVG symbol

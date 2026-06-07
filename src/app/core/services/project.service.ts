@@ -18,7 +18,8 @@ export class ProjectService {
     'https://api.github.com/repos/Tau5/pizzeria-design',
     'https://api.github.com/repos/Tau5/dedede',
     'https://api.github.com/repos/Tau5/dedede-jdbc',
-    'https://api.github.com/repos/Chuwi12/Art-Space'
+    'https://api.github.com/repos/Chuwi12/Art-Space',
+    'https://api.github.com/repos/Chuwi12/url-state-monitor-go'
   ];
 
   // Function to fetch and return the projects
