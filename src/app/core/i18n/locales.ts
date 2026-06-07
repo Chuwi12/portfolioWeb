@@ -32,7 +32,7 @@ export const locales = {
       },
       experience: {
         sectionTitle: "Trayectoria",
-        title: "Experiencia Laboral",
+        title: "Experiencia <span class=\"text-teal-600 dark:text-teal-400\">Laboral</span>",
         jobs: [
           {
             position: "FullStack Developer Salesforce",
@@ -113,7 +113,7 @@ export const locales = {
       },
       experience: {
         sectionTitle: "Career",
-        title: "Work Experience",
+        title: "Work <span class=\"text-teal-600 dark:text-teal-400\">Experience</span>",
         jobs: [
           {
             position: "Salesforce FullStack Developer",

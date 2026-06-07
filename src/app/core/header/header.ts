@@ -1,4 +1,4 @@
-import { Component, signal, HostListener, Inject, PLATFORM_ID, AfterViewInit } from '@angular/core';
+import { Component, signal, HostListener, Inject, PLATFORM_ID, AfterViewInit, ApplicationRef } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { I18NextModule, I18NEXT_SERVICE, ITranslationService } from 'angular-i18next';
 
@@ -18,7 +18,8 @@ export class Header implements AfterViewInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    @Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService
+    @Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService,
+    private appRef: ApplicationRef
   ) {
     this.currentLang.set(this.i18NextService.language || 'es');
   }
@@ -81,6 +82,7 @@ export class Header implements AfterViewInit {
     const nextLang = this.currentLang() === 'es' ? 'en' : 'es';
     this.i18NextService.changeLanguage(nextLang).then(() => {
       this.currentLang.set(nextLang);
+      this.appRef.tick(); // Force global change detection
     });
   }
 }

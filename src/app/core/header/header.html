@@ -13,7 +13,7 @@
             <a [href]="link.url" 
                [ngClass]="link.name === 'Contacto' ? 'text-teal-500 dark:text-teal-400' : (activeSection() === link.url.substring(1) ? 'text-teal-600 dark:text-teal-400' : 'text-gray-600 dark:text-gray-300')"
                class="relative py-1 text-sm font-medium hover:text-teal-600 dark:hover:text-teal-400 transition-colors uppercase tracking-widest group">
-              {{ link.name | i18next }}
+              {{ link.name | i18nextEager }}
               <span class="absolute left-0 bottom-0 h-[2px] bg-teal-500 dark:bg-teal-400 transition-all duration-300"
                     [ngClass]="activeSection() === link.url.substring(1) ? 'w-full' : 'w-0 group-hover:w-full'"></span>
             </a>
@@ -30,7 +30,7 @@
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-teal-500"></span>
           </span>
-          <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300 whitespace-nowrap">{{ 'header.openToWork' | i18next }}</span>
+          <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300 whitespace-nowrap">{{ 'header.openToWork' | i18nextEager }}</span>
         </div>
 
         <button (click)="toggleTheme()" class="text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition-transform hover:scale-110">
@@ -46,7 +46,9 @@
         </button>
 
         <!-- Language Toggle Button -->
-        <button (click)="toggleLanguage()" class="text-sm font-bold text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors uppercase w-6 text-center">
+        <button (click)="toggleLanguage()" 
+                class="flex items-center justify-center px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-900/20 border border-teal-100 dark:border-teal-800/30 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300 hover:scale-105 hover:bg-teal-100 dark:hover:bg-teal-800/40 transition-all cursor-pointer"
+                title="Cambiar idioma">
           {{ currentLang() }}
         </button>
 
@@ -73,7 +75,7 @@
             <a [href]="link.url" (click)="toggleMenu()" 
                [ngClass]="link.name === 'Contacto' ? 'text-teal-500 dark:text-teal-400' : (activeSection() === link.url.substring(1) ? 'text-teal-600 dark:text-teal-400' : 'text-gray-600 dark:text-gray-300')"
                class="relative inline-block py-1 text-lg font-medium hover:text-teal-600 dark:hover:text-teal-400 active:text-teal-600 dark:active:text-teal-400 transition-colors group">
-              {{ link.name | i18next }}
+              {{ link.name | i18nextEager }}
               <span class="absolute left-0 bottom-0 h-[2px] bg-teal-500 dark:bg-teal-400 transition-all duration-300"
                     [ngClass]="activeSection() === link.url.substring(1) ? 'w-full' : 'w-0 group-hover:w-full'"></span>
             </a>
