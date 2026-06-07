@@ -1,10 +1,11 @@
 import { Component, signal, HostListener, Inject, PLATFORM_ID, AfterViewInit } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { I18NextModule, I18NEXT_SERVICE, ITranslationService } from 'angular-i18next';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, I18NextModule],
   templateUrl: './header.html'
 })
 export class Header implements AfterViewInit {
@@ -12,10 +13,15 @@ export class Header implements AfterViewInit {
   
   // Variables to control the Theme, Language, and Active Section
   isDarkMode = signal<boolean>(true); 
-  currentLang = signal<string>('ES');
+  currentLang = signal<string>('es');
   activeSection = signal<string>('');
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService
+  ) {
+    this.currentLang.set(this.i18NextService.language || 'es');
+  }
 
   ngAfterViewInit() {
     // Set initial active section after a short delay to ensure DOM is ready
@@ -25,11 +31,11 @@ export class Header implements AfterViewInit {
   }
 
   navLinks = [
-    { name: 'Sobre mí', url: '#informacion' },
-    { name: 'Experiencia', url: '#experiencia-laboral' },
-    { name: 'Skills', url: '#habilidades' },
-    { name: 'Proyectos', url: '#proyectos' },
-    { name: 'Contacto', url: '#contacto' }
+    { name: 'header.nav.informacion', url: '#informacion' },
+    { name: 'header.nav.experiencia', url: '#experiencia-laboral' },
+    { name: 'header.nav.habilidades', url: '#habilidades' },
+    { name: 'header.nav.proyectos', url: '#proyectos' },
+    { name: 'header.nav.contacto', url: '#contacto' }
   ];
 
   @HostListener('window:scroll', [])
@@ -68,5 +74,13 @@ export class Header implements AfterViewInit {
     } else {
       document.documentElement.classList.remove('dark');
     }
+  }
+
+  // Toggles language between es and en
+  toggleLanguage() {
+    const nextLang = this.currentLang() === 'es' ? 'en' : 'es';
+    this.i18NextService.changeLanguage(nextLang).then(() => {
+      this.currentLang.set(nextLang);
+    });
   }
 }

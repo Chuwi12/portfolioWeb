@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ProjectService } from '../../core/services/project.service';
 import { Proyect } from '../../core/models/project.model';
 import { IconComponent } from '../../shared/components/icon/icon';
+import { I18NextModule } from 'angular-i18next';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
   // 2. Register the IconComponent here
-  imports: [CommonModule, IconComponent], 
+  imports: [CommonModule, IconComponent, I18NextModule], 
   templateUrl: './projects.html',
   styleUrl: './projects.css'
 })

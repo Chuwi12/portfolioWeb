@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { I18NextModule } from 'angular-i18next';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [I18NextModule],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })

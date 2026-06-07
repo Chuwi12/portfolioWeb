@@ -1,7 +1,9 @@
 <section id="experiencia" class="section-optimize py-20 px-6 transition-colors duration-300">
   <div class="max-w-4xl mx-auto">
     <div class="text-center mb-16">
-      <h2 class="text-indigo-600 dark:text-indigo-300 font-mono text-sm mb-4 uppercase tracking-widest transition-colors duration-300">Trayectoria</h2>
+      <h2
+        class="text-indigo-600 dark:text-indigo-300 font-mono text-sm mb-4 uppercase tracking-widest transition-colors duration-300">
+        Trayectoria</h2>
       <h3 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
         Experiencia <span class="text-teal-600 dark:text-teal-400">Laboral</span>
       </h3>
@@ -9,12 +11,9 @@
 
     <div class="space-y-0">
       @for (exp of experiences; track exp.company) {
-        <app-experience-item
-          [position]="exp.position"
-          [company]="exp.company"
-          [duration]="exp.duration"
-          [description]="exp.description">
-        </app-experience-item>
+      <app-experience-item [position]="exp.position" [company]="exp.company" [duration]="exp.duration"
+        [description]="exp.description">
+      </app-experience-item>
       }
     </div>
   </div>

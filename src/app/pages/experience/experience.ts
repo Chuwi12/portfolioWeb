@@ -1,27 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExperienceItemComponent } from '../../shared/components/experience-item/experience-item';
+import { I18NextModule, I18NEXT_SERVICE, ITranslationService } from 'angular-i18next';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [CommonModule, ExperienceItemComponent],
+  imports: [CommonModule, ExperienceItemComponent, I18NextModule],
   templateUrl: './experience.html',
   styleUrl: './experience.css'
 })
-export class Experience {
-  experiences = [
-    {
-      position: 'FullStack Developer Salesforce',
-      company: 'VASS',
-      duration: 'Marzo 2026 - Mayo 2026',
-      description: 'Desarrollé varios Lightning Web Components para la visualización de datos recogidos con integraciones externas en portales de la comunidad. Desarrollé clases Apex para la lógica de negocio del backend. Creé, configuré y administré Permission Sets y mantuve responsabilidades DevOps.'
-    },
-    {
-      position: 'Frontend Developer',
-      company: 'CRC',
-      duration: 'Abril 2025 - Mayo 2025',
-      description: 'Desarrollé una app web frontend con Angular. Desplegué servicios web en AWS e implementé una app en JavaScript paralelizada para manejar respuestas de una API REST.'
+export class Experience implements OnInit, OnDestroy {
+  experiences: any[] = [];
+  private langSub?: Subscription;
+
+  constructor(@Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService) {}
+
+  ngOnInit() {
+    this.loadExperiences();
+    this.langSub = this.i18NextService.events.languageChanged.subscribe(() => {
+      this.loadExperiences();
+    });
+  }
+
+  loadExperiences() {
+    const jobs = this.i18NextService.t('experience.jobs', { returnObjects: true });
+    this.experiences = Array.isArray(jobs) ? jobs : [];
+  }
+
+  ngOnDestroy() {
+    if (this.langSub) {
+      this.langSub.unsubscribe();
     }
-  ];
+  }
 }

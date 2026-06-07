@@ -1,6 +1,5 @@
 <section class="section-optimize max-w-6xl mx-auto py-16 px-6">
-  <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-10 text-center transition-colors duration-300">
-    Mi <span class="text-teal-600 dark:text-teal-400 transition-colors duration-300">Stack</span> Tecnológico
+  <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-10 text-center transition-colors duration-300" [innerHTML]="'skills.title' | i18next">
   </h2>
   <div class="flex flex-wrap justify-center gap-4">
     @for (skill of skillList; track skill) {
@@ -17,6 +16,6 @@
     }
   </div>
   <p class="text-gray-500 text-center mt-8 text-sm italic transition-colors duration-300">
-    * Pulsa una tecnología para filtrar mis proyectos.
+    {{ 'skills.filterHelp' | i18next }}
   </p>
 </section>

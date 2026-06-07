@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectService } from '../../core/services/project.service';
 import { IconComponent } from '../../shared/components/icon/icon';
+import { I18NextModule } from 'angular-i18next';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, IconComponent, I18NextModule],
   templateUrl: './skills.html',
   styleUrl: './skills.css'
 })

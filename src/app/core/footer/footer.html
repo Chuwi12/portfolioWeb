@@ -1,6 +1,6 @@
 <footer class="w-full py-8 text-gray-600 dark:text-gray-500 bg-white dark:bg-gray-950 transition-colors duration-300 border-t border-gray-200 dark:border-transparent">
   <div class="max-w-7xl mx-auto flex items-center justify-center gap-8 text-base font-light">
-    <span class="text-gray-700 dark:text-gray-600 cursor-default transition-colors duration-300">Contáctame</span>
+    <span class="text-gray-700 dark:text-gray-600 cursor-default transition-colors duration-300">{{ 'footer.contact' | i18next }}</span>
     <div class="flex items-center gap-4">
       <a [href]="github" target="_blank" rel="noopener noreferrer" 
          class="transition-colors duration-300 hover:text-gray-900 dark:hover:text-white"
@@ -30,6 +30,6 @@
     </div>
   </div>
   <div class="mt-8 text-center text-sm font-light text-gray-400 dark:text-gray-600 transition-colors duration-300">
-    <p>&copy; {{ currentYear }} Desarrollado por <span class="font-medium text-gray-500 dark:text-gray-500">Sergio Rodríguez</span></p>
+    <p>&copy; {{ currentYear }} {{ 'footer.developedBy' | i18next }} <span class="font-medium text-gray-500 dark:text-gray-500">Sergio Rodríguez</span></p>
   </div>
 </footer>
