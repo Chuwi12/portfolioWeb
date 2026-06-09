@@ -1,5 +1,5 @@
 import Typed from 'typed.js';
-import { Component, AfterViewInit, ViewChild, ElementRef, PLATFORM_ID, inject, Inject, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, PLATFORM_ID, inject, Inject, OnDestroy, NgZone } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { About } from '../about/about';
 import { Experience } from '../experience/experience';
@@ -29,7 +29,8 @@ export class Home implements AfterViewInit, OnDestroy {
   private langSub?: Subscription;
 
   constructor(
-    @Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService
+    @Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService,
+    private ngZone: NgZone
   ) {}
 
   // Function to perform the animation to show the information on the Home
@@ -61,7 +62,9 @@ export class Home implements AfterViewInit, OnDestroy {
       cursorChar: '|', 
     }
 
-    this.typedInstance = new Typed(this.typingElement.nativeElement, options);
+    this.ngZone.runOutsideAngular(() => {
+      this.typedInstance = new Typed(this.typingElement.nativeElement, options);
+    });
   }
 
   ngOnDestroy() {
