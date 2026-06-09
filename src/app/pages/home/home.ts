@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, I18NextModule, About, Experience, Projects, Skills],
+  imports: [CommonModule, I18NextModule, Experience, Projects, Skills],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

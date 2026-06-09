@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [CommonModule, ExperienceItemComponent, I18NextModule],
+  imports: [CommonModule, I18NextModule],
   templateUrl: './experience.html',
   styleUrl: './experience.css'
 })

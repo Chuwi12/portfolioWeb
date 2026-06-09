@@ -1,87 +1,71 @@
-<header class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm md:backdrop-blur-md border-b border-gray-200 dark:border-white/5 transition-colors duration-300">
-  <nav class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-    
-    <a href="#" class="text-2xl font-extrabold text-gray-900 dark:text-white tracking-tighter hover:opacity-80 transition-opacity">
-      CHUWI<span class="text-teal-500 dark:text-teal-400">-DEV</span>
+<header class="fixed top-0 w-full bg-[#030712]/80 backdrop-blur-md border-b border-white/10 shadow-sm z-50 left-0 right-0 transition-colors duration-300">
+  <div class="flex justify-between items-center max-w-container-max mx-auto px-gutter h-20 w-full">
+    <a href="#" class="font-headline-md text-headline-md font-bold text-primary hover:opacity-80 transition-opacity">
+      Chuwi-dev
     </a>
 
     <div class="flex items-center gap-6">
-      
-      <ul class="hidden md:flex items-center gap-8">
+      <nav class="hidden md:flex gap-8 items-center">
         @for (link of navLinks; track link.name) {
-          <li>
-            <a [href]="link.url" 
-               [ngClass]="link.name === 'Contacto' ? 'text-teal-500 dark:text-teal-400' : (activeSection() === link.url.substring(1) ? 'text-teal-600 dark:text-teal-400' : 'text-gray-600 dark:text-gray-300')"
-               class="relative py-1 text-sm font-medium hover:text-teal-600 dark:hover:text-teal-400 transition-colors uppercase tracking-widest group">
-              {{ link.name | i18nextEager }}
-              <span class="absolute left-0 bottom-0 h-[2px] bg-teal-500 dark:bg-teal-400 transition-all duration-300"
-                    [ngClass]="activeSection() === link.url.substring(1) ? 'w-full' : 'w-0 group-hover:w-full'"></span>
-            </a>
-          </li>
+          <a [href]="link.url" 
+             [ngClass]="activeSection() === link.url.substring(1) ? 'text-primary font-bold border-b-2 border-primary pb-1' : 'text-on-surface-variant hover:text-secondary transition-all duration-300'"
+             class="font-label-md text-label-md uppercase tracking-wider">
+            {{ link.name | i18nextEager }}
+          </a>
         }
-      </ul>
+      </nav>
 
-      <div class="hidden md:block w-px h-6 bg-gray-300 dark:bg-white/10 transition-colors duration-300"></div>
+      <div class="hidden md:block w-px h-6 bg-surface-border transition-colors duration-300"></div>
 
       <div class="flex items-center gap-4">
         <!-- Available for Work Badge -->
-        <div class="flex items-center px-2 sm:px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-900/20 border border-teal-100 dark:border-teal-800/30 transition-colors duration-300">
-          <span class="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2 mr-1.5 sm:mr-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-teal-500"></span>
-          </span>
-          <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300 whitespace-nowrap">{{ 'header.openToWork' | i18nextEager }}</span>
+        <div class="hidden sm:flex items-center px-3 py-1 rounded-full border border-primary/30 bg-primary/10 transition-colors duration-300">
+          <span class="w-2 h-2 rounded-full bg-primary animate-pulse mr-2"></span>
+          <span class="font-label-sm text-[10px] text-primary uppercase tracking-wider whitespace-nowrap">{{ 'header.openToWork' | i18nextEager }}</span>
         </div>
 
-        <button (click)="toggleTheme()" class="text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition-transform hover:scale-110">
+        <button (click)="toggleTheme()" class="text-on-surface-variant hover:text-primary transition-transform hover:scale-110">
           @if (isDarkMode()) {
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-            </svg>
+            <span class="material-symbols-outlined text-xl">light_mode</span>
           } @else {
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-            </svg>
+            <span class="material-symbols-outlined text-xl">dark_mode</span>
           }
         </button>
 
         <!-- Language Toggle Button -->
         <button (click)="toggleLanguage()" 
-                class="flex items-center justify-center px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-900/20 border border-teal-100 dark:border-teal-800/30 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-teal-700 dark:text-teal-300 hover:scale-105 hover:bg-teal-100 dark:hover:bg-teal-800/40 transition-all cursor-pointer"
+                class="flex items-center justify-center px-3 py-1 rounded border border-primary/30 text-[11px] font-bold uppercase tracking-wider text-primary hover:scale-105 hover:bg-primary/10 transition-all cursor-pointer"
                 title="Cambiar idioma">
           {{ currentLang() }}
         </button>
 
+        <a class="hidden md:inline-flex bg-primary-container text-text-primary px-5 py-2 rounded font-label-md text-[13px] hover:bg-secondary transition-colors active:scale-95 transition-transform" href="/CV.pdf" target="_blank">
+          Resume
+        </a>
+
+        <button (click)="toggleMenu()" class="md:hidden text-primary focus:outline-none ml-2 transition-colors duration-300">
+          <span class="material-symbols-outlined text-3xl">
+            {{ isMobileMenuOpen ? 'close' : 'menu' }}
+          </span>
+        </button>
       </div>
-
-      <button (click)="toggleMenu()" class="md:hidden text-gray-600 dark:text-gray-300 focus:outline-none ml-2 transition-colors duration-300">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          @if (!isMobileMenuOpen) {
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          } @else {
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          }
-        </svg>
-      </button>
-
     </div>
-  </nav>
+  </div>
 
   @if (isMobileMenuOpen) {
-    <div class="md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-white/10 absolute w-full transition-colors duration-300">
-      <ul class="flex flex-col px-6 py-6 gap-5">
+    <div class="md:hidden bg-surface-card border-b border-surface-border absolute w-full transition-colors duration-300">
+      <nav class="flex flex-col px-6 py-6 gap-5">
         @for (link of navLinks; track link.name) {
-          <li>
-            <a [href]="link.url" (click)="toggleMenu()" 
-               [ngClass]="link.name === 'Contacto' ? 'text-teal-500 dark:text-teal-400' : (activeSection() === link.url.substring(1) ? 'text-teal-600 dark:text-teal-400' : 'text-gray-600 dark:text-gray-300')"
-               class="relative inline-block py-1 text-lg font-medium hover:text-teal-600 dark:hover:text-teal-400 active:text-teal-600 dark:active:text-teal-400 transition-colors group">
-              {{ link.name | i18nextEager }}
-              <span class="absolute left-0 bottom-0 h-[2px] bg-teal-500 dark:bg-teal-400 transition-all duration-300"
-                    [ngClass]="activeSection() === link.url.substring(1) ? 'w-full' : 'w-0 group-hover:w-full'"></span>
-            </a>
-          </li>
+          <a [href]="link.url" (click)="toggleMenu()" 
+             [ngClass]="activeSection() === link.url.substring(1) ? 'text-primary font-bold' : 'text-on-surface-variant'"
+             class="inline-block py-1 text-lg font-headline-md hover:text-secondary active:text-secondary transition-colors">
+            {{ link.name | i18nextEager }}
+          </a>
         }
-      </ul>
+        <a class="inline-flex justify-center bg-primary-container text-text-primary px-5 py-3 rounded font-label-md hover:bg-secondary transition-colors mt-4" href="/CV.pdf" target="_blank">
+          Resume
+        </a>
+      </nav>
     </div>
   }
 </header>

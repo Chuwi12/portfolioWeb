@@ -1,18 +1,31 @@
-<section id="experiencia" class="section-optimize py-20 px-6 transition-colors duration-300">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="text-indigo-600 dark:text-indigo-300 font-mono text-sm mb-4 uppercase tracking-widest transition-colors duration-300">
-        {{ 'experience.sectionTitle' | i18nextEager }}</h2>
-      <h3 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white transition-colors duration-300" [innerHTML]="'experience.title' | i18nextEager">
-      </h3>
-    </div>
+<section class="max-w-container-max mx-auto px-gutter mb-section-gap-mobile md:mb-section-gap-desktop w-full">
+  <h2 class="font-headline-lg text-headline-lg text-text-primary mb-12 flex items-center gap-4">
+    <span class="text-primary font-label-md text-label-md tracking-wider uppercase">01.</span> {{ 'experience.sectionTitle' | i18nextEager }}
+  </h2>
+  
+  <div class="relative pl-8 md:pl-0">
+    <!-- Desktop Line -->
+    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 timeline-line"></div>
+    <!-- Mobile Line -->
+    <div class="md:hidden absolute left-[15px] top-0 bottom-0 timeline-line"></div>
 
-    <div class="space-y-0">
-      @for (exp of experiences; track exp.company) {
-      <app-experience-item [position]="exp.position" [company]="exp.company" [duration]="exp.duration"
-        [description]="exp.description">
-      </app-experience-item>
-      }
-    </div>
+    @for (exp of experiences; track exp.company; let i = $index) {
+      <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center group mb-16 md:mb-24 last:mb-0">
+        <!-- Dot -->
+        <div class="absolute left-[-31px] md:left-1/2 transform md:-translate-x-1/2 mt-1.5 md:mt-0 timeline-dot group-hover:scale-150 group-hover:bg-[#2DD4BF] transition-all duration-300 z-10"></div>
+        
+        <div class="md:w-[45%] mb-4 md:mb-0" [ngClass]="i % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12 md:order-2'">
+          <span class="font-label-sm text-label-sm text-primary">{{ exp.duration }}</span>
+          <h3 class="font-headline-md text-headline-md text-text-primary mt-1">{{ exp.position }}</h3>
+          <h4 class="font-body-md text-body-md text-on-surface-variant">{{ exp.company }}</h4>
+        </div>
+        
+        <div class="md:w-[45%]" [ngClass]="i % 2 === 0 ? 'md:pl-12' : 'md:pr-12 md:order-1'">
+          <div class="bg-surface-card border border-surface-border p-6 rounded-lg glow-hover transition-all duration-300 text-on-surface-variant font-body-md text-body-md">
+            {{ exp.description }}
+          </div>
+        </div>
+      </div>
+    }
   </div>
 </section>
