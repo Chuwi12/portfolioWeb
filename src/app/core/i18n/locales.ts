@@ -22,7 +22,7 @@ export const locales = {
       about: {
         sectionTitle: "Presentación",
         title: "Desarrollandome, <span class=\"text-teal-600 dark:text-teal-400 transition-colors duration-300\">línea a línea.</span>",
-        description: "Soy Sergio Rodríguez, un desarrollador enfocado en la realización de soluciones backend eficientes y escalables. Actualmente, me encuentro <strong>finalizando mis estudios en el Grado Superior de Desarrollo de Aplicaciones Multiplataforma (DAM)</strong>. Como apasionado de la tecnología, siempre estoy buscando aprender <strong>nuevas herramientas</strong>; estoy especializado en desarrollos con <strong>Java</strong>, aunque también tengo experiencia desarrollando con <strong>Python</strong>. En estos momentos, estoy profundizando en el lenguaje Rust y en patrones de diseño, con el objetivo de diseñar arquitecturas de software robustas y resolver problemas complejos.",
+        description: "Soy Sergio Rodríguez, un desarrollador enfocado en la realización de soluciones backend eficientes y escalables. Actualmente, soy <strong>Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</strong>. Como apasionado de la tecnología, siempre estoy buscando aprender <strong>nuevas herramientas</strong>; estoy especializado en desarrollos con <strong>Java</strong>, aunque también tengo experiencia desarrollando con <strong>Python</strong>. En estos momentos, estoy profundizando en el lenguaje Rust y en patrones de diseño, con el objetivo de diseñar arquitecturas de software robustas y resolver problemas complejos.",
         badges: {
           proactive: "Proactivo",
           resolutive: "Resolutivo",
@@ -103,7 +103,7 @@ export const locales = {
       about: {
         sectionTitle: "Introduction",
         title: "Developing myself, <span class=\"text-teal-600 dark:text-teal-400 transition-colors duration-300\">line by line.</span>",
-        description: "I'm Sergio Rodríguez, a developer focused on building efficient and scalable backend solutions. I am currently <strong>finishing my Higher Degree in Multiplatform Application Development (DAM)</strong>. As a technology enthusiast, I am always looking to learn <strong>new tools</strong>; I specialize in <strong>Java</strong> development, although I also have experience developing with <strong>Python</strong>. Right now, I'm diving deeper into the Rust language and design patterns, aiming to design robust software architectures and solve complex problems.",
+        description: "I'm Sergio Rodríguez, a developer focused on building efficient and scalable backend solutions. I am currently a <strong>Higher Technician in Multiplatform Application Development (DAM)</strong>. As a technology enthusiast, I am always looking to learn <strong>new tools</strong>; I specialize in <strong>Java</strong> development, although I also have experience developing with <strong>Python</strong>. Right now, I'm diving deeper into the Rust language and design patterns, aiming to design robust software architectures and solve complex problems.",
         badges: {
           proactive: "Proactive",
           resolutive: "Problem Solver",
