@@ -34,20 +34,38 @@
   
   <div class="flex-1 order-1 md:order-2 w-full max-w-md mx-auto relative group">
     <div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full transform group-hover:scale-110 transition-transform duration-700"></div>
-    <div class="relative aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-      <img alt="Sergio Rodríguez Avatar" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="/avatar.webp">
+    <div class="relative aspect-square rounded-2xl overflow-hidden border border-surface-border shadow-2xl">
+      <img alt="Sergio Rodríguez Avatar" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="/avatar.webp" fetchpriority="high">
     </div>
   </div>
 </section>
 
 <section id="experiencia">
-  <app-experience></app-experience>
+  @defer (on viewport) {
+    <app-experience></app-experience>
+  } @placeholder {
+    <div class="min-h-[500px] flex items-center justify-center">
+      <div class="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
+    </div>
+  }
 </section>
 
 <section id="habilidades" class="mb-section-gap-mobile md:mb-section-gap-desktop flex flex-col items-center justify-center">
-  <app-skills></app-skills>
+  @defer (on viewport) {
+    <app-skills></app-skills>
+  } @placeholder {
+    <div class="min-h-[400px] flex items-center justify-center">
+      <div class="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
+    </div>
+  }
 </section>
 
 <section id="proyectos" class="mb-section-gap-mobile md:mb-section-gap-desktop">
-  <app-projects></app-projects>
+  @defer (on viewport) {
+    <app-projects></app-projects>
+  } @placeholder {
+    <div class="min-h-[800px] flex items-center justify-center">
+      <div class="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
+    </div>
+  }
 </section>
