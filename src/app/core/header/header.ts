@@ -34,7 +34,7 @@ export class Header implements AfterViewInit {
 
   navLinks = [
     { name: 'header.nav.informacion', url: '#informacion' },
-    { name: 'header.nav.experiencia', url: '#experiencia-laboral' },
+    { name: 'header.nav.experiencia', url: '#experiencia' },
     { name: 'header.nav.habilidades', url: '#habilidades' },
     { name: 'header.nav.proyectos', url: '#proyectos' },
     { name: 'header.nav.contacto', url: '#contacto' }
