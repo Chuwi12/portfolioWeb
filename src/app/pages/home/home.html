@@ -1,39 +1,39 @@
-<section class="max-w-container-max mx-auto px-gutter mb-section-gap-mobile md:mb-section-gap-desktop flex flex-col md:flex-row items-center gap-12 md:gap-24 min-h-[70vh] pt-12" id="informacion">
+<section class="max-w-container-max mx-auto px-gutter mb-section-gap-mobile md:mb-section-gap-desktop flex flex-col md:flex-row items-center gap-8 sm:gap-12 md:gap-24 min-h-[calc(100svh-5rem)] md:min-h-[70vh] pt-8 sm:pt-12" id="informacion">
   <div class="flex-1 order-2 md:order-1">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary font-label-sm text-label-sm mb-6">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary font-label-sm text-label-sm mb-4 sm:mb-6">
       <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
       {{ 'header.openToWork' | i18nextEager }}
     </div>
     
-    <h1 class="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-text-primary mb-4">
+    <h1 class="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-text-primary mb-3 sm:mb-4 break-words">
       {{ 'home.name' | i18nextEager }}
     </h1>
     
-    <h2 class="font-headline-lg text-headline-lg text-primary mb-8 flex items-center flex-wrap gap-2 min-h-[42px]">
+    <h2 class="font-headline-lg text-headline-lg text-primary mb-6 sm:mb-8 flex items-center flex-wrap gap-2 min-h-[38px] sm:min-h-[42px]">
       <span>{{ 'home.greeting' | i18nextEager }}</span>
       <span #typingElement></span>
     </h2>
     
-    <div class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl" [innerHTML]="'about.description' | i18nextEager"></div>
+    <div class="font-body-md sm:font-body-lg text-body-md sm:text-body-lg text-on-surface-variant mb-6 sm:mb-8 max-w-2xl" [innerHTML]="'about.description' | i18nextEager"></div>
     
-    <div class="flex flex-wrap gap-4 mb-8">
-      <span class="bg-surface-card border border-surface-border text-text-muted px-4 py-2 rounded-full font-label-sm text-label-sm">{{ 'about.badges.proactive' | i18nextEager }}</span>
-      <span class="bg-surface-card border border-surface-border text-text-muted px-4 py-2 rounded-full font-label-sm text-label-sm">{{ 'about.badges.resolutive' | i18nextEager }}</span>
-      <span class="bg-surface-card border border-surface-border text-text-muted px-4 py-2 rounded-full font-label-sm text-label-sm">{{ 'about.badges.backend' | i18nextEager }}</span>
+    <div class="flex flex-wrap gap-2 sm:gap-4 mb-6 sm:mb-8">
+      <span class="bg-surface-card border border-surface-border text-text-muted px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-label-sm text-label-sm">{{ 'about.badges.proactive' | i18nextEager }}</span>
+      <span class="bg-surface-card border border-surface-border text-text-muted px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-label-sm text-label-sm">{{ 'about.badges.resolutive' | i18nextEager }}</span>
+      <span class="bg-surface-card border border-surface-border text-text-muted px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-label-sm text-label-sm">{{ 'about.badges.backend' | i18nextEager }}</span>
     </div>
     
-    <div class="flex gap-4">
-      <a class="bg-primary-container text-text-primary px-6 py-3 rounded font-label-md text-label-md hover:bg-[#2DD4BF] transition-colors" href="#contacto">
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+      <a class="bg-primary-container text-text-primary px-6 py-3 rounded font-label-md text-label-md hover:bg-[#2DD4BF] transition-colors text-center touch-feedback" href="#contacto">
         {{ 'header.nav.contacto' | i18nextEager }}
       </a>
-      <a class="border border-[#1F2937] text-text-primary px-6 py-3 rounded font-label-md text-label-md hover:border-primary hover:text-primary transition-all duration-300 flex items-center gap-2 glow-hover" href="/CV.pdf" target="_blank">
+      <a class="border border-[#1F2937] text-text-primary px-6 py-3 rounded font-label-md text-label-md hover:border-primary hover:text-primary transition-all duration-300 flex items-center justify-center gap-2 glow-hover touch-feedback" href="/CV.pdf" target="_blank">
         <span class="material-symbols-outlined text-sm">download</span> {{ 'about.downloadCV' | i18nextEager }}
       </a>
     </div>
   </div>
   
-  <div class="flex-1 order-1 md:order-2 w-full max-w-md mx-auto relative group">
-    <div class="absolute inset-0 bg-primary/20 blur-xl md:blur-3xl rounded-full transform group-hover:scale-110 transition-transform duration-700 will-change-transform"></div>
+  <div class="flex-1 order-1 md:order-2 w-full max-w-[280px] sm:max-w-xs md:max-w-md mx-auto relative group">
+    <div class="absolute inset-0 bg-primary/20 blur-lg sm:blur-xl md:blur-3xl rounded-full transform group-hover:scale-110 transition-transform duration-700 will-change-transform"></div>
     <div class="relative aspect-square rounded-2xl overflow-hidden border border-surface-border shadow-2xl">
       <img alt="Sergio Rodríguez Avatar" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="/avatar.webp" fetchpriority="high">
     </div>

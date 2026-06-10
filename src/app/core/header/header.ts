@@ -9,7 +9,8 @@ import { I18NextModule, I18NEXT_SERVICE, ITranslationService } from 'angular-i18
   templateUrl: './header.html'
 })
 export class Header implements AfterViewInit {
-  isMobileMenuOpen = false;
+  // Use signal for reactive menu state (enables animated transitions)
+  isMenuOpen = signal<boolean>(false);
   
   // Variables to control the Theme, Language, and Active Section
   isDarkMode = signal<boolean>(true); 
@@ -43,6 +44,11 @@ export class Header implements AfterViewInit {
   onWindowScroll() {
     if (!isPlatformBrowser(this.platformId)) return;
     
+    // Auto-close mobile menu on scroll
+    if (this.isMenuOpen()) {
+      this.isMenuOpen.set(false);
+    }
+
     const sections = this.navLinks.map(link => link.url.substring(1));
     let current = '';
     
@@ -62,7 +68,7 @@ export class Header implements AfterViewInit {
 
   // Toggles the mobile menu
   toggleMenu() {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    this.isMenuOpen.set(!this.isMenuOpen());
   }
 
   // Toggles between light and dark mode

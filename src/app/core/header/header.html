@@ -1,11 +1,11 @@
-<header class="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-surface-border shadow-sm z-50 left-0 right-0 transition-colors duration-300">
-  <div class="flex justify-between items-center max-w-container-max mx-auto px-gutter h-20 w-full">
+<header class="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-surface-border shadow-sm z-50 left-0 right-0 transition-colors duration-300 safe-top safe-x">
+  <div class="flex justify-between items-center max-w-container-max mx-auto px-gutter h-16 sm:h-20 w-full">
     <a href="#" class="font-headline-md text-headline-md font-bold text-primary hover:opacity-80 transition-opacity">
       Chuwi-dev
     </a>
 
-    <div class="flex items-center gap-6">
-      <nav class="hidden md:flex gap-8 items-center">
+    <div class="flex items-center gap-4 sm:gap-6">
+      <nav class="hidden md:flex gap-6 lg:gap-8 items-center">
         @for (link of navLinks; track link.name) {
           <a [href]="link.url" 
              [ngClass]="activeSection() === link.url.substring(1) ? 'text-primary font-bold border-b-2 border-primary pb-1' : 'text-on-surface-variant hover:text-secondary transition-all duration-300'"
@@ -17,14 +17,14 @@
 
       <div class="hidden md:block w-px h-6 bg-surface-border transition-colors duration-300"></div>
 
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2 sm:gap-4">
         <!-- Available for Work Badge -->
-        <div class="hidden sm:flex items-center px-3 py-1 rounded-full border border-primary/30 bg-primary/10 transition-colors duration-300">
-          <span class="w-2 h-2 rounded-full bg-primary animate-pulse mr-2"></span>
-          <span class="font-label-sm text-[10px] text-primary uppercase tracking-wider whitespace-nowrap">{{ 'header.openToWork' | i18nextEager }}</span>
+        <div class="flex items-center px-2 py-1 sm:px-3 rounded-full border border-primary/30 bg-primary/10 transition-colors duration-300">
+          <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary animate-pulse mr-1.5 sm:mr-2"></span>
+          <span class="font-label-sm text-[9px] sm:text-[10px] text-primary uppercase tracking-wider whitespace-nowrap">{{ 'header.openToWork' | i18nextEager }}</span>
         </div>
 
-        <button (click)="toggleTheme()" class="text-on-surface-variant hover:text-primary transition-transform hover:scale-110">
+        <button (click)="toggleTheme()" class="min-w-11 min-h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-transform hover:scale-110 touch-feedback rounded-lg">
           @if (isDarkMode()) {
             <span class="material-symbols-outlined text-xl">light_mode</span>
           } @else {
@@ -34,7 +34,7 @@
 
         <!-- Language Toggle Button -->
         <button (click)="toggleLanguage()" 
-                class="flex items-center justify-center px-3 py-1 rounded border border-primary/30 text-[11px] font-bold uppercase tracking-wider text-primary hover:scale-105 hover:bg-primary/10 transition-all cursor-pointer"
+                class="min-w-11 min-h-11 flex items-center justify-center px-3 py-1 rounded border border-primary/30 text-[11px] font-bold uppercase tracking-wider text-primary hover:scale-105 hover:bg-primary/10 transition-all cursor-pointer touch-feedback"
                 title="Cambiar idioma">
           {{ currentLang() }}
         </button>
@@ -43,29 +43,32 @@
           Resume
         </a>
 
-        <button (click)="toggleMenu()" class="md:hidden text-primary focus:outline-none ml-2 transition-colors duration-300">
+        <button (click)="toggleMenu()" class="md:hidden min-w-11 min-h-11 flex items-center justify-center text-primary focus:outline-none transition-colors duration-300 touch-feedback rounded-lg">
           <span class="material-symbols-outlined text-3xl">
-            {{ isMobileMenuOpen ? 'close' : 'menu' }}
+            {{ isMenuOpen() ? 'close' : 'menu' }}
           </span>
         </button>
       </div>
     </div>
   </div>
 
-  @if (isMobileMenuOpen) {
-    <div class="md:hidden bg-surface-card border-b border-surface-border absolute w-full transition-colors duration-300">
-      <nav class="flex flex-col px-6 py-6 gap-5">
+  <!-- Mobile Menu with animation -->
+  <div class="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
+       [style.max-height]="isMenuOpen() ? '400px' : '0px'"
+       [style.opacity]="isMenuOpen() ? '1' : '0'">
+    <div class="bg-surface-card border-b border-surface-border transition-colors duration-300">
+      <nav class="flex flex-col px-6 py-6 gap-1">
         @for (link of navLinks; track link.name) {
           <a [href]="link.url" (click)="toggleMenu()" 
-             [ngClass]="activeSection() === link.url.substring(1) ? 'text-primary font-bold' : 'text-on-surface-variant'"
-             class="inline-block py-1 text-lg font-headline-md hover:text-secondary active:text-secondary transition-colors">
+             [ngClass]="activeSection() === link.url.substring(1) ? 'text-primary font-bold bg-primary/5' : 'text-on-surface-variant'"
+             class="block py-3 px-4 text-lg font-headline-md hover:text-secondary active:text-secondary active:bg-primary/5 transition-colors rounded-lg">
             {{ link.name | i18nextEager }}
           </a>
         }
-        <a class="inline-flex justify-center bg-primary-container text-text-primary px-5 py-3 rounded font-label-md hover:bg-secondary transition-colors mt-4" href="/CV.pdf" target="_blank">
+        <a class="inline-flex justify-center bg-primary-container text-text-primary px-5 py-3 rounded font-label-md hover:bg-secondary transition-colors mt-4 active:scale-95" href="/CV.pdf" target="_blank">
           Resume
         </a>
       </nav>
     </div>
-  }
+  </div>
 </header>
