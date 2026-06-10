@@ -10,7 +10,7 @@ describe('Footer', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Footer],
-      providers: [I18N_MOCK_PROVIDERS],
+      providers: [...I18N_MOCK_PROVIDERS],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Footer);

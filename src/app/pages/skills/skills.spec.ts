@@ -10,7 +10,7 @@ describe('Skills', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Skills],
-      providers: [I18N_MOCK_PROVIDERS],
+      providers: [...I18N_MOCK_PROVIDERS],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Skills);

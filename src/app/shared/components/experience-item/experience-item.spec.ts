@@ -10,7 +10,7 @@ describe('ExperienceItemComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ExperienceItemComponent],
-      providers: [I18N_MOCK_PROVIDERS],
+      providers: [...I18N_MOCK_PROVIDERS],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ExperienceItemComponent);

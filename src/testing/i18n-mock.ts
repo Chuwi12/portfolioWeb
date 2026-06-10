@@ -6,7 +6,12 @@ export const I18N_MOCK_PROVIDERS: Provider[] = [
   {
     provide: I18NEXT_SERVICE,
     useValue: {
-      t: (key: string) => key,
+      t: (key: string, options?: any) => {
+        if (options?.returnObjects) {
+          return [key];
+        }
+        return key;
+      },
       language: 'es',
       languages: ['es', 'en'],
       options: {},
@@ -14,7 +19,9 @@ export const I18N_MOCK_PROVIDERS: Provider[] = [
       init: () => Promise.resolve(),
       on: () => {},
       changeLanguage: () => Promise.resolve(),
-      languageChanged: new Subject<string>(),
+      events: {
+        languageChanged: new Subject<string>(),
+      }
     }
   }
 ];

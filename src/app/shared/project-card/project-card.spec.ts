@@ -10,7 +10,7 @@ describe('ProjectCard', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ProjectCard],
-      providers: [I18N_MOCK_PROVIDERS],
+      providers: [...I18N_MOCK_PROVIDERS],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProjectCard);
