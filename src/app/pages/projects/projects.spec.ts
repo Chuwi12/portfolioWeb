@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { I18N_MOCK_PROVIDERS } from '../../../testing/i18n-mock';
 
 import { Projects } from './projects';
 
@@ -9,6 +10,7 @@ describe('Projects', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Projects],
+      providers: [I18N_MOCK_PROVIDERS],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Projects);
