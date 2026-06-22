@@ -4,19 +4,19 @@ import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { I18NEXT_SERVICE, I18NextModule, defaultInterpolationFormat, I18NextLoadResult } from 'angular-i18next';
-import { locales } from './core/i18n/locales';
 
 export function appInit(i18next: any) {
   return () => {
-    let promise: Promise<I18NextLoadResult> = i18next.init({
-      fallbackLng: 'es',
-      lng: 'es',
-      resources: locales,
-      interpolation: {
-        format: I18NextModule.interpolationFormat(defaultInterpolationFormat)
-      }
+    return import('./core/i18n/locales').then(({ locales }) => {
+      return i18next.init({
+        fallbackLng: 'es',
+        lng: 'es',
+        resources: locales,
+        interpolation: {
+          format: I18NextModule.interpolationFormat(defaultInterpolationFormat)
+        }
+      });
     });
-    return promise;
   };
 }
 
