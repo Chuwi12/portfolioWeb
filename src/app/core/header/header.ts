@@ -43,11 +43,6 @@ export class Header implements AfterViewInit {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     if (!isPlatformBrowser(this.platformId)) return;
-    
-    // Auto-close mobile menu on scroll
-    if (this.isMenuOpen()) {
-      this.isMenuOpen.set(false);
-    }
 
     const sections = this.navLinks.map(link => link.url.substring(1));
     let current = '';
@@ -56,7 +51,7 @@ export class Header implements AfterViewInit {
     for (const section of [...sections].reverse()) {
       const element = document.getElementById(section);
       if (element) {
-        if (window.scrollY >= (element.offsetTop - 150)) {
+        if (window.scrollY >= (element.getBoundingClientRect().top + window.scrollY - 150)) {
           current = section;
           break;
         }
