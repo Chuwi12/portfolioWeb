@@ -12,7 +12,6 @@ export class ProjectService {
   // Public variable to store what is selected and what is not
   public selectedFilters = signal<string[]>([]);
   
-  // List of project APIs (To add a new one, just add the URL here)
   private apiUrls: string[] = [
     'https://api.github.com/repos/Chuwi12/TFG-',
     'https://api.github.com/repos/Tau5/pizzeria-design',
@@ -29,7 +28,19 @@ export class ProjectService {
     return forkJoin(requests).pipe(
       map((githubRepos: any[]) => {
         // Map each GitHub JSON by passing it through our adapter function
-        return githubRepos.map(repo => this.mapToProyect(repo));
+        const publicProjects = githubRepos.map(repo => this.mapToProyect(repo));
+
+        // Inject the private project manually so we don't fetch it from API
+        const privateProject: Proyect = {
+          title: 'Cita Perfecta',
+          description: 'Una romántica y tierna aplicación web interactiva en formato "Scrapbook" (diario de recuerdos) para proponer una cita y organizar todos los detalles (plan, comida, vestimenta, fecha y hora). Incluye melodías retro en Web Audio y botones interactivos de evasión.',
+          img: '/projects/cita-app.webp',
+          technologies: ['react', 'typescript', 'vite', 'css', 'html5', 'vercel'],
+          repoUrl: 'https://cita-app-amber.vercel.app',
+          demoUrl: 'https://cita-app-amber.vercel.app'
+        };
+
+        return [...publicProjects, privateProject];
       })
     );
   }
