@@ -20,7 +20,8 @@ export class Skills {
 
   // List of core skills
   protected skillList = [
-    'Angular', 'TypeScript', 'Python', 'Java', 'Kotlin', 'Go', 'MySQL', 'NodeJS', 'ShellScript', 'CSS', 'HTML', 'TailwindCSS'
+    'Angular', 'React', 'TypeScript', 'Rust', 'Python', 'Java', 'Kotlin', 'Go',
+    'NodeJS', 'MySQL', 'SQLite', 'Docker', 'ShellScript', 'CSS', 'HTML', 'TailwindCSS'
   ];
 
   // Function to toggle multiple filters

@@ -30,17 +30,27 @@ export class ProjectService {
         // Map each GitHub JSON by passing it through our adapter function
         const publicProjects = githubRepos.map(repo => this.mapToProyect(repo));
 
-        // Inject the private project manually so we don't fetch it from API
-        const privateProject: Proyect = {
-          title: 'Cita Perfecta',
-          description: 'Una romántica y tierna aplicación web interactiva en formato "Scrapbook" (diario de recuerdos) para proponer una cita y organizar todos los detalles (plan, comida, vestimenta, fecha y hora). Incluye melodías retro en Web Audio y botones interactivos de evasión.',
-          img: '/projects/cita-app.webp',
-          technologies: ['react', 'typescript', 'vite', 'css', 'html5', 'vercel'],
-          repoUrl: 'https://cita-app-amber.vercel.app',
-          demoUrl: 'https://cita-app-amber.vercel.app'
-        };
+        // Inject the private projects manually so we don't fetch them from API
+        const privateProjects: Proyect[] = [
+          {
+            title: 'Atelier Ledger',
+            description: 'SaaS de contabilidad para autónomos, multi-inquilino y de acceso restringido. Permite registrar la caja diaria por canal (efectivo, tarjeta, aplicación, Bizum), gestionar gastos con historial de auditoría inmutable, importar ingresos desde Excel y generar informes con gráficos y exportación a PDF/Excel/CSV. Arquitectura desacoplada: backend en Rust (Axum) con base de datos Turso/libSQL en el Edge, aislamiento por usuario a nivel de consulta y autenticación JWT asimétrica mediante Clerk (validación de firmas vía JWKS). Frontend React desplegado en Vercel y API contenedorizada con Docker en Render.',
+            img: '/projects/atelier-ledger.webp',
+            technologies: ['rust', 'axum', 'react', 'typescript', 'turso', 'sqlite', 'clerk', 'docker', 'vercel'],
+            repoUrl: 'https://contabilidad-frontend-three.vercel.app',
+            demoUrl: 'https://contabilidad-frontend-three.vercel.app'
+          },
+          {
+            title: 'Cita Perfecta',
+            description: 'Una romántica y tierna aplicación web interactiva en formato "Scrapbook" (diario de recuerdos) para proponer una cita y organizar todos los detalles (plan, comida, vestimenta, fecha y hora). Incluye melodías retro en Web Audio y botones interactivos de evasión.',
+            img: '/projects/cita-app.webp',
+            technologies: ['react', 'typescript', 'vite', 'css', 'html5', 'vercel'],
+            repoUrl: 'https://cita-app-amber.vercel.app',
+            demoUrl: 'https://cita-app-amber.vercel.app'
+          }
+        ];
 
-        return [...publicProjects, privateProject];
+        return [...publicProjects, ...privateProjects];
       })
     );
   }
