@@ -36,9 +36,13 @@ export class Header implements AfterViewInit {
     { name: 'header.nav.informacion', url: '#informacion' },
     { name: 'header.nav.experiencia', url: '#experiencia' },
     { name: 'header.nav.habilidades', url: '#habilidades' },
+    { name: 'header.nav.aprendiendo', url: '#aprendiendo' },
     { name: 'header.nav.proyectos', url: '#proyectos' },
     { name: 'header.nav.contacto', url: '#contacto' }
   ];
+
+  protected readonly github: string = 'https://github.com/Chuwi12';
+  protected readonly linkedin: string = 'https://es.linkedin.com/in/sergio-rodr%C3%ADguez-p%C3%A9rez-a57240392';
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

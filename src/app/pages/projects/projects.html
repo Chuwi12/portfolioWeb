@@ -1,6 +1,6 @@
 <section class="max-w-container-max mx-auto px-gutter w-full">
   <h2 class="font-headline-lg text-headline-lg text-text-primary mb-8 sm:mb-12 flex items-center gap-3 sm:gap-4">
-    <span class="text-primary font-label-md text-label-md tracking-wider uppercase">03.</span> <span [innerHTML]="'projects.title' | i18nextEager"></span>
+    <span class="text-primary font-label-md text-label-md tracking-wider uppercase">04.</span> <span [innerHTML]="'projects.title' | i18nextEager"></span>
   </h2>
   
   @if (isLoading()) {
@@ -16,7 +16,7 @@
   @else {
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
       @for (project of filteredProjects(); track project.title) {
-        <article class="bg-surface-card border border-surface-border rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-500 glow-hover flex flex-col touch-feedback">
+        <article appTilt class="bg-surface-card border border-surface-border rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-500 glow-hover flex flex-col touch-feedback">
           
           @if (project.img) {
             <div class="relative overflow-hidden aspect-[2.29] border-b border-surface-border">

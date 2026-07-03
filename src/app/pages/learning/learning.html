@@ -1,0 +1,20 @@
+<section class="max-w-container-max mx-auto px-gutter w-full">
+  <h2 class="font-headline-lg text-headline-lg text-text-primary mb-8 sm:mb-12 flex items-center gap-3 sm:gap-4">
+    <span class="text-primary font-label-md text-label-md tracking-wider uppercase">03.</span> {{ 'learning.sectionTitle' | i18nextEager }}
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
+    @for (item of items; track item.key) {
+      <div appTilt class="bg-surface-card border border-surface-border rounded-xl p-6 sm:p-8 transition-transform duration-150">
+        <div class="flex justify-between items-baseline mb-3 sm:mb-4">
+          <h3 class="font-headline-md text-headline-md text-text-primary">{{ 'learning.items.' + item.key + '.title' | i18nextEager }}</h3>
+          <span class="font-label-sm text-label-sm text-primary">{{ 'learning.inProgress' | i18nextEager }}</span>
+        </div>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-5">{{ 'learning.items.' + item.key + '.description' | i18nextEager }}</p>
+        <div class="h-2 bg-background rounded-full overflow-hidden">
+          <div class="h-full rounded-full shimmer-bar" [style.width.%]="item.progress"></div>
+        </div>
+      </div>
+    }
+  </div>
+</section>

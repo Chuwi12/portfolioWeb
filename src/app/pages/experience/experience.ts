@@ -1,13 +1,14 @@
 import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExperienceItemComponent } from '../../shared/components/experience-item/experience-item';
+import { Tilt } from '../../shared/directives/tilt';
 import { I18NextModule, I18NEXT_SERVICE, ITranslationService } from 'angular-i18next';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [CommonModule, I18NextModule],
+  imports: [CommonModule, I18NextModule, Tilt],
   templateUrl: './experience.html',
   styleUrl: './experience.css'
 })

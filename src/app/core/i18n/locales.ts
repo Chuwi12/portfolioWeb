@@ -5,7 +5,8 @@ export const locales = {
         nav: {
           informacion: "Información",
           experiencia: "Experiencia",
-          habilidades: "Habilidades",
+          habilidades: "Stack",
+          aprendiendo: "Aprendiendo",
           proyectos: "Proyectos",
           contacto: "Contacto"
         },
@@ -52,6 +53,20 @@ export const locales = {
         title: "Mi <span class=\"text-teal-600 dark:text-teal-400 transition-colors duration-300\">Stack</span> Tecnológico",
         filterHelp: "* Pulsa una tecnología para filtrar mis proyectos."
       },
+      learning: {
+        sectionTitle: "Ahora aprendiendo",
+        inProgress: "en progreso",
+        items: {
+          rust: {
+            title: "Rust",
+            description: "Ownership, lifetimes y programación de sistemas. Ya aplicado en producción con Axum en Atelier Ledger."
+          },
+          patterns: {
+            title: "Patrones de diseño",
+            description: "Arquitecturas de software robustas: diseño desacoplado, resolución de problemas complejos a escala."
+          }
+        }
+      },
       projects: {
         sectionTitle: "Portafolio",
         title: "Proyectos Destacados",
@@ -86,7 +101,8 @@ export const locales = {
         nav: {
           informacion: "About",
           experiencia: "Experience",
-          habilidades: "Skills",
+          habilidades: "Stack",
+          aprendiendo: "Learning",
           proyectos: "Projects",
           contacto: "Contact"
         },
@@ -132,6 +148,20 @@ export const locales = {
       skills: {
         title: "My Tech <span class=\"text-teal-600 dark:text-teal-400 transition-colors duration-300\">Stack</span>",
         filterHelp: "* Click on a technology to filter my projects."
+      },
+      learning: {
+        sectionTitle: "Currently learning",
+        inProgress: "in progress",
+        items: {
+          rust: {
+            title: "Rust",
+            description: "Ownership, lifetimes, and systems programming. Already applied in production with Axum in Atelier Ledger."
+          },
+          patterns: {
+            title: "Design patterns",
+            description: "Robust software architectures: decoupled design, solving complex problems at scale."
+          }
+        }
       },
       projects: {
         sectionTitle: "Portfolio",
