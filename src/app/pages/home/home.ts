@@ -5,12 +5,13 @@ import { About } from '../about/about';
 import { Experience } from '../experience/experience';
 import { Projects } from '../projects/projects';
 import  { Skills } from '../skills/skills';
+import { Learning } from '../learning/learning';
 import { I18NextModule, I18NEXT_SERVICE, ITranslationService } from 'angular-i18next';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, I18NextModule, Experience, Projects, Skills],
+  imports: [CommonModule, I18NextModule, Experience, Projects, Skills, Learning],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
