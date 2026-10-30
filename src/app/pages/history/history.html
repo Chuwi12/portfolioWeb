@@ -1,0 +1,162 @@
+<section aria-labelledby="historial-title">
+  <span id="historial" class="anchor"></span>
+  <div class="page grid-row top" style="--i: 2">
+    <div class="g" aria-hidden="true"><i class="lane0"></i></div>
+    <div>
+      <h2 id="historial-title">{{ 'log.title' | i18nextEager }}</h2>
+    </div>
+  </div>
+
+  <ol class="log">
+    @for (row of rows; track row.entry.id; let i = $index) {
+      @let e = row.entry;
+      @let folded = !projects.matches(e);
+      @let title = 'log.entries.' + e.id + '.title' | i18nextEager;
+      <li
+        class="entry"
+        [class.is-folded]="folded"
+        [class.is-featured]="e.featured"
+        [class.is-root]="$last"
+        [class.is-lit]="!folded && projects.isEntryLit(e)"
+        [attr.data-lane]="row.lane"
+        [style.--i]="i + 3"
+        (mouseenter)="folded || projects.highlightEntry(e.id)"
+        (focusin)="folded || projects.highlightEntry(e.id)"
+        (mouseleave)="projects.clearHighlight()"
+        (focusout)="projects.clearHighlight()"
+      >
+        <div class="page grid-row">
+          <div class="g" aria-hidden="true">
+            <i class="lane0"></i>
+            @if (row.lane) {
+              <svg class="join join-top" viewBox="0 0 1 1" preserveAspectRatio="none">
+                <path d="M0 0C0 .6 1 .4 1 1" />
+              </svg>
+              <i class="lane-k"></i>
+              <svg class="join join-bottom" viewBox="0 0 1 1" preserveAspectRatio="none">
+                <path d="M1 0C1 .6 0 .4 0 1" />
+              </svg>
+            }
+            <span class="node mark" [attr.data-e]="e.evidence"></span>
+          </div>
+
+          <div class="body">
+            <div class="ghost" [attr.inert]="folded ? null : ''">
+              <div class="clip">
+                <p class="ghost-in">
+                  <span class="mono ghost-ref">{{ e.sha ?? e.start }}</span>
+                  <span class="ghost-title">{{ title }}</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="full" [attr.inert]="folded ? '' : null">
+              <div class="clip">
+                <div class="full-in cols">
+                  <p class="meta mono">
+                    @if (e.sha) {
+                      <span>{{ e.sha }}</span>
+                    }
+                    <span>{{ range(e) }}</span>
+                    @if (e.evidence) {
+                      <span class="ev">
+                        <span class="mark" [attr.data-e]="e.evidence"></span>
+                        {{ 'log.evidence.' + e.evidence | i18nextEager }}
+                      </span>
+                    }
+                    @if (e.team) {
+                      <span>{{ 'log.team' | i18nextEager }}</span>
+                    }
+                  </p>
+
+                  <div class="main">
+                    <h3 tabindex="-1">{{ title }}</h3>
+                    @let org = 'log.entries.' + e.id + '.org' | i18nextEager: { defaultValue: '' };
+                    @let role =
+                      'log.entries.' + e.id + '.role' | i18nextEager: { defaultValue: '' };
+                    @if (org || role) {
+                      <p class="who">
+                        @if (org) {
+                          <span class="org">{{ org }}</span>
+                        }
+                        @if (role) {
+                          <span>{{ role }}</span>
+                        }
+                      </p>
+                    }
+                    <p class="summary">{{ 'log.entries.' + e.id + '.summary' | i18nextEager }}</p>
+                  </div>
+
+                  @if (e.img) {
+                    <figure class="shot">
+                      <img
+                        src="{{ e.img }}"
+                        [alt]="
+                          (e.synthetic ? 'log.screenshotSynthetic' : 'log.screenshot')
+                            | i18nextEager: { title: title }
+                        "
+                        width="1280"
+                        height="1400"
+                        loading="lazy"
+                      />
+                      @if (e.synthetic) {
+                        <figcaption class="mono">{{ 'log.synthetic' | i18nextEager }}</figcaption>
+                      }
+                    </figure>
+                  }
+
+                  <div class="aside">
+                    @if (e.stack.length) {
+                      <ul class="ids mono">
+                        @for (tech of e.stack; track tech) {
+                          <li
+                            [class.on]="projects.isActive(tech)"
+                            [class.lit]="projects.isTechLit(tech)"
+                          >
+                            {{ tech }}
+                          </li>
+                        }
+                      </ul>
+                    }
+                    @if (e.kind === 'project') {
+                      <p class="actions">
+                        @if (e.repoUrl) {
+                          <a [href]="e.repoUrl" target="_blank" rel="noopener noreferrer">
+                            <app-icon name="code" />
+                            {{ 'actions.code' | i18nextEager }}
+                            <app-icon name="external" />
+                          </a>
+                        }
+                        @if (e.demoUrl) {
+                          <a [href]="e.demoUrl" target="_blank" rel="noopener noreferrer">
+                            {{ 'actions.demo' | i18nextEager }}
+                            <app-icon name="external" />
+                          </a>
+                        }
+                        @if (e.evidence === 'private') {
+                          <a
+                            class="request"
+                            [href]="
+                              requestHref(
+                                'actions.requestSubject'
+                                  | i18nextEager
+                                    : { title: title, interpolation: { escapeValue: false } }
+                              )
+                            "
+                          >
+                            <app-icon name="mail" />
+                            {{ 'actions.request' | i18nextEager }}
+                          </a>
+                        }
+                      </p>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    }
+  </ol>
+</section>

@@ -1,0 +1,129 @@
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: block;
+}
+.bar {
+  height: var(--header-h);
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-surface-border);
+}
+.bar-in {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+}
+.brand {
+  margin-right: auto;
+  color: var(--color-primary);
+  font-size: 21px;
+  font-weight: 800;
+  font-stretch: 118%;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+}
+.tool:hover {
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+}
+.tool .icon {
+  width: 20px;
+  height: 20px;
+}
+.cv {
+  min-height: 40px;
+  padding: 0 14px;
+  font-size: 15px;
+}
+/* A 320 px no cabe en la barra; el CV sigue en el hero y en el pie. */
+@media (max-width: 359px) {
+  .cv {
+    display: none;
+  }
+}
+
+/* Móvil: los enlaces y los conmutadores cuelgan de un menú desplegable bajo la barra. */
+.nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 8px var(--page-pad) 16px;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-surface-border);
+}
+.nav.is-open {
+  display: block;
+}
+.links a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  color: var(--color-text-primary);
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.tools {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-surface-border);
+}
+
+@media (min-width: 768px) {
+  .menu-btn {
+    display: none;
+  }
+  .brand {
+    margin-right: 0;
+  }
+  .nav {
+    position: static;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 0;
+    border: 0;
+  }
+  .links {
+    display: flex;
+    gap: 4px;
+  }
+  .links a {
+    min-height: 40px;
+    padding: 0 12px;
+    border-radius: 6px;
+    color: var(--color-on-surface-variant);
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .links a:hover {
+    color: var(--color-primary);
+  }
+  .tools {
+    padding: 0;
+    border: 0;
+    gap: 0;
+  }
+  .cv {
+    margin-left: 8px;
+  }
+}

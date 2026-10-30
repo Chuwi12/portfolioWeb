@@ -1,0 +1,20 @@
+/* Detrás de todo el contenido, sin capturar el puntero. La atenuación bajo la columna de contenido
+   (la lectura manda) no es una máscara CSS: va horneada en el lienzo; ver fadeAt() y live-graph.ts. */
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  pointer-events: none;
+}
+canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+@media print {
+  :host {
+    display: none;
+  }
+}

@@ -1,93 +1,24 @@
-import { Component, signal, HostListener, Inject, PLATFORM_ID, AfterViewInit, ApplicationRef } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { I18NextModule, I18NEXT_SERVICE, ITranslationService } from 'angular-i18next';
+import { Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { I18NextModule } from 'angular-i18next';
+import { LangService } from '../i18n/lang';
+import { ThemeService } from '../theme';
+import { IconComponent } from '../../shared/components/icon/icon';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
-  imports: [CommonModule, I18NextModule],
-  templateUrl: './header.html'
+  imports: [I18NextModule, IconComponent, RouterLink],
+  templateUrl: './header.html',
+  styleUrl: './header.css',
 })
-export class Header implements AfterViewInit {
-  // Use signal for reactive menu state (enables animated transitions)
-  isMenuOpen = signal<boolean>(false);
-  
-  // Variables to control the Theme, Language, and Active Section
-  isDarkMode = signal<boolean>(true); 
-  currentLang = signal<string>('es');
-  activeSection = signal<string>('');
+export class Header {
+  protected readonly lang = inject(LangService);
+  protected readonly theme = inject(ThemeService);
+  protected readonly menuOpen = signal(false);
 
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
-    @Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService,
-    private appRef: ApplicationRef
-  ) {
-    this.currentLang.set(this.i18NextService.language || 'es');
-  }
-
-  ngAfterViewInit() {
-    // Set initial active section after a short delay to ensure DOM is ready
-    if (isPlatformBrowser(this.platformId)) {
-      setTimeout(() => this.onWindowScroll(), 100);
-    }
-  }
-
-  navLinks = [
-    { name: 'header.nav.informacion', url: '#informacion' },
-    { name: 'header.nav.experiencia', url: '#experiencia' },
-    { name: 'header.nav.habilidades', url: '#habilidades' },
-    { name: 'header.nav.aprendiendo', url: '#aprendiendo' },
-    { name: 'header.nav.proyectos', url: '#proyectos' },
-    { name: 'header.nav.contacto', url: '#contacto' }
+  protected readonly links = [
+    { href: '#stack', label: 'header.nav.stack' },
+    { href: '#historial', label: 'header.nav.historial' },
+    { href: '#contacto', label: 'header.nav.contacto' },
   ];
-
-  protected readonly github: string = 'https://github.com/Chuwi12';
-  protected readonly linkedin: string = 'https://es.linkedin.com/in/sergio-rodr%C3%ADguez-p%C3%A9rez-a57240392';
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    if (!isPlatformBrowser(this.platformId)) return;
-
-    const sections = this.navLinks.map(link => link.url.substring(1));
-    let current = '';
-    
-    // We check from bottom to top so the lowest visible section takes precedence
-    for (const section of [...sections].reverse()) {
-      const element = document.getElementById(section);
-      if (element) {
-        if (window.scrollY >= (element.getBoundingClientRect().top + window.scrollY - 150)) {
-          current = section;
-          break;
-        }
-      }
-    }
-    
-    this.activeSection.set(current);
-  }
-
-  // Toggles the mobile menu
-  toggleMenu() {
-    this.isMenuOpen.set(!this.isMenuOpen());
-  }
-
-  // Toggles between light and dark mode
-  toggleTheme() {
-    this.isDarkMode.set(!this.isDarkMode());
-    
-    // If isDarkMode is true, we add the dark class. Otherwise, we remove it.
-    if (this.isDarkMode()) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }
-
-  // Toggles language between es and en
-  toggleLanguage() {
-    const nextLang = this.currentLang() === 'es' ? 'en' : 'es';
-    this.i18NextService.changeLanguage(nextLang).then(() => {
-      this.currentLang.set(nextLang);
-      this.appRef.tick(); // Force global change detection
-    });
-  }
 }

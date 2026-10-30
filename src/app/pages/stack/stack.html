@@ -1,0 +1,69 @@
+<section class="page grid-row" aria-labelledby="stack-title" style="--i: 1">
+  <span id="stack" class="anchor"></span>
+  <div class="g" aria-hidden="true"><i class="lane0"></i></div>
+
+  <div class="body">
+    <div class="head">
+      <h2 id="stack-title">{{ 'stack.title' | i18nextEager }}</h2>
+      <div class="status">
+        <p aria-live="polite" role="status">
+          @if (projects.selectedFilters().length) {
+            <span class="mono cmd">git log -- {{ projects.selectedFilters().join(' ') }}</span>
+            {{
+              'stack.status'
+                | i18nextEager: { shown: projects.shown(), total: projects.entries.length }
+            }}
+          } @else {
+            {{ 'stack.hint' | i18nextEager }}
+          }
+        </p>
+        @if (projects.selectedFilters().length) {
+          <button class="clear" type="button" (click)="projects.clear()">
+            {{ 'stack.clear' | i18nextEager }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="layout">
+      <div class="groups">
+        @for (group of groups; track group.id) {
+          <div class="group">
+            <h3>{{ 'stack.groups.' + group.id | i18nextEager }}</h3>
+            <ul class="chips">
+              @for (tech of group.techs; track tech) {
+                <li>
+                  <button
+                    class="chip mono"
+                    type="button"
+                    [class.is-lit]="projects.isTechLit(tech)"
+                    [attr.aria-pressed]="projects.isActive(tech)"
+                    [attr.aria-label]="
+                      'stack.chipLabel' | i18nextEager: { tech: tech, count: projects.count(tech) }
+                    "
+                    (click)="projects.toggle(tech)"
+                    (mouseenter)="projects.highlightTech(tech)"
+                    (focusin)="projects.highlightTech(tech)"
+                    (mouseleave)="projects.clearHighlight()"
+                    (focusout)="projects.clearHighlight()"
+                  >
+                    {{ tech }}
+                    <span class="count" aria-hidden="true">{{ projects.count(tech) }}</span>
+                  </button>
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+
+      <div class="arch">
+        <p>{{ 'stack.architecture' | i18nextEager }}</p>
+        <p>{{ 'stack.security' | i18nextEager }}</p>
+        <button class="hint" type="button" (click)="shortcuts.helpOpen.set(true)">
+          {{ 'shortcuts.hint' | i18nextEager }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
