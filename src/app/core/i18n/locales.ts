@@ -55,6 +55,11 @@ export const locales = {
           private: 'Código bajo petición',
         },
         entries: {
+          'invest-ai': {
+            title: 'invest-ai',
+            summary:
+              'Análisis de inversión con IA local: evalúa si un activo, como una acción, un ETF, una cripto o un bono, es buena inversión con datos de mercado en vivo y un LLM que corre en local con Ollama. El código calcula las cifras y el modelo las explica: un verificador descarta o marca las cifras del modelo que no están en los datos, y cada afirmación cita su fuente. Backend en Rust (axum) sobre SQLite y frontend en React.',
+          },
           cuentas: {
             title: 'Cuentas',
             summary:
@@ -209,6 +214,11 @@ export const locales = {
           private: 'Code on request',
         },
         entries: {
+          'invest-ai': {
+            title: 'invest-ai',
+            summary:
+              'Local-AI investment research: assesses whether an asset, such as a stock, ETF, crypto or bond, is a good investment using live market data and an LLM that runs locally on Ollama. The code computes the figures and the model explains them: a verifier drops or flags any model figure that is not in the data, and every claim cites its source. Rust (axum) backend on SQLite and a React frontend.',
+          },
           cuentas: {
             title: 'Cuentas',
             summary:

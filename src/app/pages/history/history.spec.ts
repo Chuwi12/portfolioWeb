@@ -24,10 +24,10 @@ describe('History', () => {
 
   const rows = () => [...el.querySelectorAll<HTMLElement>('li.entry')];
 
-  it('pinta las 14 entradas en el orden de los datos, todas desplegadas', () => {
+  it('pinta todas las entradas en el orden de los datos, todas desplegadas', () => {
     expect(rows()).toHaveLength(LOG_ENTRIES.length);
     const titles = rows().map((r) => r.querySelector('h3')!.textContent);
-    expect(titles[0]).toBe('Cuentas');
+    expect(titles[0]).toBe('invest-ai');
     expect(titles.at(-1)).toBe('Sistemas Microinformáticos y Redes');
     expect(el.querySelectorAll('.is-folded')).toHaveLength(0);
   });
@@ -57,18 +57,18 @@ describe('History', () => {
   });
 
   it('marca la evidencia con su etiqueta y los enlaces externos abren con noopener', () => {
-    const cuentas = rows()[0];
+    const cuentas = rowOf('cuentas');
     expect(cuentas.querySelector('.ev')?.textContent).toContain('Código público');
     expect(cuentas.querySelector('.node')?.getAttribute('data-e')).toBe('code');
     const link = cuentas.querySelector<HTMLAnchorElement>('.actions a')!;
     expect(link.target).toBe('_blank');
     expect(link.rel).toBe('noopener noreferrer');
-    const nexora = rows()[1];
+    const nexora = rowOf('nexora');
     expect(nexora.querySelector('.ev')?.textContent).toContain('Código bajo petición');
   });
 
   it('formatea las fechas según el idioma', () => {
-    expect(rows()[0].querySelector('.meta')?.textContent).toContain('sep – oct 2026');
+    expect(rowOf('cuentas').querySelector('.meta')?.textContent).toContain('sep – oct 2026');
   });
 
   const rowOf = (id: string) => rows()[LOG_ENTRIES.findIndex((e) => e.id === id)];

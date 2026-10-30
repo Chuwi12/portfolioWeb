@@ -3,6 +3,15 @@ import { LogEntry } from '../models/log-entry.model';
 /** Historial completo, de más reciente a más antiguo. No se reordena en tiempo de ejecución. */
 export const LOG_ENTRIES: readonly LogEntry[] = [
   {
+    id: 'invest-ai',
+    kind: 'project',
+    start: '2026-10',
+    sha: 'b9dd235',
+    stack: ['rust', 'axum', 'sqlite', 'react', 'typescript', 'vite', 'ollama'],
+    evidence: 'code',
+    repoUrl: 'https://github.com/Chuwi12/invest-ai',
+  },
+  {
     id: 'cuentas',
     kind: 'project',
     start: '2026-09',
