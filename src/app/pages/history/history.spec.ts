@@ -150,7 +150,7 @@ describe('History', () => {
 
   it('«Pedir el código» es un mailto a Sergio con el proyecto en el asunto y sin pestaña nueva', () => {
     const privates = LOG_ENTRIES.filter((e) => e.evidence === 'private');
-    expect(privates.map((e) => e.id)).toEqual(['invest-ai', 'nexora', 'cuadre', 'hcm']);
+    expect(privates.map((e) => e.id)).toEqual(['nexora', 'cuadre', 'hcm']);
     for (const e of privates) {
       const link = rowOf(e.id).querySelector<HTMLAnchorElement>('a.request')!;
       const title = rowOf(e.id).querySelector('h3')!.textContent;

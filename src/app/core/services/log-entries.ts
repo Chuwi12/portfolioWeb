@@ -6,9 +6,10 @@ export const LOG_ENTRIES: readonly LogEntry[] = [
     id: 'invest-ai',
     kind: 'project',
     start: '2026-10',
-    sha: 'b20d50d',
+    sha: 'b9dd235',
     stack: ['rust', 'axum', 'sqlite', 'react', 'typescript', 'vite', 'ollama'],
-    evidence: 'private',
+    evidence: 'code',
+    repoUrl: 'https://github.com/Chuwi12/invest-ai',
   },
   {
     id: 'cuentas',

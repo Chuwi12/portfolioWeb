@@ -36,13 +36,13 @@ actual (`~/CV/build.py`, 2026-10-22) es la fuente de verdad: «Full Stack · Go 
 - Angular 21 con SSR (`@angular/ssr`), Tailwind v4, i18next (`src/app/core/i18n/locales.ts`),
   desplegado en Vercel desde `master`; Bun como gestor de paquetes. CI: prettier, tests y build.
 - Proyectos que se muestran (confirmado por el usuario el 2026-10-26):
-  - Públicos con código: cuentas (React + Rust axum/sqlx + PostgreSQL), TFG- (chatbot Angular +
+  - Públicos con código: invest-ai (análisis de inversión con IA local, Rust + React + Ollama;
+    añadido el 2026-10-30), cuentas (React + Rust axum/sqlx + PostgreSQL), TFG- (chatbot Angular +
     Python/PyTorch), url-state-monitor-go (Go), Art-Space (Android, Kotlin).
   - Privados con demo: Atelier Ledger (contabilidad, Rust/Axum + React, Turso, Clerk) y Cita Perfecta
     (React + Vite, web interactiva).
   - Privados sin código ni demo, «código bajo petición»: Suite HCM (Go, 17 microservicios),
-    Nexora (CRM/ERP modular, Rust + Angular), Cuadre (contabilidad, Rust + React) e invest-ai
-    (análisis de inversión con IA local, Rust + React + Ollama; añadido el 2026-10-30).
+    Nexora (CRM/ERP modular, Rust + Angular) y Cuadre (contabilidad, Rust + React).
   - Fuera: colaboraciones en repos de Tau5, Congreso, repoJava, el scraper y el fork.
 - Experiencia: VASS (Full Stack Salesforce, prácticas), CRC (Frontend, prácticas), Erasmus
   (técnico de redes). Formación: DAM 2024–2026, SMR 2022–2024, Ciberseguridad (Masterd Mind AC).
