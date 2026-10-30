@@ -1,0 +1,53 @@
+<dialog
+  #help
+  class="help"
+  aria-labelledby="shortcuts-title"
+  (close)="shortcuts.helpOpen.set(false)"
+  (click)="$event.target === help ? shortcuts.helpOpen.set(false) : null"
+>
+  <div class="help-body">
+    <div class="help-head">
+      <h2 id="shortcuts-title">{{ 'shortcuts.title' | i18nextEager }}</h2>
+      <button
+        class="close"
+        type="button"
+        [attr.aria-label]="'shortcuts.close' | i18nextEager"
+        (click)="shortcuts.helpOpen.set(false)"
+      >
+        <app-icon name="close" />
+      </button>
+    </div>
+    <dl class="keys">
+      @for (item of keys; track item.key) {
+        <div>
+          <dt>
+            <kbd class="mono">{{ item.key }}</kbd>
+          </dt>
+          <dd>{{ item.label | i18nextEager }}</dd>
+        </div>
+      }
+    </dl>
+    <label class="opt">
+      <input
+        #single
+        type="checkbox"
+        [checked]="shortcuts.enabled()"
+        (change)="shortcuts.setEnabled(single.checked)"
+      />
+      {{ 'shortcuts.toggle' | i18nextEager }}
+    </label>
+  </div>
+</dialog>
+
+<div role="status" aria-live="polite">
+  @if (shortcuts.notice(); as notice) {
+    <p class="toast">
+      @if (notice === 'copied') {
+        {{ 'shortcuts.copied' | i18nextEager }}
+      } @else {
+        {{ 'shortcuts.copyFailed' | i18nextEager }}
+        <a [href]="mailto">{{ 'actions.writeMe' | i18nextEager }}</a>
+      }
+    </p>
+  }
+</div>

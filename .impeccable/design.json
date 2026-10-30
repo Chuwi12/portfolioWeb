@@ -1,0 +1,572 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-27T14:10:00Z",
+  "title": "Design System: chuwi-dev",
+  "extensions": {
+    "colorMeta": {
+      "teal-deep": {
+        "role": "primary",
+        "displayName": "Verdín profundo",
+        "canonical": "#0f766e",
+        "oklch": "oklch(51% 0.086 186)",
+        "usage": "Tinta principal del tema claro: enlaces, rol, carril 0, botón primario, foco. Carril 2 en oscuro.",
+        "tonalRamp": [
+          "#011b18",
+          "#043c37",
+          "#036059",
+          "#27857c",
+          "#52aaa0",
+          "#83c6be",
+          "#b9e1dc",
+          "#e1f3f0"
+        ]
+      },
+      "teal-glow": {
+        "role": "primary",
+        "displayName": "Verdín luminoso",
+        "canonical": "#4fdbc8",
+        "oklch": "oklch(81% 0.123 183)",
+        "usage": "Tinta principal del tema oscuro: texto de acento, carril 0, aro del avatar, foco.",
+        "tonalRamp": [
+          "#001b17",
+          "#023c35",
+          "#0d6056",
+          "#148679",
+          "#21af9e",
+          "#67ccbd",
+          "#abe5db",
+          "#dcf5f0"
+        ]
+      },
+      "teal-mid": {
+        "role": "secondary",
+        "displayName": "Verdín medio",
+        "canonical": "#0d9488",
+        "oklch": "oklch(60% 0.104 185)",
+        "usage": "Carril 1 del tema claro.",
+        "tonalRamp": [
+          "#011b18",
+          "#053c36",
+          "#056058",
+          "#07877c",
+          "#38ada0",
+          "#76c9be",
+          "#b2e3dc",
+          "#dff4f0"
+        ]
+      },
+      "teal-signal": {
+        "role": "secondary",
+        "displayName": "Verdín señal",
+        "canonical": "#14b8a6",
+        "oklch": "oklch(70% 0.123 183)",
+        "usage": "Carril 2 en claro, carril 1 en oscuro y fondo del botón primario oscuro.",
+        "tonalRamp": [
+          "#001b17",
+          "#013c35",
+          "#0c6056",
+          "#138679",
+          "#20af9e",
+          "#66ccbd",
+          "#abe5db",
+          "#dcf5f0"
+        ]
+      },
+      "teal-pressed": {
+        "role": "secondary",
+        "displayName": "Verdín pulsado",
+        "canonical": "#115e59",
+        "oklch": "oklch(44% 0.071 188)",
+        "usage": "Hover del botón primario en claro.",
+        "tonalRamp": [
+          "#021b19",
+          "#053b38",
+          "#125f5a",
+          "#3d827c",
+          "#62a7a0",
+          "#8ec4be",
+          "#bedfdc",
+          "#e4f2f0"
+        ]
+      },
+      "teal-bright": {
+        "role": "secondary",
+        "displayName": "Verdín claro de hover",
+        "canonical": "#2dd4bf",
+        "oklch": "oklch(78% 0.133 182)",
+        "usage": "Hover del botón primario en oscuro.",
+        "tonalRamp": [
+          "#011b17",
+          "#003c35",
+          "#0a6056",
+          "#108779",
+          "#1caf9e",
+          "#5dcebc",
+          "#a7e6db",
+          "#daf5f0"
+        ]
+      },
+      "teal-ink": {
+        "role": "secondary",
+        "displayName": "Tinta verdín",
+        "canonical": "#03241f",
+        "oklch": "oklch(23% 0.039 181)",
+        "usage": "Texto sobre el botón primario oscuro.",
+        "tonalRamp": [
+          "#0d1916",
+          "#203834",
+          "#3a5a54",
+          "#5b7c76",
+          "#7ea199",
+          "#a3beb8",
+          "#cadcd8",
+          "#e9f0ef"
+        ]
+      },
+      "night": {
+        "role": "neutral",
+        "displayName": "Noche",
+        "canonical": "#030712",
+        "oklch": "oklch(13% 0.027 262)",
+        "usage": "Fondo del tema oscuro.",
+        "tonalRamp": [
+          "#13161c",
+          "#2d333e",
+          "#4a5362",
+          "#6c7585",
+          "#8f99aa",
+          "#b0b8c6",
+          "#d2d8e1",
+          "#eceef3"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "#111827",
+        "oklch": "oklch(21% 0.032 265)",
+        "usage": "Titulares en claro; superficie de tarjeta en oscuro.",
+        "tonalRamp": [
+          "#13161d",
+          "#2c3340",
+          "#4a5365",
+          "#6b7588",
+          "#8f98ad",
+          "#afb8c8",
+          "#d2d8e2",
+          "#eceef3"
+        ]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Grafito",
+        "canonical": "#1f2937",
+        "oklch": "oklch(28% 0.030 257)",
+        "usage": "Texto de cuerpo en claro; línea de 1px en oscuro.",
+        "tonalRamp": [
+          "#12161c",
+          "#2b333f",
+          "#485363",
+          "#6a7586",
+          "#8d99ab",
+          "#aeb8c7",
+          "#d1d8e1",
+          "#eceff3"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Papel",
+        "canonical": "#f3f4f6",
+        "oklch": "oklch(97% 0.003 265)",
+        "usage": "Fondo del tema claro.",
+        "tonalRamp": [
+          "#161617",
+          "#323334",
+          "#525254",
+          "#737476",
+          "#97989a",
+          "#b6b7b9",
+          "#d7d7d8",
+          "#eeeeef"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Blanco",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100% 0.000 90)",
+        "usage": "Superficie de tarjeta y texto sobre teal en claro; titulares en oscuro.",
+        "tonalRamp": [
+          "#161616",
+          "#333333",
+          "#525252",
+          "#747474",
+          "#989898",
+          "#b7b7b7",
+          "#d7d7d7",
+          "#eeeeee"
+        ]
+      },
+      "mist": {
+        "role": "neutral",
+        "displayName": "Bruma",
+        "canonical": "#e5e7eb",
+        "oklch": "oklch(93% 0.006 265)",
+        "usage": "Línea de 1px del tema claro.",
+        "tonalRamp": [
+          "#151617",
+          "#323335",
+          "#515256",
+          "#737478",
+          "#96989c",
+          "#b6b7ba",
+          "#d6d7d9",
+          "#eeeeef"
+        ]
+      },
+      "slate": {
+        "role": "neutral",
+        "displayName": "Pizarra",
+        "canonical": "#4b5563",
+        "oklch": "oklch(45% 0.026 257)",
+        "usage": "Texto secundario en claro.",
+        "tonalRamp": [
+          "#13161b",
+          "#2c333e",
+          "#495361",
+          "#6b7584",
+          "#8e99a9",
+          "#afb8c5",
+          "#d2d8e0",
+          "#eceff2"
+        ]
+      },
+      "slate-muted": {
+        "role": "neutral",
+        "displayName": "Pizarra apagada",
+        "canonical": "#586070",
+        "oklch": "oklch(51% 0.024 264)",
+        "usage": "Texto atenuado en claro.",
+        "tonalRamp": [
+          "#14161b",
+          "#2e333d",
+          "#4c5360",
+          "#6d7583",
+          "#9198a8",
+          "#b1b8c4",
+          "#d3d8e0",
+          "#edeef2"
+        ]
+      },
+      "dusk": {
+        "role": "neutral",
+        "displayName": "Crepúsculo",
+        "canonical": "#9ca3af",
+        "oklch": "oklch(71% 0.019 261)",
+        "usage": "Texto atenuado en oscuro.",
+        "tonalRamp": [
+          "#14161a",
+          "#2e333b",
+          "#4d535d",
+          "#6e7580",
+          "#9299a4",
+          "#b2b8c1",
+          "#d4d8de",
+          "#edeef1"
+        ]
+      },
+      "sea-fog": {
+        "role": "neutral",
+        "displayName": "Niebla marina",
+        "canonical": "#bbcac6",
+        "oklch": "oklch(83% 0.017 178)",
+        "usage": "Texto secundario en oscuro.",
+        "tonalRamp": [
+          "#121716",
+          "#2c3533",
+          "#495652",
+          "#6a7874",
+          "#8e9c98",
+          "#afbab7",
+          "#d2d9d7",
+          "#ecefee"
+        ]
+      },
+      "cold-white": {
+        "role": "neutral",
+        "displayName": "Blanco frío",
+        "canonical": "#dde2f3",
+        "oklch": "oklch(91% 0.024 273)",
+        "usage": "Texto de cuerpo en oscuro.",
+        "tonalRamp": [
+          "#14161b",
+          "#2f323d",
+          "#4e5260",
+          "#707483",
+          "#9398a7",
+          "#b3b7c4",
+          "#d5d7e0",
+          "#edeef2"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "El nombre en el commit HEAD. Archivo 800 a ancho 120% (105% bajo 480px)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de sección y título de la entrada destacada."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Título de cada commit."
+      },
+      "role": {
+        "displayName": "Role",
+        "purpose": "Línea de rol en teal bajo el nombre."
+      },
+      "brand": {
+        "displayName": "Brand",
+        "purpose": "Marca chuwi-dev en la barra."
+      },
+      "contact": {
+        "displayName": "Contact",
+        "purpose": "El correo como enlace tipográfico en el pie."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrido a 17px/1.6, medida máxima 68ch."
+      },
+      "body-sm": {
+        "displayName": "Body small",
+        "purpose": "Estado del filtro, organización y rol, filas plegadas, acciones (15px); pista y pie (14px)."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Texto de botones (16px; 15px en la barra)."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Martian Mono 13px con cifras tabulares: hashes, fechas, ids, refs, comandos, teclas."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ring-lit",
+        "value": "inset 0 0 0 1px var(--color-primary)",
+        "purpose": "Contorno fino del chip de tecnología iluminado por el commit señalado. No proyecta sombra."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 2px solid var(--color-primary); outline-offset: 2px",
+        "purpose": "Anillo de foco único de toda la página."
+      },
+      {
+        "name": "node-lit",
+        "value": "outline: 2px solid var(--color-primary); outline-offset: 3px",
+        "purpose": "Aro del nodo de un commit iluminado (rama que se ilumina)."
+      }
+    ],
+    "motion": [
+      {
+        "name": "lane-draw",
+        "value": "360ms cubic-bezier(0.16, 1, 0.3, 1), retardo min(i*60ms, 240ms)",
+        "purpose": "Único trazado al cargar: los carriles se dibujan de HEAD hacia abajo, fila a fila (clip-path)."
+      },
+      {
+        "name": "fold",
+        "value": "200ms ease-out",
+        "purpose": "Plegado de una fila a línea fantasma (grid-template-rows) y desplazamiento de nodo y curvas."
+      },
+      {
+        "name": "lit-stroke",
+        "value": "120ms ease-out",
+        "purpose": "Engrosado del trazo de la rama iluminada."
+      },
+      {
+        "name": "state-fast",
+        "value": "150ms",
+        "purpose": "Fondo, color y borde de botones y chips."
+      },
+      {
+        "name": "ambient-graph",
+        "value": "30 fps; puntos a 20-40 px/s; líneas 7% y puntos 18% de opacidad",
+        "purpose": "Fondo vivo; se detiene con la pestaña oculta y queda estático con prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "480px",
+        "purpose": "El titular baja a ancho 105% y los botones del hero ocupan toda la fila."
+      },
+      {
+        "name": "sm",
+        "value": "640px",
+        "purpose": "Avatar 88px, paso de carril 24px, margen 32px; el fondo vivo pasa de 3 a 4 carriles."
+      },
+      {
+        "name": "row",
+        "value": "720px",
+        "purpose": "Commit completo en dos columnas; nodos de proyecto a 18px."
+      },
+      {
+        "name": "md",
+        "value": "768px",
+        "purpose": "Cabecera en línea, grupos del stack con etiqueta de 11rem, pie sangrado a la columna de contenido."
+      },
+      {
+        "name": "lg",
+        "value": "1024px",
+        "purpose": "Avatar 116px, paso de carril 32px, margen 64px, cabecera de 64px; el fondo vivo usa 5 carriles."
+      },
+      {
+        "name": "xl",
+        "value": "1100px",
+        "purpose": "Commit en tres columnas (184px, flexible, 320px); columna lateral de 17rem en el stack."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal (Descargar CV): relleno teal plano de 44px de alto; hover más oscuro en claro y más claro en oscuro.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><path d=\"m7 10 5 5 5-5\"/><path d=\"M12 15V3\"/></svg>Descargar CV</a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border:1px solid transparent;border-radius:6px;font:650 16px/1 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);font-stretch:105%;white-space:nowrap;cursor:pointer;transition:background-color 150ms,border-color 150ms;background:var(--color-button, #0f766e);color:var(--color-on-button, #ffffff);text-decoration:none;} .ds-btn-primary:hover{background:var(--color-button-hover, #115e59);} .ds-btn-primary:focus-visible{outline:2px solid var(--color-primary, #0f766e);outline-offset:2px;}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Acción secundaria (Escribirme): contorno de 1px y texto teal; hover con relleno al 12%.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\"/><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"/></svg>Escribirme</a>",
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border:1px solid transparent;border-radius:6px;font:650 16px/1 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);font-stretch:105%;white-space:nowrap;cursor:pointer;transition:background-color 150ms,border-color 150ms;border-color:var(--color-primary, #0f766e);color:var(--color-primary, #0f766e);text-decoration:none;} .ds-btn-outline:hover{background:color-mix(in srgb, var(--color-primary, #0f766e) 12%, transparent);} .ds-btn-outline:focus-visible{outline:2px solid var(--color-primary, #0f766e);outline-offset:2px;}"
+    },
+    {
+      "name": "Ref Pills",
+      "kind": "chip",
+      "refersTo": "pill-ref",
+      "description": "Refs de git del commit HEAD: la de la rama va rellena; las demás, de contorno.",
+      "html": "<span class=\"ds-pill ds-pill-fill\">HEAD -&gt; main</span> <span class=\"ds-pill\">open-to-work</span>",
+      "css": ".ds-pill{display:inline-block;padding:2px 10px;border:1px solid var(--color-primary, #0f766e);border-radius:999px;color:var(--color-primary, #0f766e);font:500 13px/1.5 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);font-variant-numeric:tabular-nums;} .ds-pill-fill{background:var(--color-primary, #0f766e);color:var(--color-on-button, #ffffff);font-weight:700;}"
+    },
+    {
+      "name": "Tech Chips",
+      "kind": "chip",
+      "refersTo": "chip-tech",
+      "description": "Argumento de git log -- tech: subrayado fino, relleno al pulsarse, contorno al iluminarse por un commit.",
+      "html": "<ul class=\"ds-chips\"><li><button class=\"ds-chip\" type=\"button\">rust <span class=\"ds-count\">4</span></button></li><li><button class=\"ds-chip ds-lit\" type=\"button\">angular <span class=\"ds-count\">3</span></button></li><li><button class=\"ds-chip\" aria-pressed=\"true\" type=\"button\">go <span class=\"ds-count\">2</span></button></li></ul>",
+      "css": ".ds-chips{display:flex;gap:0 20px;margin:0;padding:0 8px;list-style:none;} .ds-chip{--rule:color-mix(in srgb, var(--color-text-muted, #586070) 70%, transparent);display:inline-flex;align-items:center;gap:8px;min-height:36px;margin-inline:-8px;padding:5px 8px;border:0;border-radius:6px;background:linear-gradient(var(--rule),var(--rule)) 8px calc(100% - 6px) / calc(100% - 16px) 1px no-repeat;color:var(--color-text-primary, #111827);font:400 13px/1.5 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);font-variant-numeric:tabular-nums;cursor:pointer;transition:background-color 150ms,color 150ms;} .ds-chip:hover{--rule:var(--color-primary, #0f766e);color:var(--color-primary, #0f766e);} .ds-chip.ds-lit{--rule:var(--color-primary, #0f766e);box-shadow:inset 0 0 0 1px var(--color-primary, #0f766e);} .ds-count{color:var(--color-text-muted, #586070);} .ds-chip[aria-pressed='true']{background:var(--color-primary, #0f766e);color:var(--color-on-button, #ffffff);} .ds-chip[aria-pressed='true'] .ds-count{color:inherit;} .ds-chip:focus-visible{outline:2px solid var(--color-primary, #0f766e);outline-offset:2px;}"
+    },
+    {
+      "name": "Evidence Marks",
+      "kind": "custom",
+      "refersTo": "commit-graph",
+      "description": "Leyenda de nodos: la evidencia es una forma (lleno = código público, anillo = demo en vivo, discontinuo = código bajo petición), nunca un color nuevo.",
+      "html": "<ul class=\"ds-marks\"><li><span class=\"ds-mark\" data-e=\"code\"></span>Código público</li><li><span class=\"ds-mark\" data-e=\"demo\"></span>Demo en vivo</li><li><span class=\"ds-mark\" data-e=\"private\"></span>Código bajo petición</li></ul>",
+      "css": ".ds-marks{display:grid;gap:10px;margin:0;padding:0;list-style:none;color:var(--color-primary, #0f766e);font:400 13px/1.5 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);} .ds-marks li{display:flex;align-items:center;gap:10px;color:var(--color-on-surface-variant, #4b5563);} .ds-mark{display:inline-block;box-sizing:border-box;width:14px;height:14px;border-radius:50%;color:var(--color-primary, #0f766e);} .ds-mark[data-e='code']{background:currentColor;} .ds-mark[data-e='demo']{border:2px solid currentColor;background:var(--color-background, #f3f4f6);} .ds-mark[data-e='private']{border:2px dashed currentColor;background:var(--color-background, #f3f4f6);}"
+    },
+    {
+      "name": "Commit Row",
+      "kind": "custom",
+      "refersTo": "commit-row",
+      "description": "Fila de commit en escritorio: carril con nodo, metadatos mono, título y resumen, tecnologías y acción, separada por una línea de 1px.",
+      "html": "<div class=\"ds-row\"><div class=\"ds-lane\"><i class=\"ds-line\"></i><span class=\"ds-node\"></span></div><div class=\"ds-body\"><p class=\"ds-meta\">d35ba14<br>jun 2026<br><span class=\"ds-ev\"><span class=\"ds-dot\"></span>Código público</span></p><div><h3 class=\"ds-title\">URL State Monitor</h3><p class=\"ds-sum\">Aplicación en Go que monitoriza el estado de varias URLs y guarda las métricas de respuesta en una base de datos.</p></div><p class=\"ds-ids\">go mysql</p></div></div>",
+      "css": ".ds-row{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:20px;max-width:760px;} .ds-lane{position:relative;} .ds-line{position:absolute;top:0;bottom:0;left:19px;width:2px;background:var(--color-primary, #0f766e);} .ds-node{position:absolute;top:33px;left:12px;width:16px;height:16px;border-radius:50%;background:var(--color-primary, #0f766e);} .ds-body{display:grid;grid-template-columns:140px minmax(0,1fr) 110px;column-gap:24px;padding:22px 0 26px;border-top:1px solid var(--color-surface-border, #e5e7eb);color:var(--color-on-background, #1f2937);font:400 17px/1.6 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);} .ds-meta{margin:0;color:var(--color-on-surface-variant, #4b5563);font:400 13px/1.5 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);font-variant-numeric:tabular-nums;} .ds-ev{display:inline-flex;align-items:center;gap:8px;} .ds-dot{width:11px;height:11px;border-radius:50%;background:var(--color-primary, #0f766e);} .ds-title{margin:0;color:var(--color-text-primary, #111827);font:650 24px/1.2 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);font-stretch:110%;letter-spacing:-0.01em;} .ds-sum{margin:10px 0 0;color:var(--color-on-surface-variant, #4b5563);} .ds-ids{margin:0;color:var(--color-text-muted, #586070);font:400 13px/1.5 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);}"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "button-primary",
+      "description": "Barra de 64px con marca teal, enlaces de 15px, herramientas de idioma (mono) y tema, y el botón de CV.",
+      "html": "<header class=\"ds-bar\"><a class=\"ds-brand\" href=\"#\">chuwi-dev</a><nav class=\"ds-links\"><a href=\"#\">Stack</a><a href=\"#\">Historial</a><a href=\"#\">Contacto</a><button class=\"ds-tool\" type=\"button\">EN</button></nav><a class=\"ds-cv\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><path d=\"m7 10 5 5 5-5\"/><path d=\"M12 15V3\"/></svg>Descargar CV</a></header>",
+      "css": ".ds-bar{display:flex;align-items:center;gap:8px;height:64px;padding:0 24px;border-bottom:1px solid var(--color-surface-border, #e5e7eb);background:var(--color-background, #f3f4f6);} .ds-brand{margin-right:auto;color:var(--color-primary, #0f766e);font:800 21px/1.2 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);font-stretch:118%;letter-spacing:-0.02em;text-decoration:none;} .ds-links{display:flex;align-items:center;gap:4px;} .ds-links a{display:inline-flex;align-items:center;min-height:40px;padding:0 12px;border-radius:6px;color:var(--color-on-surface-variant, #4b5563);font:500 15px/1 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);text-decoration:none;} .ds-links a:hover{color:var(--color-primary, #0f766e);} .ds-tool{min-width:44px;height:44px;border:0;border-radius:6px;background:transparent;color:var(--color-on-surface-variant, #4b5563);font:400 13px/1 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);cursor:pointer;} .ds-tool:hover{color:var(--color-primary, #0f766e);background:color-mix(in srgb, var(--color-primary, #0f766e) 10%, transparent);} .ds-cv{display:inline-flex;align-items:center;gap:8px;min-height:40px;margin-left:8px;padding:0 14px;border-radius:6px;background:var(--color-button, #0f766e);color:var(--color-on-button, #ffffff);font:650 15px/1 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);font-stretch:105%;text-decoration:none;} .ds-cv:hover{background:var(--color-button-hover, #115e59);}"
+    },
+    {
+      "name": "Shortcut Key",
+      "kind": "custom",
+      "refersTo": "shortcut-key",
+      "description": "Tecla del diálogo de atajos: kbd mono en teal con contorno de 1px y descripción atenuada.",
+      "html": "<dl class=\"ds-keys\"><div><dt><kbd>j</kbd></dt><dd>Commit siguiente</dd></div><div><dt><kbd>/</kbd></dt><dd>Ir al filtro del stack</dd></div></dl>",
+      "css": ".ds-keys{width:22rem;margin:0;padding:8px 24px;border:1px solid var(--color-surface-border, #e5e7eb);border-radius:8px;background:var(--color-surface-card, #ffffff);} .ds-keys div{display:grid;grid-template-columns:4.5rem 1fr;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--color-surface-border, #e5e7eb);} .ds-keys div:first-child{border-top:0;} .ds-keys dt,.ds-keys dd{margin:0;} .ds-keys kbd{display:inline-block;min-width:2.25rem;padding:2px 8px;border:1px solid var(--color-surface-border, #e5e7eb);border-radius:4px;color:var(--color-primary, #0f766e);font:400 13px/1.5 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);text-align:center;} .ds-keys dd{color:var(--color-on-surface-variant, #4b5563);font:400 15px/1.6 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "El historial desde HEAD",
+    "overview": "La página es un git log --graph leído hacia atrás: arriba está HEAD (Sergio hoy, con su foto como nodo del carril principal) y cada entrada es un commit sobre un carril teal que baja hasta el commit raíz. El sistema entero se deriva de esa metáfora: una sola rejilla de carriles que alinea todo lo demás, un único tono cromático (teal) sobre neutros azul-grisáceos, y un vocabulario de marcas (lleno, anillo, discontinuo) que dice qué se puede comprobar de cada commit sin recurrir a más color.\n\nLa densidad es de registro, no de tarjetas: las filas se separan con una línea de 1px y no se encierran en cajas. El carácter lo pone Archivo en su eje de ancho (titulares anchos y apretados, cuerpo a ancho normal) frente a Martian Mono, reservado a lo que de verdad es un dato o un comando.\n\nEl rechazo confirmado es el portfolio de desarrollador por defecto: hero partido con foto, roles tecleados, nube de pastillas de tecnología y rejilla de tarjetas iguales. El fondo es ambiental y nunca compite con los datos.",
+    "keyCharacteristics": [
+      "Un único tono cromático, teal, en dos temas (claro y oscuro) con la misma estructura.",
+      "Una rejilla [carriles | contenido] compartida por hero, stack, historial y pie.",
+      "La evidencia de cada commit es una forma (lleno, anillo, discontinuo), nunca un color añadido.",
+      "Plano: sin sombras de caída; la profundidad es un escalón tonal más líneas de 1px.",
+      "Archivo variable con eje de ancho para titulares; Martian Mono solo para datos.",
+      "Movimiento contenido: el trazado de carriles al cargar, el plegado de filas y un fondo ambiental; todo apagado con prefers-reduced-motion."
+    ],
+    "rules": [
+      {
+        "name": "The One Ink Rule",
+        "body": "El teal es la única tinta cromática. No existe un segundo tono ni un color de estado: lo que cambia entre estados es la forma, el grosor o el relleno, nunca el matiz.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mark Not Color Rule",
+        "body": "La evidencia de un commit (código público, demo, código bajo petición) se dice con la forma del nodo: lleno, anillo, discontinuo. Un estado nuevo pide una forma nueva, no un color nuevo.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lane Ramp Rule",
+        "body": "Los tres carriles recorren la escala teal. En claro: #0f766e, #0d9488, #14b8a6; en oscuro: #4fdbc8, #14b8a6, #0f766e. El carril principal (0) siempre es el extremo de más contraste con el fondo.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono Is Data Rule",
+        "body": "Martian Mono solo para texto que parezca de terminal o de registro: hashes, fechas, ids, refs, comandos, teclas. Nunca para titulares ni para párrafos.",
+        "section": "typography"
+      },
+      {
+        "name": "The Width Axis Rule",
+        "body": "Peso y ancho suben juntos: cuanto mayor el titular, más ancho (105–120%) y más tracking negativo (-0.01 a -0.03em); el cuerpo se queda a 100% y sin tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Grid Rule",
+        "body": "Todo bloque de página cuelga de la rejilla de carriles y comparte su borde izquierdo de contenido; ningún bloque define su propio margen.",
+        "section": "layout"
+      },
+      {
+        "name": "The Single Interruption Rule",
+        "body": "Una sola banda a todo ancho cruza los carriles, la de la entrada destacada. El resto del historial es filas planas separadas por una línea.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Ledger Rule",
+        "body": "Sin sombras de caída ni elevaciones: los estados se marcan con contorno, grosor de trazo o relleno, nunca con sombra.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar el teal como única tinta cromática y cambiar de estado por forma, grosor o relleno (The One Ink Rule).",
+      "Do decir la evidencia con la forma del nodo: lleno, anillo, discontinuo (The Mark Not Color Rule).",
+      "Do colgar cada bloque nuevo de la rejilla [carriles | contenido] y respetar los valores por tramo de avatar, lane-step, graph-gap y page-pad.",
+      "Do separar filas con una línea de 1px (mist en claro, graphite en oscuro) y mantener la profundidad como un escalón tonal.",
+      "Do componer los titulares con peso 650–800, ancho 105–120% y tracking negativo, y el cuerpo a 17px, 1.6, ancho 100%, con medida máxima de 68ch.",
+      "Do reservar Martian Mono (13px, cifras tabulares) para hashes, fechas, ids, refs, comandos y teclas.",
+      "Do usar iconos del sprite propio (trazo de 2px, extremos redondeados, 1.15em) y respetar prefers-reduced-motion en todo movimiento.",
+      "Do diferenciar el resaltado (contorno fino, trazo más grueso) del filtro (relleno y plegado)."
+    ],
+    "donts": [
+      "Don't introducir un segundo tono ni colores de estado (verde de éxito, rojo de error, ámbar de aviso).",
+      "Don't usar sombras de caída ni elevaciones para destacar un elemento.",
+      "Don't convertir el historial en una rejilla de tarjetas iguales ni encerrar las filas en cajas; la única banda a todo ancho es la de la entrada destacada.",
+      "Don't usar el relleno de un chip para un resaltado: el relleno es el filtro.",
+      "Don't subir la opacidad ni la velocidad del fondo vivo, ni colocar sobre él nada que compita con los datos.",
+      "Don't usar Martian Mono en titulares ni en párrafos, ni Archivo ensanchado por encima de 125%.",
+      "Don't romper el carril principal al plegar una fila: los carriles siguen siempre."
+    ]
+  }
+}

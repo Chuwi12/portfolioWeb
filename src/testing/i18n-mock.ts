@@ -21,7 +21,7 @@ export const I18N_MOCK_PROVIDERS: Provider[] = [
       changeLanguage: () => Promise.resolve(),
       events: {
         languageChanged: new Subject<string>(),
-      }
-    }
-  }
+      },
+    },
+  },
 ];

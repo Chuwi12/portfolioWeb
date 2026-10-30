@@ -1,0 +1,388 @@
+:host {
+  display: block;
+}
+.top h2 {
+  padding-block: clamp(24px, 2.6vw, 36px) 12px;
+}
+.log {
+  list-style: none;
+}
+
+/* Cada fila fija sus medidas de grafo; la fila plegada las encoge y los carriles siguen. */
+.entry {
+  --lk: var(--color-lane-0);
+  --xk: var(--x0);
+  --ns: 10px;
+  --node-y: 33px;
+  --curve: 22px;
+  --node-bg: var(--color-background);
+  position: relative;
+  isolation: isolate;
+}
+.entry[data-lane='1'] {
+  --lk: var(--color-lane-1);
+  --xk: var(--x1);
+  --ns: 14px;
+}
+.entry[data-lane='2'] {
+  --lk: var(--color-lane-2);
+  --xk: var(--x2);
+  --ns: 14px;
+}
+.entry.is-folded {
+  --ns: 10px;
+  --node-y: 23px;
+  --curve: 12px;
+}
+.is-root .lane0 {
+  bottom: auto;
+  height: var(--node-y);
+}
+
+/* Unión de la rama con main, en su propia fila: sale de main arriba y vuelve abajo. */
+.join {
+  position: absolute;
+  left: var(--x0);
+  width: calc(var(--xk) - var(--x0));
+  height: var(--curve);
+  overflow: visible;
+  fill: none;
+  stroke: var(--lk);
+  stroke-width: 2px;
+}
+.join path {
+  vector-effect: non-scaling-stroke;
+}
+.join-top {
+  top: 0;
+}
+.join-bottom {
+  bottom: 0;
+}
+.lane-k {
+  position: absolute;
+  top: var(--curve);
+  bottom: var(--curve);
+  left: calc(var(--xk) - 1px);
+  width: 2px;
+  background: var(--lk);
+}
+
+/* Nodo: la evidencia es una forma (lleno, anillo, discontinuo), nunca un color nuevo. */
+.mark {
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+.mark[data-e='code'] {
+  background: currentColor;
+}
+.mark[data-e='demo'] {
+  border: 2px solid currentColor;
+  background: var(--node-bg, transparent);
+}
+.mark[data-e='private'] {
+  border: 2px dashed currentColor;
+  background: var(--node-bg, transparent);
+}
+.node {
+  position: absolute;
+  left: calc(var(--xk) - var(--ns) / 2);
+  top: calc(var(--node-y) - var(--ns) / 2);
+  width: var(--ns);
+  height: var(--ns);
+  color: var(--lk);
+}
+.node:not([data-e]) {
+  background: currentColor;
+}
+.entry.is-folded .node {
+  border: 2px solid var(--lk);
+  background: var(--node-bg);
+}
+
+/* Rama que se ilumina (ratón o foco, o una tecnología señalada en el stack): trazo más grueso y
+   nodo con aro. Es un resaltado, no un filtro; no cambia el tamaño de nada. */
+.entry.is-lit .join {
+  stroke-width: 3px;
+}
+.entry.is-lit .lane-k,
+.entry.is-lit[data-lane='0'] .lane0 {
+  width: 3px;
+}
+.entry.is-lit .lane-k {
+  left: calc(var(--xk) - 1.5px);
+}
+.entry.is-lit[data-lane='0'] .lane0 {
+  left: calc(var(--x0) - 1.5px);
+}
+.entry.is-lit .node {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.body {
+  border-top: 1px solid var(--color-surface-border);
+}
+.ghost,
+.full {
+  display: grid;
+  grid-template-rows: 0fr;
+}
+.full,
+.is-folded .ghost {
+  grid-template-rows: 1fr;
+}
+.is-folded .full {
+  grid-template-rows: 0fr;
+}
+.clip {
+  min-height: 0;
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ghost,
+  .full {
+    transition: grid-template-rows 200ms ease-out;
+  }
+  .node {
+    transition:
+      top 200ms ease-out,
+      left 200ms ease-out,
+      width 200ms ease-out,
+      height 200ms ease-out;
+  }
+  .join {
+    transition:
+      height 200ms ease-out,
+      stroke-width 120ms ease-out;
+  }
+  .lane-k {
+    transition:
+      top 200ms ease-out,
+      bottom 200ms ease-out,
+      width 120ms ease-out,
+      left 120ms ease-out;
+  }
+  .is-root .lane0 {
+    transition: height 200ms ease-out;
+  }
+}
+
+.ghost-in {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 11px 0;
+  color: var(--color-text-muted);
+  font-size: 15px;
+  line-height: 22px;
+}
+.ghost-ref {
+  flex: 0 0 7ch;
+}
+.ghost-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Fila completa: móvil en una columna; escritorio en [metadatos | asunto | evidencia]. */
+.full-in {
+  display: grid;
+  grid-template-areas: 'meta' 'main' 'shot' 'aside';
+  gap: 10px 0;
+  margin-inline: -6px;
+  padding: 22px 6px 26px;
+}
+.meta {
+  grid-area: meta;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 16px;
+  color: var(--color-on-surface-variant);
+}
+.ev {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.ev .mark {
+  width: 11px;
+  height: 11px;
+  color: var(--color-primary);
+}
+.main {
+  grid-area: main;
+}
+h3 {
+  font-size: clamp(22px, 2.2vw, 26px);
+  font-weight: 650;
+  font-stretch: 110%;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.who {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  margin-top: 6px;
+  color: var(--color-on-surface-variant);
+  font-size: 15px;
+}
+.org {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+.summary {
+  max-width: 68ch;
+  margin-top: 10px;
+  color: var(--color-on-surface-variant);
+}
+.shot {
+  grid-area: shot;
+  max-width: 320px;
+  margin-top: 6px;
+}
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--color-surface-border);
+  border-radius: 6px;
+  object-fit: cover;
+  object-position: top left;
+}
+.shot figcaption {
+  margin-top: 6px;
+  color: var(--color-text-muted);
+}
+.aside {
+  grid-area: aside;
+}
+.ids {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+  color: var(--color-text-muted);
+}
+.ids .on {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+/* Resaltado por el commit o la tecnología señalados: subrayado teal, no el relleno del filtro. */
+.ids .lit {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20px;
+  margin-top: 6px;
+}
+.actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  color: var(--color-primary);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.actions a:hover {
+  text-decoration: underline;
+}
+/* cuentas: la única interrupción a todo ancho, sobre una banda de superficie que cruza los carriles. */
+.is-featured::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-block: 1px solid var(--color-surface-border);
+  background: var(--color-surface-card);
+}
+.is-featured {
+  --node-bg: var(--color-surface-card);
+}
+.is-featured.is-folded {
+  --node-bg: var(--color-background);
+}
+.is-featured.is-folded::before {
+  opacity: 0;
+}
+.is-featured .body {
+  border-top-color: transparent;
+}
+.is-featured .shot {
+  max-width: none;
+  margin-top: 12px;
+}
+.is-featured .shot img {
+  object-position: top;
+}
+.is-featured .full-in {
+  grid-template-areas: 'meta' 'main' 'shot' 'aside';
+  padding-block: 28px 32px;
+}
+.is-featured h3 {
+  font-size: clamp(28px, 3.2vw, 38px);
+}
+
+@media (min-width: 720px) {
+  .entry {
+    --node-y: 43px;
+  }
+  .entry[data-lane='1'],
+  .entry[data-lane='2'] {
+    --ns: 18px;
+  }
+  .entry.is-folded {
+    --ns: 10px;
+    --node-y: 23px;
+  }
+  .full-in {
+    grid-template-columns: 184px minmax(0, 1fr);
+    grid-template-areas: 'meta main' '. shot' '. aside';
+    column-gap: 28px;
+    padding-top: 26px;
+  }
+  .meta {
+    flex-direction: column;
+    padding-top: 6px;
+  }
+  .is-featured .full-in {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'meta' 'main' 'shot' 'aside';
+    padding-top: 32px;
+  }
+  .is-featured .meta {
+    flex-direction: row;
+    padding-top: 0;
+  }
+}
+@media (min-width: 1100px) {
+  .full-in {
+    grid-template-columns: 184px minmax(0, 1fr) 320px;
+    grid-template-areas: 'meta main shot' 'meta main aside';
+    grid-template-rows: auto 1fr;
+  }
+  .shot {
+    margin-top: 6px;
+  }
+  .is-featured .full-in {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    grid-template-areas: 'meta shot' 'main shot' 'aside shot';
+    grid-template-rows: auto auto 1fr;
+    column-gap: 48px;
+  }
+  .is-featured .shot {
+    margin-top: 0;
+  }
+}

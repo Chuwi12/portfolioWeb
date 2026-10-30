@@ -1,5 +1,33 @@
 # Portfolio Web
 
+## Qué es / What it is
+
+### Español
+
+Portfolio personal de Sergio Rodríguez ([chuwi-dev.me](https://www.chuwi-dev.me)), desarrollador full stack en Go, Rust y TypeScript. Presenta proyectos, prácticas y formación como un historial de commits, con una marca que indica qué se puede comprobar de cada uno: código público, demo en vivo o código bajo petición. Está en español e inglés, con tema claro y oscuro, y permite descargar el CV en el idioma activo.
+
+- **Angular 21** con prerenderizado estático (`@angular/ssr`, sin servidor).
+- **Tailwind CSS v4** para los estilos.
+- **i18next** (`angular-i18next`) para ES/EN; los textos están en `src/app/core/i18n/locales.ts`.
+- **Datos estáticos**: el historial está en `src/app/core/services/log-entries.ts` y los datos de contacto y el stack en `src/app/core/profile.ts`. No consulta ninguna API externa.
+- **Vitest** para los tests, **Prettier** para el formato y **Bun** como gestor de paquetes.
+- Desplegado en **Vercel** desde `master`, con Vercel Analytics y Speed Insights.
+- Las fuentes de `public/fonts` se sirven con caché inmutable de un año: si se sustituye una, hay que renombrarla.
+
+### English
+
+Personal portfolio of Sergio Rodríguez ([chuwi-dev.me](https://www.chuwi-dev.me)), a full stack developer in Go, Rust and TypeScript. It presents projects, internships and education as a commit history, with a mark showing what visitors can check for each one: public code, a live demo or code on request. It is available in Spanish and English, with light and dark themes, and lets visitors download the CV in the active language.
+
+- **Angular 21** with static prerendering (`@angular/ssr`, no server).
+- **Tailwind CSS v4** for styling.
+- **i18next** (`angular-i18next`) for ES/EN; the copy lives in `src/app/core/i18n/locales.ts`.
+- **Static data**: the history lives in `src/app/core/services/log-entries.ts`, and contact details and the stack in `src/app/core/profile.ts`. It calls no external API.
+- **Vitest** for tests, **Prettier** for formatting and **Bun** as package manager.
+- Deployed on **Vercel** from `master`, with Vercel Analytics and Speed Insights.
+- The fonts in `public/fonts` are served with a one-year immutable cache: if one is replaced, rename it.
+
+---
+
 ## Desarrollo Local / Local Development
 
 ### Español 🇪🇸
@@ -30,11 +58,17 @@ Para ejecutar y desarrollar este proyecto en tu entorno local, sigue estos pasos
    Abre tu navegador y entra en [http://localhost:4200](http://localhost:4200).
 
 3. **Compilación de Producción:**
-   Para construir la aplicación para producción (con soporte SSR/Server-Side Rendering):
+   Para construir la aplicación para producción (prerenderizado estático):
    ```bash
    bun run build
    # o con npm:
    npm run build
+   ```
+
+4. **Tests y formato:**
+   ```bash
+   bun run test --watch=false
+   bun run format:check   # bun run format para corregir
    ```
 
 ---
@@ -67,11 +101,17 @@ To run and develop this project in your local environment, follow these steps:
    Open your browser and navigate to [http://localhost:4200](http://localhost:4200).
 
 3. **Production Build:**
-   To build the application for production (with SSR/Server-Side Rendering support):
+   To build the application for production (static prerendering):
    ```bash
    bun run build
    # or with npm:
    npm run build
+   ```
+
+4. **Tests and formatting:**
+   ```bash
+   bun run test --watch=false
+   bun run format:check   # bun run format to fix
    ```
 
 ---

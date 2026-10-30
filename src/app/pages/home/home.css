@@ -1,0 +1,65 @@
+:host {
+  display: block;
+}
+.head {
+  padding-top: clamp(24px, 2.6vw, 36px);
+}
+.avatar {
+  position: relative;
+  display: block;
+  width: var(--avatar);
+  height: var(--avatar);
+  border: 3px solid var(--color-primary);
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--color-surface-card);
+}
+/* El carril nace en el centro del avatar y baja por detrás. */
+.head .lane0 {
+  top: calc(var(--avatar) / 2);
+}
+.refs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+}
+.place {
+  color: var(--color-on-surface-variant);
+}
+h1 {
+  margin: 14px 0 6px;
+  font-size: clamp(44px, 7vw, 96px);
+  font-weight: 800;
+  font-stretch: 120%;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+.role {
+  color: var(--color-primary);
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 600;
+  font-stretch: 105%;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.pitch {
+  max-width: 68ch;
+  margin-top: 14px;
+  color: var(--color-on-surface-variant);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+@media (max-width: 479px) {
+  h1 {
+    font-stretch: 105%;
+  }
+  .actions .btn {
+    flex: 1 1 100%;
+  }
+}

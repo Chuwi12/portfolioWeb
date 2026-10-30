@@ -1,0 +1,7 @@
+:host {
+  display: block;
+}
+main {
+  /* Las bandas a todo ancho y las curvas de los carriles nunca generan scroll horizontal. */
+  overflow-x: clip;
+}

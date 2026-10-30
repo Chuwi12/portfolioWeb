@@ -1,0 +1,134 @@
+:host {
+  display: block;
+}
+.body {
+  padding-block: clamp(24px, 2.4vw, 32px) 0;
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 24px;
+}
+.layout {
+  display: grid;
+  gap: 16px 48px;
+  margin-top: 12px;
+}
+.groups {
+  display: grid;
+  gap: 2px;
+}
+.group {
+  display: grid;
+  gap: 0 24px;
+}
+h3 {
+  padding-top: 6px;
+  color: var(--color-on-surface-variant);
+  font-size: 15px;
+  font-weight: 600;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20px;
+}
+/* Argumento de `git log -- <tech>`: nombre y conteo en mono. El subrayado fino lo marca como
+   pulsable; con aria-pressed pasa a relleno. El margen negativo reserva el sitio de ese relleno. */
+.chip {
+  --rule: color-mix(in srgb, var(--color-text-muted) 70%, transparent);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  margin-inline: -8px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: linear-gradient(var(--rule), var(--rule)) 8px calc(100% - 6px) / calc(100% - 16px) 1px
+    no-repeat;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition:
+    background-color 150ms,
+    color 150ms;
+}
+.chip:hover {
+  --rule: var(--color-primary);
+  color: var(--color-primary);
+}
+/* Resaltado por el commit señalado: contorno teal fino, nunca relleno (el relleno es el filtro). */
+.chip.is-lit {
+  --rule: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+}
+.count {
+  color: var(--color-text-muted);
+}
+.chip[aria-pressed='true'] {
+  background: var(--color-primary);
+  color: var(--color-on-button);
+}
+.chip[aria-pressed='true'] .count {
+  color: inherit;
+}
+.arch {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  max-width: 68ch;
+  color: var(--color-on-surface-variant);
+  font-size: 15px;
+}
+.status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  color: var(--color-on-surface-variant);
+  font-size: 15px;
+}
+.cmd {
+  margin-right: 12px;
+  color: var(--color-primary);
+}
+.clear {
+  min-height: 36px;
+  padding: 0 4px;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+/* Pista de atajos: solo donde hay teclado y puntero fino. */
+.hint {
+  display: none;
+  justify-self: start;
+  padding: 6px 0;
+  color: var(--color-text-muted);
+  font-size: 15px;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.hint:hover {
+  color: var(--color-primary);
+}
+@media (hover: hover) and (pointer: fine) {
+  .hint {
+    display: block;
+  }
+}
+@media (min-width: 768px) {
+  .group {
+    grid-template-columns: 11rem 1fr;
+  }
+}
+@media (min-width: 1100px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) 17rem;
+  }
+  .arch {
+    padding-top: 4px;
+  }
+}

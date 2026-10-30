@@ -1,25 +1,44 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { App } from './app';
-import { I18N_MOCK_PROVIDERS } from '../testing/i18n-mock';
+import { polyfillDialog, stubCanvas } from './core/dom-test';
+import { i18nTestProviders } from './core/i18n/i18n-test';
 
 describe('App', () => {
   beforeEach(async () => {
+    stubCanvas(null);
+    polyfillDialog();
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [...I18N_MOCK_PROVIDERS],
+      providers: [provideRouter([]), ...i18nTestProviders()],
     }).compileComponents();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(TestBed.createComponent(App).componentInstance).toBeTruthy();
   });
 
-  it('should render header', async () => {
+  it('tiene enlace de salto, cabecera, main y pie con el contacto', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('app-header')).toBeTruthy();
+    const el = fixture.nativeElement as HTMLElement;
+    expect(el.querySelector('a.skip')?.getAttribute('href')).toBe('#contenido');
+    expect(el.querySelector('app-header')).toBeTruthy();
+    expect(el.querySelector('main #contenido')).toBeTruthy();
+    expect(el.querySelector('footer #contacto')).toBeTruthy();
+  });
+
+  it('lleva el fondo del grafo y el panel de atajos, que reacciona al teclado del documento', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const el = fixture.nativeElement as HTMLElement;
+    expect(el.querySelector('app-live-graph canvas[aria-hidden="true"]')).toBeTruthy();
+    const dialog = el.querySelector<HTMLDialogElement>('app-shortcuts dialog')!;
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: '?', bubbles: true }));
+    await fixture.whenStable();
+    expect(dialog.open).toBe(true);
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    await fixture.whenStable();
+    expect(dialog.open).toBe(false);
   });
 });

@@ -1,87 +1,78 @@
-import { Injectable, inject, signal } from '@angular/core';
-import { Proyect } from '../models/project.model';
-import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin, map } from 'rxjs';
+import { computed, Injectable, signal } from '@angular/core';
+import { LogEntry } from '../models/log-entry.model';
+import { LOG_ENTRIES } from './log-entries';
+
+const normalize = (tech: string) => tech.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+/** Lo que el visitante señala con el ratón o el foco: una entrada del historial o una tecnología. */
+export type Highlight = { kind: 'entry' | 'tech'; id: string } | null;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProjectService {
-  private http = inject(HttpClient);
+  readonly entries: readonly LogEntry[] = LOG_ENTRIES;
 
-  // Public variable to store what is selected and what is not
-  public selectedFilters = signal<string[]>([]);
-  
-  private apiUrls: string[] = [
-    'https://api.github.com/repos/Chuwi12/TFG-',
-    'https://api.github.com/repos/Tau5/pizzeria-design',
-    'https://api.github.com/repos/Tau5/dedede',
-    'https://api.github.com/repos/Tau5/dedede-jdbc',
-    'https://api.github.com/repos/Chuwi12/Art-Space',
-    'https://api.github.com/repos/Chuwi12/url-state-monitor-go'
-  ];
+  /** Tecnologías activas en el filtro; vacío = sin filtro. */
+  readonly selectedFilters = signal<string[]>([]);
 
-  // Function to fetch and return the projects
-  getProjects(): Observable<Proyect[]> {
-    const requests = this.apiUrls.map(url => this.http.get<any>(url));
-    
-    return forkJoin(requests).pipe(
-      map((githubRepos: any[]) => {
-        // Map each GitHub JSON by passing it through our adapter function
-        const publicProjects = githubRepos.map(repo => this.mapToProyect(repo));
+  /** `git log -- <tech>`: una entrada pasa si usa alguna de las tecnologías activas. */
+  matches(entry: LogEntry): boolean {
+    const filters = this.selectedFilters();
+    return filters.length === 0 || filters.some((f) => entry.stack.includes(normalize(f)));
+  }
 
-        // Inject the private projects manually so we don't fetch them from API
-        const privateProjects: Proyect[] = [
-          {
-            title: 'Atelier Ledger',
-            description: 'SaaS de contabilidad para autónomos, multi-inquilino y de acceso restringido. Permite registrar la caja diaria por canal (efectivo, tarjeta, aplicación, Bizum), gestionar gastos con historial de auditoría inmutable, importar ingresos desde Excel y generar informes con gráficos y exportación a PDF/Excel/CSV. Arquitectura desacoplada: backend en Rust (Axum) con base de datos Turso/libSQL en el Edge, aislamiento por usuario a nivel de consulta y autenticación JWT asimétrica mediante Clerk (validación de firmas vía JWKS). Frontend React desplegado en Vercel y API contenedorizada con Docker en Render.',
-            img: '/projects/atelier-ledger.webp',
-            technologies: ['rust', 'axum', 'react', 'typescript', 'turso', 'sqlite', 'clerk', 'docker', 'vercel'],
-            repoUrl: 'https://contabilidad-frontend-three.vercel.app',
-            demoUrl: 'https://contabilidad-frontend-three.vercel.app'
-          },
-          {
-            title: 'Cita Perfecta',
-            description: 'Una romántica y tierna aplicación web interactiva en formato "Scrapbook" (diario de recuerdos) para proponer una cita y organizar todos los detalles (plan, comida, vestimenta, fecha y hora). Incluye melodías retro en Web Audio y botones interactivos de evasión.',
-            img: '/projects/cita-app.webp',
-            technologies: ['react', 'typescript', 'vite', 'css', 'html5', 'vercel'],
-            repoUrl: 'https://cita-app-amber.vercel.app',
-            demoUrl: 'https://cita-app-amber.vercel.app'
-          }
-        ];
+  /** Entradas que pasan el filtro. */
+  readonly shown = computed(() => this.entries.filter((e) => this.matches(e)).length);
 
-        return [...publicProjects, ...privateProjects];
-      })
+  /** Entradas que usan la tecnología, con o sin filtro activo. */
+  count(tech: string): number {
+    return this.entries.filter((e) => e.stack.includes(normalize(tech))).length;
+  }
+
+  isActive(tech: string): boolean {
+    return this.selectedFilters().some((f) => normalize(f) === normalize(tech));
+  }
+
+  toggle(tech: string) {
+    this.selectedFilters.update((filters) =>
+      this.isActive(tech)
+        ? filters.filter((f) => normalize(f) !== normalize(tech))
+        : [...filters, tech],
     );
   }
 
-  // Transforms the raw GitHub object to our Project interface dynamically.
-  private mapToProyect(repo: any): Proyect {
-    
-    // Merge the primary language and GitHub topics so no tags are lost
-    const extractedTechs = new Set<string>();
-    
-    if (repo.language) {
-      extractedTechs.add(repo.language.toLowerCase());
-    }
-    
-    if (repo.topics && repo.topics.length > 0) {
-      repo.topics.forEach((t: string) => extractedTechs.add(t.toLowerCase()));
-    }
+  clear() {
+    this.selectedFilters.set([]);
+  }
 
-    const finalTechs = extractedTechs.size > 0 ? Array.from(extractedTechs) : ['code'];
+  /** Resaltado, no filtro: no pliega nada. Lo fijan el ratón y el foco, y lo limpian al salir. */
+  readonly highlight = signal<Highlight>(null);
 
-    // Convert to lowercase and remove spaces to standardize the file name
-    const safeName = repo.name.toLowerCase().trim();
-    const imagePath = `/projects/${safeName}.webp`;
+  highlightEntry(id: string) {
+    this.highlight.set({ kind: 'entry', id });
+  }
 
-    return {
-      title: repo.name,
-      description: repo.description || 'Repositorio sin descripción.',
-      img: imagePath,
-      technologies: finalTechs,
-      repoUrl: repo.html_url,
-      demoUrl: repo.homepage || undefined
-    };
+  highlightTech(id: string) {
+    this.highlight.set({ kind: 'tech', id });
+  }
+
+  clearHighlight() {
+    this.highlight.set(null);
+  }
+
+  /** ¿Está resaltada su rama? La señalada, o las que usan la tecnología señalada. */
+  isEntryLit(entry: LogEntry): boolean {
+    const h = this.highlight();
+    if (!h) return false;
+    return h.kind === 'entry' ? h.id === entry.id : entry.stack.includes(normalize(h.id));
+  }
+
+  /** ¿Está resaltada su tecnología? La señalada, o las del commit señalado. */
+  isTechLit(tech: string): boolean {
+    const h = this.highlight();
+    if (!h) return false;
+    if (h.kind === 'tech') return normalize(h.id) === normalize(tech);
+    return !!this.entries.find((e) => e.id === h.id)?.stack.includes(normalize(tech));
   }
 }
