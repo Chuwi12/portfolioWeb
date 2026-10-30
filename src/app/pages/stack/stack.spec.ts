@@ -32,7 +32,7 @@ describe('Stack', () => {
     expect(chip('rust').querySelector('.count')?.textContent).toBe(String(projects.count('rust')));
   });
 
-  it('conmuta el filtro y muestra `git log -- rust go` con N de 14 commits', async () => {
+  it('conmuta el filtro y muestra `git log -- rust go` con N de todos los commits', async () => {
     chip('rust').click();
     chip('go').click();
     await fixture.whenStable();
@@ -40,7 +40,7 @@ describe('Stack', () => {
     expect(chip('rust').getAttribute('aria-pressed')).toBe('true');
     expect(el.querySelector('.cmd')?.textContent).toBe('git log -- rust go');
     expect(el.querySelector('[role="status"]')?.textContent).toContain(
-      `${projects.shown()} de 14 commits`,
+      `${projects.shown()} de ${LOG_ENTRIES.length} commits`,
     );
   });
 
@@ -79,18 +79,18 @@ describe('Stack', () => {
     expect(all.every((b) => b.hasAttribute('aria-pressed'))).toBe(true);
   });
 
-  it('la línea de estado cuenta N de 14 con el N real y «Quitar filtro» la devuelve al inicio', async () => {
+  it('la línea de estado cuenta N del total con el N real y «Quitar filtro» la devuelve al inicio', async () => {
     const hint = status();
     expect(el.querySelector('.cmd')).toBeNull();
 
     await press('rust');
-    expect(status()).toContain(`${usingAny('rust')} de 14 commits`);
+    expect(status()).toContain(`${usingAny('rust')} de ${LOG_ENTRIES.length} commits`);
     await press('go');
     expect(el.querySelector('.cmd')?.textContent).toBe('git log -- rust go');
-    expect(status()).toContain(`${usingAny('rust', 'go')} de 14 commits`);
+    expect(status()).toContain(`${usingAny('rust', 'go')} de ${LOG_ENTRIES.length} commits`);
     await press('rust');
     expect(el.querySelector('.cmd')?.textContent).toBe('git log -- go');
-    expect(status()).toContain(`${usingAny('go')} de 14 commits`);
+    expect(status()).toContain(`${usingAny('go')} de ${LOG_ENTRIES.length} commits`);
 
     el.querySelector<HTMLButtonElement>('.clear')!.click();
     fixture.detectChanges();
@@ -101,8 +101,8 @@ describe('Stack', () => {
 
   it('el nombre accesible de cada botón lleva su recuento, en singular si es 1', () => {
     expect(chip('rust').getAttribute('aria-label')).toBe(`rust, ${usingAny('rust')} commits`);
-    expect(usingAny('sqlite')).toBe(1);
-    expect(chip('sqlite').getAttribute('aria-label')).toBe('sqlite, 1 commit');
+    expect(usingAny('mysql')).toBe(1);
+    expect(chip('mysql').getAttribute('aria-label')).toBe('mysql, 1 commit');
   });
 
   it('el ratón o el foco en un chip lo ilumina (contorno, no relleno) y no filtra', async () => {

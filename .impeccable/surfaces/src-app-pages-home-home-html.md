@@ -21,7 +21,7 @@ OWN-WORLD: Paleta teal fijada como única tinta cromática sobre neutros (oscuro
 
 STORY: En un vistazo: quién es, rol Full Stack en Go, Rust y TypeScript, y CV o contacto sin hacer scroll. Al bajar recorre el historial: proyectos de 2026, prácticas y formación hasta el commit raíz. Cree que construye producto completo porque cada tecnología del stack lleva a commits que la usan.
 
-FIRST VIEWPORT: Barra fina con chuwi-dev, enlaces, ES/EN, tema y Descargar CV. Carril a la izquierda que nace en el nodo HEAD: la foto de Sergio (~116px) como avatar del autor. A su derecha, refs «HEAD → main» y «open-to-work», hash y fecha en mono; nombre a ~104px; rol en teal ~34px; cuerpo de dos líneas; botones Descargar CV (primario) y Escribirme. Bajo el pliegue asoman las filas de cuentas y Nexora unidas al carril.
+FIRST VIEWPORT: Barra fina con chuwi-dev, enlaces, ES/EN, tema y Descargar CV. Carril a la izquierda que nace en el nodo HEAD: la foto de Sergio (~116px) como avatar del autor. A su derecha, refs «HEAD → main» y «open-to-work», hash y fecha en mono; nombre a ~104px; rol en teal ~34px; cuerpo de dos líneas; botones Descargar CV (primario) y Escribirme. Bajo el pliegue asoman las filas de invest-ai y cuentas unidas al carril.
 
 FORM: Historial de commits (git log --graph), posición 7 de mi lista ordenada; seed:60071b14da3b23f6. Interacción firma: el filtro por tecnología funciona como `git log -- <tech>`: los commits que la usan quedan llenos y legibles y el resto se pliega en nodos fantasma, sin perder los carriles. Movimiento: un único trazado de los carriles al cargar, con prefers-reduced-motion respetado.
 

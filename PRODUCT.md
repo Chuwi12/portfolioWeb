@@ -41,7 +41,8 @@ actual (`~/CV/build.py`, 2026-10-22) es la fuente de verdad: «Full Stack · Go 
   - Privados con demo: Atelier Ledger (contabilidad, Rust/Axum + React, Turso, Clerk) y Cita Perfecta
     (React + Vite, web interactiva).
   - Privados sin código ni demo, «código bajo petición»: Suite HCM (Go, 17 microservicios),
-    Nexora (CRM/ERP modular, Rust + Angular) y Cuadre (contabilidad, Rust + React).
+    Nexora (CRM/ERP modular, Rust + Angular), Cuadre (contabilidad, Rust + React) e invest-ai
+    (análisis de inversión con IA local, Rust + React + Ollama; añadido el 2026-10-30).
   - Fuera: colaboraciones en repos de Tau5, Congreso, repoJava, el scraper y el fork.
 - Experiencia: VASS (Full Stack Salesforce, prácticas), CRC (Frontend, prácticas), Erasmus
   (técnico de redes). Formación: DAM 2024–2026, SMR 2022–2024, Ciberseguridad (Masterd Mind AC).
