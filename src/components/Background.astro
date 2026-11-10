@@ -1,0 +1,148 @@
+---
+import { PROFILE, ROLES, type Lang, type Role } from '../data';
+import { UI } from '../i18n/ui';
+import { formatPeriod, netById, netLabel } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const ui = UI[lang];
+const jobs = ROLES.filter((r) => r.kind === 'job');
+const education = ROLES.filter((r) => r.kind === 'education');
+---
+
+<section id="trayectoria" class="floor tier tier-scroll" aria-labelledby="background-title">
+  <div class="strip">
+    <h2 id="background-title" class="floor-title">{ui.backgroundTitle}</h2>
+  </div>
+  <div class="box">
+    {
+      [
+        { heading: ui.backgroundJobs, items: jobs, from: 'from-l' },
+        { heading: ui.backgroundEducation, items: education, from: 'from-r' },
+      ].map((col) => (
+        <div class:list={['cell', 's6', col.from]}>
+          <h3>{col.heading}</h3>
+          <ol class="roles">
+            {col.items.map((r: Role) => (
+              <li id={r.id} data-nets={r.nets.join(' ')} data-label={r.title[lang]}>
+                <p class="when">{r.period ? formatPeriod(r.period, lang) : ''}</p>
+                <div>
+                  <h4>{r.title[lang]}</h4>
+                  <p class="org">
+                    {r.org[lang]}
+                    <span class="tag">{r.detail[lang]}</span>
+                  </p>
+                  <p class="sum">{r.summary[lang]}</p>
+                  {r.nets.length > 0 && (
+                    <ul class="chips" aria-label={ui.techListLabel}>
+                      {r.nets.map((id) => (
+                        <li class="chip" data-group={netById.get(id)?.group} data-chip={id}>
+                          {netLabel(id)}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+          {col.items === education && (
+            <>
+              <h3 class="langs-title">{ui.backgroundLanguages}</h3>
+              <dl class="langs">
+                {PROFILE.languages.map((l) => (
+                  <div>
+                    <dt>{l.name[lang]}</dt>
+                    <dd>{l.level[lang]}</dd>
+                  </div>
+                ))}
+              </dl>
+            </>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  h3 {
+    margin-bottom: var(--sp-16);
+    font-size: var(--fs-3xl);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .roles {
+    border-top: 1px solid var(--line);
+  }
+  .roles > li {
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    gap: var(--sp-16);
+    padding: var(--sp-16) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .when {
+    color: var(--ink-2);
+    font-size: var(--fs-sm);
+    line-height: 1.7;
+  }
+  h4 {
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .org {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-8);
+    margin-top: var(--sp-4);
+    color: var(--ink-2);
+    font-size: var(--fs-base);
+  }
+  .tag {
+    padding: var(--sp-2) var(--sp-8);
+    border: 1px solid var(--line);
+    border-radius: var(--r-chip);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .sum {
+    margin-top: var(--sp-8);
+    font-size: var(--fs-base);
+  }
+  .chips {
+    margin-top: var(--sp-12);
+  }
+  .chip {
+    padding: var(--sp-2) var(--sp-8);
+    font-size: var(--fs-sm);
+  }
+  .langs-title {
+    margin-top: var(--sp-32);
+  }
+  .langs {
+    border-top: 1px solid var(--line);
+  }
+  .langs div {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--sp-16);
+    padding: var(--sp-12) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .langs dt {
+    font-weight: 700;
+  }
+  @media (max-width: 639px) {
+    .roles > li {
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+    }
+  }
+</style>

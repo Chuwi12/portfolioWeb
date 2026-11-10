@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.chuwi-dev.me/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.chuwi-dev.me/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.chuwi-dev.me/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.chuwi-dev.me/" />
+  </url>
+  <url>
+    <loc>https://www.chuwi-dev.me/en/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.chuwi-dev.me/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.chuwi-dev.me/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.chuwi-dev.me/" />
+  </url>
+</urlset>

@@ -1,0 +1,142 @@
+/* Tipografía: una sola familia autoalojada (subconjunto latin). */
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-latin-400-normal.woff2')
+    format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url('@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-latin-500-normal.woff2')
+    format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-latin-700-normal.woff2')
+    format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src: url('@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-latin-900-normal.woff2')
+    format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --font: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', system-ui, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Hueco entre compartimentos = padding de la bandeja. */
+  --gap: 8px;
+  /* Radios: bandejas, compartimentos, botones y segmentados 3 px; chips, etiquetas y citas 2 px. */
+  --r: 3px;
+  --r-chip: 2px;
+
+  /* Espaciado (escala cerrada). */
+  --sp-2: 2px;
+  --sp-4: 4px;
+  --sp-8: 8px;
+  --sp-12: 12px;
+  --sp-16: 16px;
+  --sp-24: 24px;
+  --sp-32: 32px;
+  --sp-40: 40px;
+  --sp-48: 48px;
+  --sp-64: 64px;
+  --sp-80: 80px;
+  --sp-96: 96px;
+
+  /* Tamaños de texto: pasos de Tailwind; --fs-role y --fs-pitch son medidas del contrato. */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.25rem;
+  --fs-2xl: 1.5rem;
+  --fs-3xl: 1.875rem;
+  --fs-4xl: 2.25rem;
+  --fs-5xl: 3rem;
+  --fs-6xl: 3.75rem;
+  --fs-7xl: 4.5rem;
+  --fs-8xl: 6rem;
+  --fs-role: 2.125rem;
+  --fs-pitch: 1.1875rem;
+
+  /* Tela del furoshiki, igual en los dos temas. */
+  --cloth: #22336f;
+  --cloth-2: #1a285a;
+  --on-cloth: #eef1f8;
+  --on-cloth-2: #b9c2da;
+  --on-acc: #0b1022;
+
+  color-scheme: light;
+  --bg: #e8ebf0;
+  --tray: #d7dce6;
+  --cell: #f8f9fb;
+  --line: #cbd1dc;
+  --ink: #0b1022;
+  --ink-2: #465069;
+  --chip: #edf0f5;
+  --acc: #f2b92f;
+  --acc-ink: #7a5200;
+  --no: #c23b2e;
+  --ok: #2e9e62;
+  --lift: rgb(11 16 34 / 0.5);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #04060d;
+  --tray: #0b1020;
+  --cell: #070b17;
+  --line: #161d35;
+  --ink: #eef1f8;
+  --ink-2: #9aa4c0;
+  --chip: #0f1428;
+  --acc: #f5c24a;
+  --acc-ink: #f5c24a;
+  --no: #ff7464;
+  --ok: #4cc787;
+  --lift: rgb(0 0 0 / 0.8);
+}
+
+/* Sin JavaScript no hay data-theme: manda la preferencia del sistema. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #04060d;
+    --tray: #0b1020;
+    --cell: #070b17;
+    --line: #161d35;
+    --ink: #eef1f8;
+    --ink-2: #9aa4c0;
+    --chip: #0f1428;
+    --acc: #f5c24a;
+    --acc-ink: #f5c24a;
+    --no: #ff7464;
+    --ok: #4cc787;
+    --lift: rgb(0 0 0 / 0.8);
+  }
+}

@@ -1,0 +1,178 @@
+---
+import { type Lang } from '../data';
+import { GROUP_LABEL, UI } from '../i18n/ui';
+import { groupSpans } from '../lib/layout';
+import { stackGroups } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const ui = UI[lang];
+const groups = stackGroups();
+const spans = groupSpans(groups.map((g) => g.nets.length));
+---
+
+<section id="stack" class="floor tier tier-scroll" aria-labelledby="stack-title">
+  <div class="strip">
+    <h2 id="stack-title" class="floor-title" tabindex="-1">{ui.stackTitle}</h2>
+    <p class="floor-intro js-only">{ui.stackHelp}</p>
+  </div>
+  <div class="box">
+    {
+      groups.map((g, i) => (
+        <div
+          role="group"
+          aria-labelledby={`grp-${g.group}`}
+          class:list={['cell', 'group', `s${spans[i]}`, i % 2 === 0 ? 'from-l' : 'from-r']}
+        >
+          <h3 id={`grp-${g.group}`}>{GROUP_LABEL[lang][g.group]}</h3>
+          <ul class="chips">
+            {g.nets.map((n) => (
+              <li>
+                <button
+                  type="button"
+                  class="chip tech"
+                  data-tech={n.id}
+                  data-group={n.group}
+                  aria-pressed="false"
+                >
+                  {n.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+    <div class="cell aside s12 from-b">
+      <ul class="notes">
+        <li>{ui.stackArchitecture}</li>
+        <li>{ui.stackSecurity}</li>
+      </ul>
+      <div class="result">
+        <p
+          id="tec-status"
+          class="status"
+          role="status"
+          aria-live="polite"
+          data-one={ui.stackOne}
+          data-many={ui.stackMany}
+        >
+        </p>
+        <ul id="tec-matches" class="matches" aria-label={ui.stackMatches}></ul>
+        <button type="button" class="btn btn-sec btn-sm" data-tec-clear hidden>
+          {ui.stackClear}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="tec-pill" class="pill">
+    <span id="tec-pill-text" aria-hidden="true"></span>
+    <button type="button" class="btn btn-pri btn-sm" data-tec-clear>{ui.stackClear}</button>
+  </div>
+</section>
+
+<style>
+  h3 {
+    margin-bottom: var(--sp-16);
+    color: var(--ink-2);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+  }
+  .tech {
+    cursor: pointer;
+  }
+  .tech:hover {
+    background: color-mix(in srgb, var(--ink) 12%, var(--chip));
+  }
+  .tech[data-group='ai']:hover {
+    background: color-mix(in srgb, var(--acc) 50%, var(--cell));
+  }
+  .tech[aria-pressed='true'] {
+    background: var(--acc);
+    color: var(--on-acc);
+  }
+  @media (pointer: coarse) {
+    .tech {
+      min-height: 44px;
+    }
+  }
+
+  .aside {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    align-items: start;
+    gap: var(--sp-24) var(--sp-48);
+  }
+  .notes {
+    display: grid;
+    gap: var(--sp-8);
+    color: var(--ink-2);
+    font-size: var(--fs-base);
+  }
+  .result {
+    display: grid;
+    justify-items: start;
+  }
+  .status {
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .status:not(:empty) {
+    margin-bottom: var(--sp-12);
+  }
+  .matches {
+    display: grid;
+    gap: var(--sp-4);
+    font-size: var(--fs-base);
+  }
+  .matches:not(:empty) {
+    margin-bottom: var(--sp-12);
+  }
+  .matches :global(a) {
+    color: var(--acc-ink);
+    font-weight: 500;
+  }
+
+  .pill {
+    position: fixed;
+    left: 50%;
+    bottom: var(--sp-16);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: var(--sp-16);
+    padding: var(--sp-8) var(--sp-8) var(--sp-8) var(--sp-16);
+    border-radius: var(--r);
+    background: var(--ink);
+    color: var(--cell);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    box-shadow: 0 16px 28px -16px var(--lift);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 12px);
+    transition:
+      opacity 0.35s var(--ease),
+      transform 0.35s var(--ease),
+      visibility 0.35s var(--ease);
+  }
+  .pill:global([data-open]) {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+  @media (max-width: 639px) {
+    .pill {
+      left: var(--sp-16);
+      right: var(--sp-16);
+      justify-content: space-between;
+      transform: translateY(12px);
+    }
+    .pill:global([data-open]) {
+      transform: none;
+    }
+  }
+</style>

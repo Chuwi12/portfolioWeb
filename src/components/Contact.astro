@@ -1,0 +1,184 @@
+---
+import Icon from './Icon.astro';
+import { PROFILE, type Lang } from '../data';
+import { fill, UI } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const ui = UI[lang];
+const github = PROFILE.github.split('/').pop() ?? PROFILE.github;
+const rows = [
+  { label: ui.contactEmail, text: PROFILE.email, href: `mailto:${PROFILE.email}` },
+  { label: ui.contactPhone, text: PROFILE.phone, href: `tel:${PROFILE.phone.replace(/\s/g, '')}` },
+  { label: 'LinkedIn', text: PROFILE.name, href: PROFILE.linkedin, external: true },
+  { label: 'GitHub', text: github, href: PROFILE.github, external: true },
+  { label: ui.contactLocation, text: PROFILE.location[lang] },
+];
+---
+
+<section id="contacto" class="lid tier tier-scroll" aria-labelledby="contact-title">
+  <i class="knot" aria-hidden="true"></i>
+  <div class="box">
+    <div class="cell s12 from-b">
+      <div class="ask">
+        <h2 id="contact-title">{ui.contactTitle}</h2>
+        <p>{ui.contactText}</p>
+        <div class="cta">
+          <a class="btn btn-pri" href={PROFILE.cv[lang]} download>
+            <Icon name="download" />{ui.cvDownload}
+          </a>
+          <a class="btn btn-sec" href={`mailto:${PROFILE.email}`}>
+            <Icon name="mail" />{ui.emailMe}
+          </a>
+          <button
+            type="button"
+            class="btn btn-sec js-only"
+            data-copy={PROFILE.email}
+            data-ok={ui.copied}
+            data-err={fill(ui.copyError, { email: PROFILE.email })}
+          >
+            <Icon name="copy" />{ui.copyEmail}
+          </button>
+        </div>
+        <p id="copy-status" class="copy-status" role="status"></p>
+      </div>
+      <dl class="data">
+        {
+          rows.map((r) => (
+            <div>
+              <dt>{r.label}</dt>
+              <dd>
+                {r.href ? (
+                  <a
+                    href={r.href}
+                    {...(r.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  >
+                    {r.text}
+                    {r.external && <span class="sr-only"> {ui.externalLink}</span>}
+                  </a>
+                ) : (
+                  r.text
+                )}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Tapa final: la tela del furoshiki cierra la caja, con su nudo cuadrado sobre el borde. */
+  .lid {
+    margin-top: var(--sp-48);
+    background: var(--cloth-2);
+  }
+  .knot {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    z-index: 2;
+    width: 56px;
+    height: 56px;
+    margin-left: -28px;
+    background: var(--acc);
+  }
+  .cell {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--sp-48);
+    padding: var(--sp-64) var(--sp-48);
+    background: var(--cloth);
+    color: var(--on-cloth);
+  }
+  h2 {
+    font-size: var(--fs-7xl);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+  .ask > p:not(.copy-status) {
+    max-width: 30em;
+    margin-top: var(--sp-24);
+    color: var(--on-cloth-2);
+    font-size: var(--fs-pitch);
+  }
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-8);
+    margin-top: var(--sp-32);
+  }
+  .cta :global(.btn-sec) {
+    border-color: var(--on-cloth);
+    color: var(--on-cloth);
+  }
+  .cta :global(.btn-sec:hover) {
+    background: var(--on-cloth);
+    color: var(--cloth);
+  }
+  .cell :global(:focus-visible) {
+    outline-color: var(--acc);
+  }
+  .copy-status {
+    min-height: 1.5em;
+    margin-top: var(--sp-12);
+    color: var(--on-cloth);
+    font-size: var(--fs-sm);
+  }
+  .data {
+    align-self: end;
+    border-top: 1px solid var(--on-cloth-2);
+  }
+  .data > div {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: var(--sp-16);
+    padding: var(--sp-12) 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--on-cloth-2) 40%, transparent);
+  }
+  dt {
+    color: var(--on-cloth-2);
+    font-size: var(--fs-sm);
+  }
+  dd {
+    overflow-wrap: anywhere;
+    font-size: var(--fs-lg);
+    font-weight: 500;
+  }
+  dd a {
+    text-decoration-color: var(--acc);
+    text-underline-offset: 4px;
+  }
+  @media (pointer: coarse) {
+    dd a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+  }
+  @media (max-width: 1023px) {
+    .cell {
+      grid-template-columns: 1fr;
+      gap: var(--sp-48);
+    }
+  }
+  @media (max-width: 639px) {
+    .cell {
+      padding: var(--sp-32) var(--sp-24);
+    }
+    h2 {
+      font-size: var(--fs-5xl);
+    }
+    .btn {
+      flex: 1 1 100%;
+    }
+    .data > div {
+      grid-template-columns: 1fr;
+      gap: var(--sp-2);
+    }
+  }
+</style>

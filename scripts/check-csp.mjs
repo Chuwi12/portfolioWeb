@@ -1,13 +1,13 @@
 // Comprueba que el HTML construido cumple la CSP de vercel.json: todo <script> inline ejecutable
 // debe tener su hash en script-src y no puede haber manejadores on*="" ni URLs javascript:.
-// Uso: node scripts/check-csp.mjs [carpeta-del-build]  (por defecto dist/portfolioWeb/browser)
+// Uso: node scripts/check-csp.mjs [carpeta-del-build]  (por defecto dist)
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
-const buildDir = process.argv[2] ?? join(root, 'dist/portfolioWeb/browser');
+const buildDir = process.argv[2] ?? join(root, 'dist');
 const errors = [];
 
 const config = JSON.parse(readFileSync(join(root, 'vercel.json'), 'utf8'));
@@ -35,23 +35,26 @@ const allowed = new Set(
 );
 const used = new Set();
 
-// index.csr.html es el fallback SPA del modo estático: lo sirve el mismo CSP.
-for (const name of ['index.html', 'index.csr.html']) {
-  const file = join(buildDir, name);
-  if (!existsSync(file)) {
-    if (name === 'index.html') errors.push(`No existe ${file}: ejecuta antes bun run build`);
-    continue;
-  }
-  const html = readFileSync(file, 'utf8');
+if (!existsSync(buildDir)) {
+  console.error(`No existe ${buildDir}: ejecuta antes bun run build`);
+  process.exit(1);
+}
+const pages = readdirSync(buildDir, { recursive: true })
+  .map(String)
+  .filter((f) => f.endsWith('.html'));
+if (pages.length === 0) errors.push(`No hay ningún .html en ${buildDir}`);
+
+for (const name of pages) {
+  const html = readFileSync(join(buildDir, name), 'utf8');
 
   for (const [, attrs, body] of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
-    const src = attrs.match(/\bsrc\s*=\s*["']?([^\s"'>]+)/i)?.[1];
+    const src = attrs.match(/(?:^|\s)src\s*=\s*["']?([^\s"'>]+)/i)?.[1];
     if (src) {
       if (/^(https?:)?\/\//i.test(src)) errors.push(`${name}: script externo ${src}`);
       continue;
     }
-    // Los bloques de datos (JSON de hidratación, plantillas) no se ejecutan ni pasan por la CSP.
-    if (/\btype\s*=\s*["']?(application\/(ld\+)?json|text\/(plain|template))/i.test(attrs))
+    // Los bloques de datos (JSON-LD, plantillas) no se ejecutan ni pasan por la CSP.
+    if (/(?:^|\s)type\s*=\s*["']?(application\/(ld\+)?json|text\/(plain|template))/i.test(attrs))
       continue;
     const hash = `sha256-${createHash('sha256').update(body, 'utf8').digest('base64')}`;
     used.add(hash);
@@ -63,10 +66,15 @@ for (const name of ['index.html', 'index.csr.html']) {
   const markup = html
     .replace(/<!--[\s\S]*?-->/g, '')
     .replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, '');
-  for (const [tag, handler] of markup.matchAll(/<[a-z][^>]*?\s(on[a-z]+)\s*=/gi)) {
+  for (const [tag, handler] of markup.matchAll(/<[a-z][^>]*?[\s/](on[a-z]+)\s*=/gi)) {
     errors.push(`${name}: manejador ${handler}="" en ${tag.slice(0, 80)}`);
   }
-  if (/\b(href|src|action)\s*=\s*["']?\s*javascript:/i.test(markup)) {
+  // style-src 'self': ni atributos style ni bloques <style> (el CSS va en ficheros de /_astro/).
+  if (/<style\b/i.test(html.replace(/<!--[\s\S]*?-->/g, '')))
+    errors.push(`${name}: bloque <style> en el HTML`);
+  for (const [tag] of markup.matchAll(/<[a-z][^>]*?\sstyle\s*=/gi))
+    errors.push(`${name}: atributo style en ${tag.slice(0, 80)}`);
+  if (/\b(href|src|action|formaction)\s*=\s*["']?\s*javascript:/i.test(markup)) {
     errors.push(`${name}: URL javascript:`);
   }
 }
@@ -80,4 +88,6 @@ if (errors.length) {
   console.error(errors.map((e) => `- ${e}`).join('\n'));
   process.exit(1);
 }
-console.log(`CSP correcta: ${used.size} script(s) inline con hash en vercel.json`);
+console.log(
+  `CSP correcta: ${pages.length} página(s), ${used.size} script(s) inline con hash en vercel.json`,
+);

@@ -1,0 +1,68 @@
+---
+import Project from './Project.astro';
+import { PROJECTS, type Lang } from '../data';
+import { planZone } from '../lib/layout';
+
+interface Props {
+  lang: Lang;
+  zone: 'ai' | 'platform';
+  id: string;
+  title: string;
+  intro: string;
+  /** Frase estática a todo el ancho al final del piso. */
+  statement?: string[];
+}
+const { lang, zone, id, title, intro, statement } = Astro.props;
+const placed = planZone(PROJECTS.filter((p) => p.zone === zone));
+---
+
+<section {id} class="floor tier tier-scroll" aria-labelledby={`${id}-title`}>
+  <div class="strip">
+    <h2 id={`${id}-title`} class="floor-title">{title}</h2>
+    <p class="floor-intro">{intro}</p>
+  </div>
+  <div class="box">
+    {
+      placed.map((x, i) => (
+        <Project
+          project={x.project}
+          lang={lang}
+          grid={x.grid}
+          from={x.from}
+          flip={i % 2 === 1}
+          wide={x.wide}
+        />
+      ))
+    }
+    {
+      statement && (
+        <p class="cell statement s12 from-b">
+          {statement.map((line, i) => (
+            <>
+              {i > 0 && <br />}
+              {line}
+            </>
+          ))}
+        </p>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .statement {
+    padding: var(--sp-64) var(--sp-48);
+    background: var(--ink);
+    color: var(--cell);
+    font-size: var(--fs-7xl);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+  @media (max-width: 639px) {
+    .statement {
+      padding: var(--sp-32) var(--sp-24);
+      font-size: var(--fs-4xl);
+    }
+  }
+</style>

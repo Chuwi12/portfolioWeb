@@ -1,0 +1,63 @@
+---
+import { FAQ, type Lang } from '../data';
+import { UI } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const ui = UI[lang];
+---
+
+<section id="preguntas" class="floor tier tier-scroll" aria-labelledby="faq-title">
+  <div class="strip">
+    <h2 id="faq-title" class="floor-title">{ui.faqTitle}</h2>
+  </div>
+  <div class="box">
+    <dl class="cell s12 from-b">
+      {
+        FAQ.map((f) => (
+          <div>
+            <dt>{f.q[lang]}</dt>
+            <dd>{f.a[lang]}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  dl > div {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--sp-8) var(--sp-32);
+    padding: var(--sp-24) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  dl > div:first-child {
+    padding-top: 0;
+  }
+  dl > div:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+  dt {
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  dd {
+    color: var(--ink-2);
+    font-size: var(--fs-lg);
+  }
+  @media (max-width: 899px) {
+    dl > div {
+      grid-template-columns: 1fr;
+    }
+    dt {
+      font-size: var(--fs-xl);
+    }
+  }
+</style>

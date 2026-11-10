@@ -1,0 +1,246 @@
+/* Caja: bandejas (pisos) con compartimentos. Las animaciones de montaje viven aquí. */
+.wrap {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: var(--sp-24);
+}
+@media (max-width: 639px) {
+  .wrap {
+    padding-inline: var(--sp-16);
+  }
+}
+
+.tier {
+  position: relative;
+  background: var(--tray);
+  padding: var(--gap);
+  border-radius: var(--r);
+}
+.box {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--gap);
+}
+.cell {
+  position: relative;
+  overflow: hidden;
+  background: var(--cell);
+  border-radius: var(--r);
+  padding: var(--sp-32);
+}
+@media (max-width: 639px) {
+  .cell {
+    padding: var(--sp-24);
+  }
+}
+
+/* Ocupación de columnas. Los proyectos van de dos en dos entre 768 y 1199 px (ver más abajo); por
+   debajo de 1024 px el resto de compartimentos va en una columna. */
+.s3 {
+  grid-column: span 3;
+}
+.s4 {
+  grid-column: span 4;
+}
+.s5 {
+  grid-column: span 5;
+}
+.s6 {
+  grid-column: span 6;
+}
+.s7 {
+  grid-column: span 7;
+}
+.s8 {
+  grid-column: span 8;
+}
+.s9 {
+  grid-column: span 9;
+}
+.s12 {
+  grid-column: span 12;
+}
+@media (max-width: 1023px) {
+  .box > * {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
+
+/* Tablet (768 a 1199 px): los proyectos van de dos en dos; los de fila entera y el tercero de cada
+   fila de tres (`tw`), y el de 8 columnas, ocupan las dos columnas. Por debajo de 768 px, todo en una columna. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .floor .box > .project {
+    grid-column: span 6;
+  }
+  .floor .box > .project.s12,
+  .floor .box > .project.s8,
+  .floor .box > .project.tw {
+    grid-column: 1 / -1;
+  }
+}
+/* Los pisos son bandejas apiladas de una misma caja: separadas solo por el hueco y con su titular
+   dentro, como tira superior. */
+.floor {
+  margin-top: var(--gap);
+}
+.strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-8) var(--sp-32);
+  padding: var(--sp-32) var(--sp-24) var(--sp-24);
+}
+.floor-title {
+  font-size: var(--fs-6xl);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+.floor-intro {
+  max-width: 34em;
+  color: var(--ink-2);
+}
+@media (max-width: 639px) {
+  .strip {
+    padding: var(--sp-24) var(--sp-16) var(--sp-16);
+  }
+  .floor-title {
+    font-size: var(--fs-4xl);
+  }
+}
+
+/* Montaje: cada compartimento entra desde su lado y siempre es opaco. */
+.from-l {
+  --dx: -22px;
+  --dy: 0px;
+}
+.from-r {
+  --dx: 22px;
+  --dy: 0px;
+}
+.from-b {
+  --dx: 0px;
+  --dy: 22px;
+}
+@keyframes place {
+  from {
+    transform: translate(var(--dx, 0px), var(--dy, 14px));
+  }
+}
+
+/* Piso 1: tras abrirse la tela, con 80 ms de escalonado. */
+@media (prefers-reduced-motion: no-preference) {
+  .tier-first .cell {
+    animation: place 0.8s var(--ease) backwards;
+    animation-delay: calc(1.05s + var(--i, 0) * 80ms);
+  }
+}
+/* Pisos siguientes: al entrar en pantalla, solo con scroll-driven; sin soporte quedan quietos. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .tier-scroll .cell {
+      animation: place var(--ease) backwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+/* Compartimentos que reaccionan: enlace de proyecto y filtro de stack. */
+.cell {
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease),
+    color 0.35s var(--ease);
+}
+li[data-nets] {
+  transition: color 0.35s var(--ease);
+}
+.lift:hover,
+.lift:has(:focus-visible) {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 28px -20px var(--lift);
+}
+/* Filtro de stack: lo que no usa la tecnología encoge, su captura y sus chips bajan al 35 % y su
+   texto pasa a tinta secundaria (sigue siendo legible y enlazable). */
+.chips,
+.shot {
+  transition: opacity 0.35s var(--ease);
+}
+html[data-filter] [data-nets]:not([data-match]) {
+  color: var(--ink-2);
+}
+html[data-filter] [data-nets]:not([data-match]) :is(.chips, .shot) {
+  opacity: 0.35;
+}
+html[data-filter] .cell[data-nets]:not([data-match]) {
+  transform: scale(0.98);
+}
+
+/* Botones: acción principal en tamago y secundaria en contorno. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  min-height: 52px;
+  padding: 0 var(--sp-24);
+  border: 1px solid transparent;
+  border-radius: var(--r);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  transition:
+    transform 0.2s var(--ease),
+    background-color 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn-pri {
+  background: var(--acc);
+  color: var(--on-acc);
+}
+.btn-pri:hover {
+  background: color-mix(in srgb, var(--acc) 82%, white);
+}
+.btn-sec {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.btn-sec:hover {
+  background: var(--ink);
+  color: var(--cell);
+}
+.btn-sm {
+  min-height: 44px;
+  padding: 0 var(--sp-16);
+  font-size: var(--fs-sm);
+}
+
+/* Chips: tecnologías (las de IA, en tamago al 30 %) y etiquetas. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-8);
+}
+.chip {
+  padding: var(--sp-4) var(--sp-12);
+  border-radius: var(--r-chip);
+  background: var(--chip);
+  font-size: var(--fs-base);
+  font-weight: 500;
+  line-height: 1.5;
+  transition: background-color 0.25s var(--ease);
+}
+.chip[data-group='ai'] {
+  background: color-mix(in srgb, var(--acc) 30%, var(--cell));
+}
+.chip[data-on] {
+  background: var(--acc);
+  color: var(--on-acc);
+}
