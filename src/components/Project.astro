@@ -1,0 +1,387 @@
+---
+import { Picture } from 'astro:assets';
+import Icon from './Icon.astro';
+import { PROFILE, type Lang, type Project } from '../data';
+import { fill, UI } from '../i18n/ui';
+import { formatPeriod, netById, netLabel } from '../lib/site';
+
+interface Props {
+  project: Project;
+  lang: Lang;
+  /** Clase de rejilla de la zona (`s12`, `s6`, `s4`). */
+  grid: string;
+  from: 'l' | 'r' | 'b';
+  /** Con la captura a la izquierda cuando el compartimento ocupa la fila entera. */
+  flip?: boolean;
+  /** En tablet, ocupa la fila entera. */
+  wide?: boolean;
+}
+const { project: p, lang, grid, from, flip = false, wide = false } = Astro.props;
+const ui = UI[lang];
+const title = p.title[lang];
+
+const kinds = {
+  code: { label: ui.evidenceCode, icon: 'code', action: ui.actionCode, href: p.repoUrl },
+  demo: { label: ui.evidenceDemo, icon: 'demo', action: ui.actionDemo, href: p.demoUrl },
+  private: {
+    label: ui.evidencePrivate,
+    icon: 'lock',
+    action: ui.actionRequest,
+    href: `mailto:${PROFILE.email}?subject=${encodeURIComponent(fill(ui.requestSubject, { title }))}`,
+  },
+} as const;
+const ev = kinds[p.evidence];
+/** Código y demo se abren desde todo el compartimento; «Pedir el código» es un botón aparte. */
+const stretched = p.evidence !== 'private' && ev.href !== undefined;
+/** A 4 columnas y sin captura: el resumen y, como mucho, dos puntos. */
+const compact = grid === 's4' && !p.image;
+const facts = compact ? p.highlights.slice(0, 2) : p.highlights;
+---
+
+<article
+  id={p.id}
+  class:list={[
+    'cell',
+    'project',
+    grid,
+    `from-${from}`,
+    {
+      lift: stretched,
+      'has-shot': p.image,
+      pub: !p.image && p.evidence !== 'private',
+      featured: p.featured,
+      flip,
+      tw: wide,
+    },
+  ]}
+  data-project
+  data-nets={p.nets.join(' ')}
+  data-label={title}
+>
+  <div class="inner">
+    {
+      p.image && (
+        <figure class="shot">
+          <Picture
+            src={p.image.src}
+            alt={p.image.alt[lang]}
+            formats={['avif', 'webp']}
+            fallbackFormat="webp"
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 1024px) 40vw, 90vw"
+            loading="lazy"
+            decoding="async"
+          />
+          {p.image.synthetic && <figcaption class="demo-data">{ui.synthetic}</figcaption>}
+        </figure>
+      )
+    }
+    <div class="head">
+      <div class="meta">
+        <span class="tag"><Icon name={ev.icon} size={14} />{ev.label}</span>
+        {p.team && <span class="tag">{ui.team}</span>}
+        <span class="when">{formatPeriod(p.period, lang)}</span>
+      </div>
+      <h3>
+        {
+          stretched ? (
+            <a class="stretch" href={ev.href} target="_blank" rel="noopener noreferrer">
+              {title}
+              <span class="sr-only">
+                , {ev.action} {ui.externalLink}
+              </span>
+            </a>
+          ) : (
+            title
+          )
+        }
+      </h3>
+      <p class="lead">{p.tagline[lang]}</p>
+    </div>
+    <p class="sum">{p.summary[lang]}</p>
+    <ul class="facts">
+      {facts.map((h) => <li>{h[lang]}</li>)}
+    </ul>
+    <div class="foot">
+      <ul class="chips" aria-label={ui.techListLabel}>
+        {
+          p.nets.map((id) => (
+            <li class="chip" data-group={netById.get(id)?.group} data-chip={id}>
+              {netLabel(id)}
+            </li>
+          ))
+        }
+      </ul>
+      {
+        stretched ? (
+          <span class="action" aria-hidden="true">
+            {ev.action}
+            <Icon name="external" size={16} />
+          </span>
+        ) : (
+          p.evidence === 'private' && (
+            <a class="btn btn-sec btn-sm request" href={ev.href}>
+              {ev.action}
+            </a>
+          )
+        )
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  .project {
+    container-type: inline-size;
+  }
+  .inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-16);
+    height: 100%;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-8);
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-4);
+    padding: var(--sp-2) var(--sp-8);
+    border: 1px solid var(--line);
+    border-radius: var(--r-chip);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  .when {
+    margin-left: auto;
+    color: var(--ink-2);
+    font-size: var(--fs-sm);
+  }
+  h3 {
+    margin-top: var(--sp-16);
+    font-size: var(--fs-2xl);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .stretch {
+    text-decoration: none;
+  }
+  .stretch::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .stretch:focus-visible {
+    outline: none;
+  }
+  .project:has(.stretch:focus-visible) {
+    outline: 2px solid var(--acc-ink);
+    outline-offset: 3px;
+  }
+  .lead {
+    margin-top: var(--sp-8);
+    font-size: var(--fs-lg);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .sum {
+    color: var(--ink-2);
+    font-size: var(--fs-base);
+  }
+  .facts {
+    border-top: 1px solid var(--line);
+    font-size: var(--fs-base);
+  }
+  .facts li {
+    padding: var(--sp-8) 0;
+    border-bottom: 1px solid var(--line);
+    line-height: 1.5;
+  }
+  /* Un compartimento de texto de código público a 6 columnas queda junto a otro con captura, mucho
+     más alto: su pie sigue al contenido y el sobrante queda debajo, en lugar de abrir un hueco en
+     medio. */
+  .pub.s6 .foot {
+    margin-top: 0;
+  }
+  .foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--sp-16);
+    margin-top: auto;
+    padding-top: var(--sp-8);
+  }
+  .chip {
+    padding: var(--sp-2) var(--sp-8);
+    font-size: var(--fs-sm);
+  }
+  .action {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-4);
+    color: var(--acc-ink);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+  }
+  .request {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Captura: siempre 16/10, recortada por arriba. Nunca se estira: el sobrante de altura de la
+     fila queda bajo el texto. */
+  .shot {
+    position: relative;
+    flex: none;
+    width: 100%;
+    align-self: start;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--chip);
+  }
+  .shot + .head {
+    margin-top: var(--sp-8);
+  }
+  .shot :global(img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.6s var(--ease);
+  }
+  .lift:hover .shot :global(img),
+  .lift:has(:focus-visible) .shot :global(img) {
+    transform: scale(1.03);
+  }
+  .demo-data {
+    position: absolute;
+    left: var(--sp-8);
+    bottom: var(--sp-8);
+    padding: var(--sp-2) var(--sp-8);
+    border-radius: var(--r-chip);
+    background: var(--cell);
+    color: var(--ink);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+  }
+
+  /* Según el ancho del propio compartimento, no el de la ventana. */
+  @container (min-width: 400px) {
+    h3 {
+      font-size: var(--fs-3xl);
+    }
+  }
+  /* Con captura y a la fila entera (s12, o `tw` en tablet) se parte en horizontal desde 700 px: el
+     texto a un lado y la captura al otro, con los puntos debajo en dos columnas. */
+  @container (min-width: 700px) {
+    .has-shot:is(.s12, .tw) .inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-areas:
+        'head shot'
+        'sum shot'
+        'facts facts'
+        'foot foot';
+      grid-template-rows: auto 1fr auto auto;
+      column-gap: var(--sp-32);
+      align-content: start;
+    }
+    .flip.has-shot:is(.s12, .tw) .inner {
+      grid-template-areas:
+        'shot head'
+        'shot sum'
+        'facts facts'
+        'foot foot';
+    }
+    .has-shot:is(.s12, .tw) .shot + .head {
+      margin-top: 0;
+    }
+    .has-shot:is(.s12, .tw) .facts {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: var(--sp-32);
+      border-top: 0;
+    }
+    .has-shot:is(.s12, .tw) .facts li {
+      border-top: 1px solid var(--line);
+      border-bottom: 0;
+    }
+    /* Más estrecho (8 columnas): la captura arriba a la derecha y sus puntos justo debajo, para que
+       el compartimento no crezca a costa del texto. */
+    .has-shot:not(.s12, .tw) .inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-areas:
+        'head shot'
+        'sum facts'
+        'foot foot';
+      grid-template-rows: auto auto 1fr;
+      column-gap: var(--sp-32);
+      align-content: start;
+    }
+    .has-shot:not(.s12, .tw) .shot + .head {
+      margin-top: 0;
+    }
+    .has-shot .shot {
+      grid-area: shot;
+    }
+    .has-shot .head {
+      grid-area: head;
+    }
+    .has-shot .sum {
+      grid-area: sum;
+    }
+    .has-shot .facts {
+      grid-area: facts;
+    }
+    .has-shot .foot {
+      grid-area: foot;
+      align-self: end;
+    }
+  }
+  /* Sin captura, desde 700 px: el texto a un lado y los puntos al otro. */
+  @container (min-width: 700px) {
+    h3 {
+      font-size: var(--fs-4xl);
+    }
+    .featured h3 {
+      font-size: var(--fs-5xl);
+      letter-spacing: -0.04em;
+    }
+    .project:not(.has-shot) .inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-areas:
+        'head facts'
+        'sum facts'
+        'foot foot';
+      grid-template-rows: auto 1fr auto;
+      column-gap: var(--sp-32);
+      align-content: start;
+    }
+    .project:not(.has-shot) .head {
+      grid-area: head;
+    }
+    .project:not(.has-shot) .sum {
+      grid-area: sum;
+    }
+    .project:not(.has-shot) .facts {
+      grid-area: facts;
+      align-self: start;
+    }
+    .project:not(.has-shot) .foot {
+      grid-area: foot;
+    }
+  }
+</style>

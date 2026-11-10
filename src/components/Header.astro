@@ -1,0 +1,205 @@
+---
+import Icon from './Icon.astro';
+import Switch from './Switch.astro';
+import { UI } from '../i18n/ui';
+import { PATH } from '../lib/site';
+import type { Lang } from '../data';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const ui = UI[lang];
+
+const links = [
+  { href: '#proyectos', text: ui.navProjects },
+  { href: '#stack', text: ui.navStack },
+  { href: '#trayectoria', text: ui.navBackground },
+  { href: '#contacto', text: ui.navContact },
+];
+const langs: Lang[] = ['es', 'en'];
+---
+
+<header class="bar wrap">
+  <a class="brand" href={PATH[lang]} aria-label={`chuwi-dev, ${ui.homeLabel}`}>
+    <span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    chuwi-dev
+  </a>
+  <button class="burger" type="button" popovertarget="menu" aria-label={ui.menuOpen}>
+    <Icon name="menu" size={24} />
+  </button>
+  <div id="menu" class="menu" popover>
+    <button
+      class="close"
+      type="button"
+      popovertarget="menu"
+      popovertargetaction="hide"
+      aria-label={ui.menuClose}
+      autofocus
+    >
+      <Icon name="close" size={24} />
+    </button>
+    <nav aria-label={ui.navLabel}>
+      {links.map((l) => <a href={l.href}>{l.text}</a>)}
+    </nav>
+    <div class="controls">
+      <Switch
+        label={ui.langSwitchLabel}
+        items={langs.map((l) => ({
+          label: l === 'es' ? 'Español' : 'English',
+          text: l.toUpperCase(),
+          lang: l,
+          current: l === lang,
+          href: l === lang ? undefined : PATH[l],
+          data: l === lang ? undefined : { 'data-lang-switch': PATH[l] },
+        }))}
+      />
+      <Switch
+        class="theme-switch js-only"
+        label={ui.themeGroupLabel}
+        items={[
+          { label: ui.themeLightLabel, icon: 'sun', data: { 'data-theme-set': 'light' } },
+          { label: ui.themeDarkLabel, icon: 'moon', data: { 'data-theme-set': 'dark' } },
+        ]}
+      />
+    </div>
+  </div>
+</header>
+
+<style>
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-24);
+    height: 76px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-12);
+    margin-right: auto;
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  @media (pointer: coarse) {
+    .brand {
+      min-height: 44px;
+    }
+  }
+  .logo {
+    display: grid;
+    grid-template-columns: 8px 12px;
+    grid-template-rows: 12px 8px;
+    gap: 2px;
+  }
+  .logo i {
+    background: var(--ink);
+  }
+  .logo i:nth-child(2) {
+    background: var(--acc);
+  }
+  .burger,
+  .close {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Escritorio: el menú es la propia barra. Móvil: panel a altura completa. */
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-32);
+    position: static;
+    inset: auto;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: visible;
+    background: none;
+    color: inherit;
+  }
+  .menu nav {
+    display: flex;
+    gap: var(--sp-32);
+  }
+  .menu nav a {
+    color: var(--ink-2);
+    font-size: var(--fs-base);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.25s var(--ease);
+  }
+  .menu nav a:hover {
+    color: var(--ink);
+  }
+  .controls {
+    display: flex;
+    gap: var(--sp-8);
+  }
+  .burger,
+  .close {
+    display: none;
+  }
+
+  @media (max-width: 1023px) {
+    .burger {
+      display: grid;
+    }
+    .menu {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100dvh;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: var(--sp-32);
+      padding: var(--sp-16) var(--sp-24) var(--sp-32);
+      background: var(--bg);
+      overflow-y: auto;
+    }
+    .menu:not(:popover-open) {
+      display: none;
+    }
+    .close {
+      display: grid;
+      align-self: flex-end;
+    }
+    .menu nav {
+      flex-direction: column;
+      gap: var(--sp-8);
+    }
+    .menu nav a {
+      padding: var(--sp-8) 0;
+      color: var(--ink);
+      font-size: var(--fs-5xl);
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: 1.1;
+    }
+    .menu {
+      transition:
+        opacity 0.35s var(--ease),
+        transform 0.35s var(--ease),
+        display 0.35s allow-discrete,
+        overlay 0.35s allow-discrete;
+    }
+    @starting-style {
+      .menu:popover-open {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+    }
+  }
+  /* Sin JavaScript no hay forma de cambiar de tema (la clase js-only la oculta). */
+  :global(html[data-theme='light']) :global(.theme-switch [data-theme-set='light']),
+  :global(html[data-theme='dark']) :global(.theme-switch [data-theme-set='dark']) {
+    background: var(--ink);
+    color: var(--cell);
+  }
+</style>

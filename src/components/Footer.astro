@@ -1,0 +1,26 @@
+---
+import { UI } from '../i18n/ui';
+import type { Lang } from '../data';
+
+interface Props {
+  lang: Lang;
+}
+const ui = UI[Astro.props.lang];
+---
+
+<footer class="wrap">
+  <p>{ui.footerCookies}</p>
+  <p>{ui.footerRights}</p>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--sp-8) var(--sp-24);
+    padding-block: var(--sp-32) var(--sp-48);
+    color: var(--ink-2);
+    font-size: var(--fs-sm);
+  }
+</style>

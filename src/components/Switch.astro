@@ -1,0 +1,91 @@
+---
+import Icon from './Icon.astro';
+
+/** Conmutador segmentado: el mismo componente para el idioma (ES|EN) y el tema (sol|luna). */
+export interface Item {
+  label: string;
+  /** Texto visible o, si no hay, el icono. */
+  text?: string;
+  icon?: 'sun' | 'moon';
+  /** Enlace a otra página (idioma). */
+  href?: string;
+  lang?: string;
+  current?: boolean;
+  /** Atributos `data-*` extra. */
+  data?: Record<string, string>;
+}
+interface Props {
+  label: string;
+  items: Item[];
+  class?: string;
+}
+const { label, items, class: className } = Astro.props;
+---
+
+<div class:list={['switch', className]} role="group" aria-label={label}>
+  {
+    items.map((it) =>
+      it.href ? (
+        <a
+          href={it.href}
+          hreflang={it.lang}
+          lang={it.lang}
+          aria-label={it.label}
+          {...(it.data ?? {})}
+        >
+          {it.text}
+        </a>
+      ) : it.current ? (
+        <span aria-current="true">
+          <span class="sr-only">{it.label}</span>
+          <span aria-hidden="true">{it.text}</span>
+        </span>
+      ) : (
+        <button type="button" aria-pressed="false" aria-label={it.label} {...(it.data ?? {})}>
+          {it.icon ? <Icon name={it.icon} size={16} /> : it.text}
+        </button>
+      ),
+    )
+  }
+</div>
+
+<style>
+  .switch {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    background: var(--cell);
+  }
+  .switch > * {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 34px;
+    color: var(--ink-2);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+      background-color 0.25s var(--ease),
+      color 0.25s var(--ease);
+  }
+  .switch > * + * {
+    border-left: 1px solid var(--line);
+  }
+  .switch > a:hover,
+  .switch > button:hover {
+    background: var(--chip);
+    color: var(--ink);
+  }
+  .switch > [aria-pressed='true'],
+  .switch > [aria-current='true'] {
+    background: var(--ink);
+    color: var(--cell);
+  }
+  /* Alto total 36 px con el borde; 44 px en pantallas táctiles. */
+  @media (pointer: coarse) {
+    .switch > * {
+      height: 42px;
+    }
+  }
+</style>

@@ -1,0 +1,309 @@
+---
+import { Picture } from 'astro:assets';
+import avatar from '../assets/avatar.webp';
+import Demo from './Demo.astro';
+import Icon from './Icon.astro';
+import { PROFILE, type Lang } from '../data';
+import { UI } from '../i18n/ui';
+import { topNets } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const ui = UI[lang];
+const [first = '', ...rest] = PROFILE.name.split(' ');
+const stack = topNets(13);
+---
+
+<section class="tier tier-first" aria-labelledby="hero-title">
+  <div class="cloth" aria-hidden="true">
+    <i class="flap l"></i><i class="flap r"></i><i class="flap b"></i><i class="flap t"></i>
+  </div>
+  <i class="knot" aria-hidden="true"></i>
+  <div class="box hero">
+    <div class="cell main from-l">
+      <div>
+        <h1 id="hero-title"><span>{first}</span> <span>{rest.join(' ')}</span></h1>
+        <p class="role">{ui.heroRole}</p>
+        <p class="pitch">{ui.heroPitch}</p>
+      </div>
+      <div class="cta">
+        <a class="btn btn-pri" href={PROFILE.cv[lang]} download>
+          <Icon name="download" />{ui.cvDownload}
+        </a>
+        <a class="btn btn-sec" href={`mailto:${PROFILE.email}`}>{ui.emailMe}</a>
+      </div>
+    </div>
+    <Demo lang={lang} />
+    {
+      PROFILE.openToWork && (
+        <div class="cell status from-b">
+          <p class="v">
+            <span class="dot" aria-hidden="true" />
+            {ui.openToWork}
+          </p>
+          <p class="k">{ui.statusDetail}</p>
+        </div>
+      )
+    }
+    <div class="cell stack from-b">
+      <ul class="chips" aria-label={ui.stackBuilt}>
+        {
+          stack.map((n) => (
+            <li class="chip" data-group={n.group}>
+              {n.label}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="cell photo from-r">
+      <Picture
+        src={avatar}
+        alt={ui.avatarAlt}
+        formats={['avif', 'webp']}
+        fallbackFormat="webp"
+        widths={[336, 640]}
+        sizes="(min-width: 1024px) 336px, 100vw"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .tier {
+    margin-top: var(--sp-4);
+    /* Los compartimentos entran desde 22 px fuera de su sitio: que no asomen de la tela. */
+    overflow: clip;
+  }
+  .hero {
+    grid-template-rows: auto minmax(184px, auto);
+  }
+  .hero > :nth-child(1) {
+    --i: 0;
+  }
+  .hero > :nth-child(2) {
+    --i: 1;
+  }
+  .hero > :nth-child(3) {
+    --i: 2;
+  }
+  .hero > :nth-child(4) {
+    --i: 3;
+  }
+  .hero > :nth-child(5) {
+    --i: 4;
+  }
+
+  .main {
+    grid-column: 1 / 8;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--sp-32);
+    min-height: 540px;
+    padding: var(--sp-48);
+  }
+  h1 {
+    font-size: var(--fs-8xl);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+  }
+  h1 span {
+    display: block;
+  }
+  .role {
+    margin-top: var(--sp-24);
+    font-size: var(--fs-role);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+  .pitch {
+    max-width: 33em;
+    margin-top: var(--sp-24);
+    color: var(--ink-2);
+    font-size: var(--fs-pitch);
+  }
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-8);
+  }
+
+  .hero :global(.demo) {
+    grid-column: 8 / 13;
+    grid-row: 1;
+  }
+  .status {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--sp-24) var(--sp-32);
+  }
+  .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: var(--sp-12);
+    background: var(--ok);
+    vertical-align: 2px;
+  }
+  .v {
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .k {
+    margin-top: var(--sp-8);
+    color: var(--ink-2);
+    font-size: var(--fs-sm);
+    line-height: 1.5;
+  }
+  .stack {
+    grid-column: 4 / 10;
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    padding: var(--sp-24);
+  }
+  .photo {
+    grid-column: 10 / 13;
+    grid-row: 2;
+    padding: 0;
+  }
+  .photo :global(img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 22%;
+  }
+
+  @media (max-width: 1199px) {
+    h1 {
+      font-size: var(--fs-7xl);
+    }
+  }
+  @media (max-width: 1023px) {
+    .hero {
+      grid-template-rows: none;
+    }
+    .main,
+    .hero :global(.demo),
+    .status,
+    .stack,
+    .photo {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+    .photo {
+      min-height: 220px;
+    }
+    .main {
+      min-height: 0;
+    }
+  }
+  @media (max-width: 639px) {
+    .main {
+      padding: var(--sp-24);
+    }
+    h1 {
+      font-size: var(--fs-5xl);
+    }
+    .role {
+      font-size: var(--fs-2xl);
+    }
+    .pitch {
+      font-size: var(--fs-lg);
+    }
+    .btn {
+      flex: 1 1 100%;
+    }
+  }
+
+  /* Furoshiki: cuatro picos que se juntan en un nudo y se abren hacia fuera. Solo con
+     movimiento permitido; sin él la tela no existe. */
+  .cloth,
+  .knot {
+    display: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .cloth {
+      display: block;
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      perspective: 1600px;
+      /* Los picos giran fuera de la bandeja: sin esto ensanchan el documento. */
+      overflow: clip;
+    }
+    .knot {
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 6;
+      width: 64px;
+      height: 64px;
+      margin: -32px;
+      background: var(--acc);
+      pointer-events: none;
+      animation: knot 0.35s var(--ease) both;
+    }
+    .flap {
+      position: absolute;
+      inset: 0;
+      background: var(--cloth);
+      backface-visibility: hidden;
+      animation: open 0.9s var(--ease) both;
+    }
+    .flap.t {
+      clip-path: polygon(0 0, 100% 0, 50% calc(50% + 1px));
+      transform-origin: 50% 0;
+      --rot: rotateX(-104deg);
+      animation-delay: 0.45s;
+      background: var(--cloth-2);
+    }
+    .flap.b {
+      clip-path: polygon(0 100%, 100% 100%, 50% calc(50% - 1px));
+      transform-origin: 50% 100%;
+      --rot: rotateX(104deg);
+      animation-delay: 0.38s;
+      background: var(--cloth-2);
+    }
+    .flap.l {
+      clip-path: polygon(0 0, 0 100%, calc(50% + 1px) 50%);
+      transform-origin: 0 50%;
+      --rot: rotateY(104deg);
+      animation-delay: 0.3s;
+    }
+    .flap.r {
+      clip-path: polygon(100% 0, 100% 100%, calc(50% - 1px) 50%);
+      transform-origin: 100% 50%;
+      --rot: rotateY(-104deg);
+      animation-delay: 0.22s;
+    }
+  }
+  @keyframes open {
+    to {
+      transform: var(--rot);
+      visibility: hidden;
+    }
+  }
+  @keyframes knot {
+    to {
+      transform: scale(0) rotate(45deg);
+      visibility: hidden;
+    }
+  }
+</style>

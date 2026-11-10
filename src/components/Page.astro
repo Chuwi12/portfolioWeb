@@ -1,0 +1,70 @@
+---
+import Background from './Background.astro';
+import Contact from './Contact.astro';
+import Faq from './Faq.astro';
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import Stack from './Stack.astro';
+import Zone from './Zone.astro';
+import Base from '../layouts/Base.astro';
+import { FAQ, PROFILE, type Lang } from '../data';
+import { UI } from '../i18n/ui';
+import { stackGroups, url } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const ui = UI[lang];
+
+/** Un solo valor JSON (un array de dos documentos), como admite un <script type="application/ld+json">. */
+const jsonLd = JSON.stringify([
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: PROFILE.name,
+    jobTitle: ui.jobTitle,
+    url: url(lang),
+    sameAs: [PROFILE.github, PROFILE.linkedin],
+    knowsAbout: stackGroups().flatMap((g) => g.nets.map((n) => n.label)),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ.map((f) => ({
+      '@type': 'Question',
+      name: f.q[lang],
+      acceptedAnswer: { '@type': 'Answer', text: f.a[lang] },
+    })),
+  },
+]).replace(/</g, '\\u003c');
+---
+
+<Base lang={lang} title={ui.seoTitle} description={ui.seoDescription}>
+  <script slot="head" type="application/ld+json" is:inline set:html={jsonLd} />
+  <Header lang={lang} />
+  <main id="main" class="wrap">
+    <Hero lang={lang} />
+    <Zone
+      lang={lang}
+      zone="ai"
+      id="proyectos"
+      title={ui.aiTitle}
+      intro={ui.aiIntro}
+      statement={ui.aiStatement.split(/(?<=\.) /)}
+    />
+    <Zone
+      lang={lang}
+      zone="platform"
+      id="plataformas"
+      title={ui.platformsTitle}
+      intro={ui.platformsIntro}
+    />
+    <Stack lang={lang} />
+    <Background lang={lang} />
+    <Faq lang={lang} />
+    <Contact lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</Base>

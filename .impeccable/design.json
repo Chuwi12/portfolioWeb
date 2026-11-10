@@ -1,572 +1,803 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-27T14:10:00Z",
+  "generatedAt": "2026-11-10T08:35:51+00:00",
   "title": "Design System: chuwi-dev",
   "extensions": {
     "colorMeta": {
-      "teal-deep": {
+      "tamago": {
         "role": "primary",
-        "displayName": "Verdín profundo",
-        "canonical": "#0f766e",
-        "oklch": "oklch(51% 0.086 186)",
-        "usage": "Tinta principal del tema claro: enlaces, rol, carril 0, botón primario, foco. Carril 2 en oscuro.",
+        "displayName": "Tamago",
+        "canonical": "#f2b92f",
+        "oklch": "oklch(81.6% 0.155 84)",
         "tonalRamp": [
-          "#011b18",
-          "#043c37",
-          "#036059",
-          "#27857c",
-          "#52aaa0",
-          "#83c6be",
-          "#b9e1dc",
-          "#e1f3f0"
+          "oklch(15% 0.033 84)",
+          "oklch(26% 0.093 84)",
+          "oklch(38% 0.133 84)",
+          "oklch(49% 0.153 84)",
+          "oklch(61% 0.153 84)",
+          "oklch(72% 0.133 84)",
+          "oklch(84% 0.093 84)",
+          "oklch(95% 0.033 84)"
         ]
       },
-      "teal-glow": {
+      "tamago-night": {
         "role": "primary",
-        "displayName": "Verdín luminoso",
-        "canonical": "#4fdbc8",
-        "oklch": "oklch(81% 0.123 183)",
-        "usage": "Tinta principal del tema oscuro: texto de acento, carril 0, aro del avatar, foco.",
+        "displayName": "Tamago (oscuro)",
+        "canonical": "#f5c24a",
+        "oklch": "oklch(83.9% 0.145 85)",
         "tonalRamp": [
-          "#001b17",
-          "#023c35",
-          "#0d6056",
-          "#148679",
-          "#21af9e",
-          "#67ccbd",
-          "#abe5db",
-          "#dcf5f0"
+          "oklch(15% 0.030 85)",
+          "oklch(26% 0.087 85)",
+          "oklch(38% 0.124 85)",
+          "oklch(49% 0.143 85)",
+          "oklch(61% 0.143 85)",
+          "oklch(72% 0.124 85)",
+          "oklch(84% 0.087 85)",
+          "oklch(95% 0.030 85)"
         ]
       },
-      "teal-mid": {
+      "tamago-ink": {
+        "role": "primary",
+        "displayName": "Ámbar profundo",
+        "canonical": "#7a5200",
+        "oklch": "oklch(47.1% 0.099 76)",
+        "tonalRamp": [
+          "oklch(15% 0.021 76)",
+          "oklch(26% 0.059 76)",
+          "oklch(38% 0.084 76)",
+          "oklch(49% 0.097 76)",
+          "oklch(61% 0.097 76)",
+          "oklch(72% 0.084 76)",
+          "oklch(84% 0.059 76)",
+          "oklch(95% 0.021 76)"
+        ]
+      },
+      "on-tamago": {
+        "role": "primary",
+        "displayName": "Tinta sobre tamago",
+        "canonical": "#0b1022",
+        "oklch": "oklch(17.9% 0.038 270)",
+        "tonalRamp": [
+          "oklch(15% 0.008 270)",
+          "oklch(26% 0.023 270)",
+          "oklch(38% 0.032 270)",
+          "oklch(49% 0.037 270)",
+          "oklch(61% 0.037 270)",
+          "oklch(72% 0.032 270)",
+          "oklch(84% 0.023 270)",
+          "oklch(95% 0.008 270)"
+        ]
+      },
+      "furoshiki": {
         "role": "secondary",
-        "displayName": "Verdín medio",
-        "canonical": "#0d9488",
-        "oklch": "oklch(60% 0.104 185)",
-        "usage": "Carril 1 del tema claro.",
+        "displayName": "Furoshiki índigo",
+        "canonical": "#22336f",
+        "oklch": "oklch(34.3% 0.106 268)",
         "tonalRamp": [
-          "#011b18",
-          "#053c36",
-          "#056058",
-          "#07877c",
-          "#38ada0",
-          "#76c9be",
-          "#b2e3dc",
-          "#dff4f0"
+          "oklch(15% 0.022 268)",
+          "oklch(26% 0.063 268)",
+          "oklch(38% 0.091 268)",
+          "oklch(49% 0.104 268)",
+          "oklch(61% 0.104 268)",
+          "oklch(72% 0.091 268)",
+          "oklch(84% 0.063 268)",
+          "oklch(95% 0.022 268)"
         ]
       },
-      "teal-signal": {
+      "furoshiki-deep": {
         "role": "secondary",
-        "displayName": "Verdín señal",
-        "canonical": "#14b8a6",
-        "oklch": "oklch(70% 0.123 183)",
-        "usage": "Carril 2 en claro, carril 1 en oscuro y fondo del botón primario oscuro.",
+        "displayName": "Furoshiki profundo",
+        "canonical": "#1a285a",
+        "oklch": "oklch(29.6% 0.092 269)",
         "tonalRamp": [
-          "#001b17",
-          "#013c35",
-          "#0c6056",
-          "#138679",
-          "#20af9e",
-          "#66ccbd",
-          "#abe5db",
-          "#dcf5f0"
+          "oklch(15% 0.019 269)",
+          "oklch(26% 0.055 269)",
+          "oklch(38% 0.078 269)",
+          "oklch(49% 0.090 269)",
+          "oklch(61% 0.090 269)",
+          "oklch(72% 0.078 269)",
+          "oklch(84% 0.055 269)",
+          "oklch(95% 0.019 269)"
         ]
       },
-      "teal-pressed": {
+      "on-cloth": {
         "role": "secondary",
-        "displayName": "Verdín pulsado",
-        "canonical": "#115e59",
-        "oklch": "oklch(44% 0.071 188)",
-        "usage": "Hover del botón primario en claro.",
+        "displayName": "Texto sobre tela",
+        "canonical": "#eef1f8",
+        "oklch": "oklch(95.8% 0.010 267)",
         "tonalRamp": [
-          "#021b19",
-          "#053b38",
-          "#125f5a",
-          "#3d827c",
-          "#62a7a0",
-          "#8ec4be",
-          "#bedfdc",
-          "#e4f2f0"
+          "oklch(15% 0.002 267)",
+          "oklch(26% 0.006 267)",
+          "oklch(38% 0.008 267)",
+          "oklch(49% 0.010 267)",
+          "oklch(61% 0.010 267)",
+          "oklch(72% 0.008 267)",
+          "oklch(84% 0.006 267)",
+          "oklch(95% 0.002 267)"
         ]
       },
-      "teal-bright": {
+      "on-cloth-muted": {
         "role": "secondary",
-        "displayName": "Verdín claro de hover",
-        "canonical": "#2dd4bf",
-        "oklch": "oklch(78% 0.133 182)",
-        "usage": "Hover del botón primario en oscuro.",
+        "displayName": "Texto secundario sobre tela",
+        "canonical": "#b9c2da",
+        "oklch": "oklch(81.5% 0.035 269)",
         "tonalRamp": [
-          "#011b17",
-          "#003c35",
-          "#0a6056",
-          "#108779",
-          "#1caf9e",
-          "#5dcebc",
-          "#a7e6db",
-          "#daf5f0"
+          "oklch(15% 0.007 269)",
+          "oklch(26% 0.021 269)",
+          "oklch(38% 0.030 269)",
+          "oklch(49% 0.035 269)",
+          "oklch(61% 0.035 269)",
+          "oklch(72% 0.030 269)",
+          "oklch(84% 0.021 269)",
+          "oklch(95% 0.007 269)"
         ]
       },
-      "teal-ink": {
-        "role": "secondary",
-        "displayName": "Tinta verdín",
-        "canonical": "#03241f",
-        "oklch": "oklch(23% 0.039 181)",
-        "usage": "Texto sobre el botón primario oscuro.",
+      "discard-red": {
+        "role": "tertiary",
+        "displayName": "Rojo de descarte",
+        "canonical": "#c23b2e",
+        "oklch": "oklch(54.9% 0.174 29)",
         "tonalRamp": [
-          "#0d1916",
-          "#203834",
-          "#3a5a54",
-          "#5b7c76",
-          "#7ea199",
-          "#a3beb8",
-          "#cadcd8",
-          "#e9f0ef"
+          "oklch(15% 0.036 29)",
+          "oklch(26% 0.104 29)",
+          "oklch(38% 0.149 29)",
+          "oklch(49% 0.171 29)",
+          "oklch(61% 0.171 29)",
+          "oklch(72% 0.149 29)",
+          "oklch(84% 0.104 29)",
+          "oklch(95% 0.036 29)"
         ]
       },
-      "night": {
-        "role": "neutral",
-        "displayName": "Noche",
-        "canonical": "#030712",
-        "oklch": "oklch(13% 0.027 262)",
-        "usage": "Fondo del tema oscuro.",
+      "discard-red-night": {
+        "role": "tertiary",
+        "displayName": "Rojo de descarte (oscuro)",
+        "canonical": "#ff7464",
+        "oklch": "oklch(72.2% 0.173 29)",
         "tonalRamp": [
-          "#13161c",
-          "#2d333e",
-          "#4a5362",
-          "#6c7585",
-          "#8f99aa",
-          "#b0b8c6",
-          "#d2d8e1",
-          "#eceef3"
+          "oklch(15% 0.036 29)",
+          "oklch(26% 0.103 29)",
+          "oklch(38% 0.148 29)",
+          "oklch(49% 0.170 29)",
+          "oklch(61% 0.170 29)",
+          "oklch(72% 0.148 29)",
+          "oklch(84% 0.103 29)",
+          "oklch(95% 0.036 29)"
         ]
       },
-      "ink": {
-        "role": "neutral",
-        "displayName": "Tinta",
-        "canonical": "#111827",
-        "oklch": "oklch(21% 0.032 265)",
-        "usage": "Titulares en claro; superficie de tarjeta en oscuro.",
+      "available-green": {
+        "role": "tertiary",
+        "displayName": "Verde disponible",
+        "canonical": "#2e9e62",
+        "oklch": "oklch(62.2% 0.135 155)",
         "tonalRamp": [
-          "#13161d",
-          "#2c3340",
-          "#4a5365",
-          "#6b7588",
-          "#8f98ad",
-          "#afb8c8",
-          "#d2d8e2",
-          "#eceef3"
+          "oklch(15% 0.028 155)",
+          "oklch(26% 0.080 155)",
+          "oklch(38% 0.115 155)",
+          "oklch(49% 0.133 155)",
+          "oklch(61% 0.133 155)",
+          "oklch(72% 0.115 155)",
+          "oklch(84% 0.080 155)",
+          "oklch(95% 0.028 155)"
         ]
       },
-      "graphite": {
-        "role": "neutral",
-        "displayName": "Grafito",
-        "canonical": "#1f2937",
-        "oklch": "oklch(28% 0.030 257)",
-        "usage": "Texto de cuerpo en claro; línea de 1px en oscuro.",
+      "available-green-night": {
+        "role": "tertiary",
+        "displayName": "Verde disponible (oscuro)",
+        "canonical": "#4cc787",
+        "oklch": "oklch(74.4% 0.144 157)",
         "tonalRamp": [
-          "#12161c",
-          "#2b333f",
-          "#485363",
-          "#6a7586",
-          "#8d99ab",
-          "#aeb8c7",
-          "#d1d8e1",
-          "#eceff3"
+          "oklch(15% 0.030 157)",
+          "oklch(26% 0.086 157)",
+          "oklch(38% 0.123 157)",
+          "oklch(49% 0.142 157)",
+          "oklch(61% 0.142 157)",
+          "oklch(72% 0.123 157)",
+          "oklch(84% 0.086 157)",
+          "oklch(95% 0.030 157)"
         ]
       },
       "paper": {
         "role": "neutral",
         "displayName": "Papel",
-        "canonical": "#f3f4f6",
-        "oklch": "oklch(97% 0.003 265)",
-        "usage": "Fondo del tema claro.",
+        "canonical": "#e8ebf0",
+        "oklch": "oklch(93.9% 0.007 261)",
         "tonalRamp": [
-          "#161617",
-          "#323334",
-          "#525254",
-          "#737476",
-          "#97989a",
-          "#b6b7b9",
-          "#d7d7d8",
-          "#eeeeef"
+          "oklch(15% 0.002 261)",
+          "oklch(26% 0.004 261)",
+          "oklch(38% 0.006 261)",
+          "oklch(49% 0.007 261)",
+          "oklch(61% 0.007 261)",
+          "oklch(72% 0.006 261)",
+          "oklch(84% 0.004 261)",
+          "oklch(95% 0.002 261)"
         ]
       },
-      "white": {
+      "tray": {
         "role": "neutral",
-        "displayName": "Blanco",
-        "canonical": "#ffffff",
-        "oklch": "oklch(100% 0.000 90)",
-        "usage": "Superficie de tarjeta y texto sobre teal en claro; titulares en oscuro.",
+        "displayName": "Bandeja",
+        "canonical": "#d7dce6",
+        "oklch": "oklch(89.4% 0.015 264)",
         "tonalRamp": [
-          "#161616",
-          "#333333",
-          "#525252",
-          "#747474",
-          "#989898",
-          "#b7b7b7",
-          "#d7d7d7",
-          "#eeeeee"
+          "oklch(15% 0.003 264)",
+          "oklch(26% 0.009 264)",
+          "oklch(38% 0.013 264)",
+          "oklch(49% 0.014 264)",
+          "oklch(61% 0.014 264)",
+          "oklch(72% 0.013 264)",
+          "oklch(84% 0.009 264)",
+          "oklch(95% 0.003 264)"
         ]
       },
-      "mist": {
+      "compartment": {
         "role": "neutral",
-        "displayName": "Bruma",
-        "canonical": "#e5e7eb",
-        "oklch": "oklch(93% 0.006 265)",
-        "usage": "Línea de 1px del tema claro.",
+        "displayName": "Compartimento",
+        "canonical": "#f8f9fb",
+        "oklch": "oklch(98.2% 0.003 265)",
         "tonalRamp": [
-          "#151617",
-          "#323335",
-          "#515256",
-          "#737478",
-          "#96989c",
-          "#b6b7ba",
-          "#d6d7d9",
-          "#eeeeef"
+          "oklch(15% 0.001 265)",
+          "oklch(26% 0.002 265)",
+          "oklch(38% 0.002 265)",
+          "oklch(49% 0.003 265)",
+          "oklch(61% 0.003 265)",
+          "oklch(72% 0.002 265)",
+          "oklch(84% 0.002 265)",
+          "oklch(95% 0.001 265)"
         ]
       },
-      "slate": {
+      "line": {
         "role": "neutral",
-        "displayName": "Pizarra",
-        "canonical": "#4b5563",
-        "oklch": "oklch(45% 0.026 257)",
-        "usage": "Texto secundario en claro.",
+        "displayName": "Línea",
+        "canonical": "#cbd1dc",
+        "oklch": "oklch(85.9% 0.017 263)",
         "tonalRamp": [
-          "#13161b",
-          "#2c333e",
-          "#495361",
-          "#6b7584",
-          "#8e99a9",
-          "#afb8c5",
-          "#d2d8e0",
-          "#eceff2"
+          "oklch(15% 0.003 263)",
+          "oklch(26% 0.010 263)",
+          "oklch(38% 0.014 263)",
+          "oklch(49% 0.016 263)",
+          "oklch(61% 0.016 263)",
+          "oklch(72% 0.014 263)",
+          "oklch(84% 0.010 263)",
+          "oklch(95% 0.003 263)"
         ]
       },
-      "slate-muted": {
+      "ink": {
         "role": "neutral",
-        "displayName": "Pizarra apagada",
-        "canonical": "#586070",
-        "oklch": "oklch(51% 0.024 264)",
-        "usage": "Texto atenuado en claro.",
+        "displayName": "Tinta",
+        "canonical": "#0b1022",
+        "oklch": "oklch(17.9% 0.038 270)",
         "tonalRamp": [
-          "#14161b",
-          "#2e333d",
-          "#4c5360",
-          "#6d7583",
-          "#9198a8",
-          "#b1b8c4",
-          "#d3d8e0",
-          "#edeef2"
+          "oklch(15% 0.008 270)",
+          "oklch(26% 0.023 270)",
+          "oklch(38% 0.032 270)",
+          "oklch(49% 0.037 270)",
+          "oklch(61% 0.037 270)",
+          "oklch(72% 0.032 270)",
+          "oklch(84% 0.023 270)",
+          "oklch(95% 0.008 270)"
         ]
       },
-      "dusk": {
+      "ink-muted": {
         "role": "neutral",
-        "displayName": "Crepúsculo",
-        "canonical": "#9ca3af",
-        "oklch": "oklch(71% 0.019 261)",
-        "usage": "Texto atenuado en oscuro.",
+        "displayName": "Tinta secundaria",
+        "canonical": "#465069",
+        "oklch": "oklch(43.3% 0.043 268)",
         "tonalRamp": [
-          "#14161a",
-          "#2e333b",
-          "#4d535d",
-          "#6e7580",
-          "#9299a4",
-          "#b2b8c1",
-          "#d4d8de",
-          "#edeef1"
+          "oklch(15% 0.009 268)",
+          "oklch(26% 0.026 268)",
+          "oklch(38% 0.037 268)",
+          "oklch(49% 0.043 268)",
+          "oklch(61% 0.043 268)",
+          "oklch(72% 0.037 268)",
+          "oklch(84% 0.026 268)",
+          "oklch(95% 0.009 268)"
         ]
       },
-      "sea-fog": {
+      "chip": {
         "role": "neutral",
-        "displayName": "Niebla marina",
-        "canonical": "#bbcac6",
-        "oklch": "oklch(83% 0.017 178)",
-        "usage": "Texto secundario en oscuro.",
+        "displayName": "Chip",
+        "canonical": "#edf0f5",
+        "oklch": "oklch(95.4% 0.007 261)",
         "tonalRamp": [
-          "#121716",
-          "#2c3533",
-          "#495652",
-          "#6a7874",
-          "#8e9c98",
-          "#afbab7",
-          "#d2d9d7",
-          "#ecefee"
+          "oklch(15% 0.002 261)",
+          "oklch(26% 0.004 261)",
+          "oklch(38% 0.006 261)",
+          "oklch(49% 0.007 261)",
+          "oklch(61% 0.007 261)",
+          "oklch(72% 0.006 261)",
+          "oklch(84% 0.004 261)",
+          "oklch(95% 0.002 261)"
         ]
       },
-      "cold-white": {
+      "night-paper": {
         "role": "neutral",
-        "displayName": "Blanco frío",
-        "canonical": "#dde2f3",
-        "oklch": "oklch(91% 0.024 273)",
-        "usage": "Texto de cuerpo en oscuro.",
+        "displayName": "Papel (oscuro)",
+        "canonical": "#04060d",
+        "oklch": "oklch(12.3% 0.018 267)",
         "tonalRamp": [
-          "#14161b",
-          "#2f323d",
-          "#4e5260",
-          "#707483",
-          "#9398a7",
-          "#b3b7c4",
-          "#d5d7e0",
-          "#edeef2"
+          "oklch(15% 0.004 267)",
+          "oklch(26% 0.011 267)",
+          "oklch(38% 0.015 267)",
+          "oklch(49% 0.018 267)",
+          "oklch(61% 0.018 267)",
+          "oklch(72% 0.015 267)",
+          "oklch(84% 0.011 267)",
+          "oklch(95% 0.004 267)"
+        ]
+      },
+      "night-tray": {
+        "role": "neutral",
+        "displayName": "Bandeja (oscuro)",
+        "canonical": "#0b1020",
+        "oklch": "oklch(17.7% 0.034 270)",
+        "tonalRamp": [
+          "oklch(15% 0.007 270)",
+          "oklch(26% 0.020 270)",
+          "oklch(38% 0.029 270)",
+          "oklch(49% 0.034 270)",
+          "oklch(61% 0.034 270)",
+          "oklch(72% 0.029 270)",
+          "oklch(84% 0.020 270)",
+          "oklch(95% 0.007 270)"
+        ]
+      },
+      "night-compartment": {
+        "role": "neutral",
+        "displayName": "Compartimento (oscuro)",
+        "canonical": "#070b17",
+        "oklch": "oklch(15.2% 0.027 268)",
+        "tonalRamp": [
+          "oklch(15% 0.006 268)",
+          "oklch(26% 0.016 268)",
+          "oklch(38% 0.023 268)",
+          "oklch(49% 0.026 268)",
+          "oklch(61% 0.026 268)",
+          "oklch(72% 0.023 268)",
+          "oklch(84% 0.016 268)",
+          "oklch(95% 0.006 268)"
+        ]
+      },
+      "night-line": {
+        "role": "neutral",
+        "displayName": "Línea (oscuro)",
+        "canonical": "#161d35",
+        "oklch": "oklch(23.7% 0.047 270)",
+        "tonalRamp": [
+          "oklch(15% 0.010 270)",
+          "oklch(26% 0.028 270)",
+          "oklch(38% 0.040 270)",
+          "oklch(49% 0.047 270)",
+          "oklch(61% 0.047 270)",
+          "oklch(72% 0.040 270)",
+          "oklch(84% 0.028 270)",
+          "oklch(95% 0.010 270)"
+        ]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Tinta (oscuro)",
+        "canonical": "#eef1f8",
+        "oklch": "oklch(95.8% 0.010 267)",
+        "tonalRamp": [
+          "oklch(15% 0.002 267)",
+          "oklch(26% 0.006 267)",
+          "oklch(38% 0.008 267)",
+          "oklch(49% 0.010 267)",
+          "oklch(61% 0.010 267)",
+          "oklch(72% 0.008 267)",
+          "oklch(84% 0.006 267)",
+          "oklch(95% 0.002 267)"
+        ]
+      },
+      "night-ink-muted": {
+        "role": "neutral",
+        "displayName": "Tinta secundaria (oscuro)",
+        "canonical": "#9aa4c0",
+        "oklch": "oklch(72.0% 0.042 270)",
+        "tonalRamp": [
+          "oklch(15% 0.009 270)",
+          "oklch(26% 0.025 270)",
+          "oklch(38% 0.036 270)",
+          "oklch(49% 0.042 270)",
+          "oklch(61% 0.042 270)",
+          "oklch(72% 0.036 270)",
+          "oklch(84% 0.025 270)",
+          "oklch(95% 0.009 270)"
+        ]
+      },
+      "night-chip": {
+        "role": "neutral",
+        "displayName": "Chip (oscuro)",
+        "canonical": "#0f1428",
+        "oklch": "oklch(19.8% 0.041 272)",
+        "tonalRamp": [
+          "oklch(15% 0.009 272)",
+          "oklch(26% 0.024 272)",
+          "oklch(38% 0.035 272)",
+          "oklch(49% 0.040 272)",
+          "oklch(61% 0.040 272)",
+          "oklch(72% 0.035 272)",
+          "oklch(84% 0.024 272)",
+          "oklch(95% 0.009 272)"
         ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "El nombre en el commit HEAD. Archivo 800 a ancho 120% (105% bajo 480px)."
+        "purpose": "Solo el nombre del h1, en dos líneas; 4.5rem por debajo de 1200 px y 3rem en móvil."
+      },
+      "headline-lg": {
+        "displayName": "Headline grande",
+        "purpose": "La frase a todo el ancho y el titular de la tapa de contacto."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Títulos de sección y título de la entrada destacada."
-      },
-      "title": {
-        "displayName": "Title",
-        "purpose": "Título de cada commit."
+        "purpose": "Titular de cada piso en la tira superior de la bandeja; 2.25rem en móvil."
       },
       "role": {
         "displayName": "Role",
-        "purpose": "Línea de rol en teal bajo el nombre."
+        "purpose": "El rol bajo el nombre, entero en tinta."
       },
-      "brand": {
-        "displayName": "Brand",
-        "purpose": "Marca chuwi-dev en la barra."
+      "title": {
+        "displayName": "Title",
+        "purpose": "Títulos de proyecto y de columna; en proyecto escala con el ancho del compartimento (1.5rem a 3rem)."
       },
-      "contact": {
-        "displayName": "Contact",
-        "purpose": "El correo como enlace tipográfico en el pie."
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Pitch, texto de la tapa y respuesta de la demo; medida de 30 a 33em."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Texto corrido a 17px/1.6, medida máxima 68ch."
+        "purpose": "Cuerpo base con numerales tabulares."
       },
       "body-sm": {
-        "displayName": "Body small",
-        "purpose": "Estado del filtro, organización y rol, filas plegadas, acciones (15px); pista y pie (14px)."
+        "displayName": "Body pequeño",
+        "purpose": "Resúmenes de proyecto, puntos y notas."
       },
       "button": {
         "displayName": "Button",
-        "purpose": "Texto de botones (16px; 15px en la barra)."
+        "purpose": "Texto de botones de 52 px."
       },
-      "data": {
-        "displayName": "Data",
-        "purpose": "Martian Mono 13px con cifras tabulares: hashes, fechas, ids, refs, comandos, teclas."
+      "chip": {
+        "displayName": "Chip",
+        "purpose": "Chips del stack y del filtro; dentro de proyectos bajan a 0.875rem."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Etiquetas de evidencia, segmentados, enlaces de acción y cabeceras de grupo."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Citas de fuente de la demo y aviso de datos ficticios."
+      }
+    },
+    "themes": {
+      "note": "Los tokens sin prefijo son el tema claro; los night-* y *-night, el oscuro. En CSS cambian las mismas variables bajo data-theme=\"dark\" o prefers-color-scheme.",
+      "cssVariables": {
+        "--bg": [
+          "paper",
+          "night-paper"
+        ],
+        "--tray": [
+          "tray",
+          "night-tray"
+        ],
+        "--cell": [
+          "compartment",
+          "night-compartment"
+        ],
+        "--line": [
+          "line",
+          "night-line"
+        ],
+        "--ink": [
+          "ink",
+          "night-ink"
+        ],
+        "--ink-2": [
+          "ink-muted",
+          "night-ink-muted"
+        ],
+        "--chip": [
+          "chip",
+          "night-chip"
+        ],
+        "--acc": [
+          "tamago",
+          "tamago-night"
+        ],
+        "--acc-ink": [
+          "tamago-ink",
+          "tamago-night"
+        ],
+        "--no": [
+          "discard-red",
+          "discard-red-night"
+        ],
+        "--ok": [
+          "available-green",
+          "available-green-night"
+        ],
+        "--cloth": [
+          "furoshiki",
+          "furoshiki"
+        ],
+        "--cloth-2": [
+          "furoshiki-deep",
+          "furoshiki-deep"
+        ],
+        "--on-cloth": [
+          "on-cloth",
+          "on-cloth"
+        ],
+        "--on-cloth-2": [
+          "on-cloth-muted",
+          "on-cloth-muted"
+        ],
+        "--on-acc": [
+          "on-tamago",
+          "on-tamago"
+        ]
       }
     },
     "shadows": [
       {
-        "name": "ring-lit",
-        "value": "inset 0 0 0 1px var(--color-primary)",
-        "purpose": "Contorno fino del chip de tecnología iluminado por el commit señalado. No proyecta sombra."
+        "name": "lift",
+        "value": "0 16px 28px -20px rgb(11 16 34 / 0.5)",
+        "valueDark": "0 16px 28px -20px rgb(0 0 0 / 0.8)",
+        "purpose": "Hover y foco de compartimentos de proyecto enlazados, con translateY(-3px)."
       },
       {
-        "name": "focus-ring",
-        "value": "outline: 2px solid var(--color-primary); outline-offset: 2px",
-        "purpose": "Anillo de foco único de toda la página."
-      },
-      {
-        "name": "node-lit",
-        "value": "outline: 2px solid var(--color-primary); outline-offset: 3px",
-        "purpose": "Aro del nodo de un commit iluminado (rama que se ilumina)."
+        "name": "float",
+        "value": "0 16px 28px -16px rgb(11 16 34 / 0.5)",
+        "valueDark": "0 16px 28px -16px rgb(0 0 0 / 0.8)",
+        "purpose": "Píldora fija del filtro de stack mientras está abierta."
       }
     ],
     "motion": [
       {
-        "name": "lane-draw",
-        "value": "360ms cubic-bezier(0.16, 1, 0.3, 1), retardo min(i*60ms, 240ms)",
-        "purpose": "Único trazado al cargar: los carriles se dibujan de HEAD hacia abajo, fila a fila (clip-path)."
+        "name": "ease",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Única curva de todo el sistema; nada de ease ni linear."
       },
       {
-        "name": "fold",
-        "value": "200ms ease-out",
-        "purpose": "Plegado de una fila a línea fantasma (grid-template-rows) y desplazamiento de nodo y curvas."
+        "name": "press",
+        "value": "0.2s",
+        "purpose": "Botón que baja 1 px al pulsar."
       },
       {
-        "name": "lit-stroke",
-        "value": "120ms ease-out",
-        "purpose": "Engrosado del trazo de la rama iluminada."
+        "name": "control",
+        "value": "0.25s",
+        "purpose": "Cambios de color y fondo en botones, chips, segmentados y navegación."
       },
       {
-        "name": "state-fast",
-        "value": "150ms",
-        "purpose": "Fondo, color y borde de botones y chips."
+        "name": "respond",
+        "value": "0.35s",
+        "purpose": "Levantar compartimentos, filtro de stack, píldora y panel móvil."
       },
       {
-        "name": "ambient-graph",
-        "value": "30 fps; puntos a 20-40 px/s; líneas 7% y puntos 18% de opacidad",
-        "purpose": "Fondo vivo; se detiene con la pestaña oculta y queda estático con prefers-reduced-motion."
+        "name": "shot-zoom",
+        "value": "0.6s",
+        "purpose": "Captura a scale(1.03) en hover o foco del proyecto."
+      },
+      {
+        "name": "place",
+        "value": "translate 22px desde su lado, 0.8s, 80ms de escalonado tras 1.05s",
+        "purpose": "Entrada de los compartimentos del primer piso, siempre opacos."
+      },
+      {
+        "name": "place-scroll",
+        "value": "animation-timeline: view(); animation-range: entry 0% entry 55%",
+        "purpose": "Entrada de los pisos siguientes dentro de @supports; sin soporte quedan quietos."
+      },
+      {
+        "name": "furoshiki-open",
+        "value": "0.9s por pico, retrasos de 0.22s a 0.45s, giro de 104 grados en perspectiva de 1600px",
+        "purpose": "Apertura de la tela al cargar; no existe con movimiento reducido."
+      },
+      {
+        "name": "knot-release",
+        "value": "0.35s, scale(0) rotate(45deg)",
+        "purpose": "El nudo tamago se suelta antes de abrirse la tela."
+      },
+      {
+        "name": "demo-hold",
+        "value": "9s",
+        "purpose": "Tiempo que la demo mantiene el estado final antes de reiniciar el bucle."
       }
     ],
     "breakpoints": [
       {
-        "name": "xs",
-        "value": "480px",
-        "purpose": "El titular baja a ancho 105% y los botones del hero ocupan toda la fila."
+        "name": "mobile",
+        "value": "639px",
+        "note": "max-width: padding de 16 px, tipografía reducida, botones a todo el ancho."
       },
       {
-        "name": "sm",
-        "value": "640px",
-        "purpose": "Avatar 88px, paso de carril 24px, margen 32px; el fondo vivo pasa de 3 a 4 carriles."
-      },
-      {
-        "name": "row",
-        "value": "720px",
-        "purpose": "Commit completo en dos columnas; nodos de proyecto a 18px."
-      },
-      {
-        "name": "md",
+        "name": "tablet",
         "value": "768px",
-        "purpose": "Cabecera en línea, grupos del stack con etiqueta de 11rem, pie sangrado a la columna de contenido."
+        "note": "min-width: proyectos de dos en dos hasta 1199 px."
       },
       {
-        "name": "lg",
-        "value": "1024px",
-        "purpose": "Avatar 116px, paso de carril 32px, margen 64px, cabecera de 64px; el fondo vivo usa 5 carriles."
+        "name": "one-column",
+        "value": "1023px",
+        "note": "max-width: compartimentos en una columna y menú en panel."
       },
       {
-        "name": "xl",
-        "value": "1100px",
-        "purpose": "Commit en tres columnas (184px, flexible, 320px); columna lateral de 17rem en el stack."
+        "name": "wide",
+        "value": "1200px",
+        "note": "min-width: rejilla completa y display a 6rem."
+      },
+      {
+        "name": "container",
+        "value": "1440px",
+        "note": "Ancho máximo de la página."
+      },
+      {
+        "name": "project-400",
+        "value": "400px",
+        "note": "Consulta de contenedor: título de proyecto a 1.875rem."
+      },
+      {
+        "name": "project-700",
+        "value": "700px",
+        "note": "Consulta de contenedor: texto y captura en dos columnas."
       }
     ]
   },
   "components": [
     {
-      "name": "Primary Button",
+      "name": "Bandeja con compartimentos",
+      "kind": "card",
+      "refersTo": "tray",
+      "description": "Un piso: bandeja con padding igual al hueco y compartimentos planos en una rejilla de 12 columnas.",
+      "html": "<div class=\"ds-tray\"><div class=\"ds-cell ds-s7\">Compartimento principal</div><div class=\"ds-cell ds-s5\">Demo</div><div class=\"ds-cell ds-s3\">Estado</div><div class=\"ds-cell ds-s9\">Stack</div></div>",
+      "css": ".ds-tray { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 8px; padding: 8px; background: var(--tray, #d7dce6); border-radius: 3px; font-family: var(--font, \"Zen Kaku Gothic New\", sans-serif); } .ds-cell { background: var(--cell, #f8f9fb); color: var(--ink, #0b1022); border-radius: 3px; padding: 32px; } .ds-s7 { grid-column: span 7; } .ds-s5 { grid-column: span 5; } .ds-s3 { grid-column: span 3; } .ds-s9 { grid-column: span 9; }"
+    },
+    {
+      "name": "Botón principal",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Acción principal (Descargar CV): relleno teal plano de 44px de alto; hover más oscuro en claro y más claro en oscuro.",
-      "html": "<a class=\"ds-btn-primary\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><path d=\"m7 10 5 5 5-5\"/><path d=\"M12 15V3\"/></svg>Descargar CV</a>",
-      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border:1px solid transparent;border-radius:6px;font:650 16px/1 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);font-stretch:105%;white-space:nowrap;cursor:pointer;transition:background-color 150ms,border-color 150ms;background:var(--color-button, #0f766e);color:var(--color-on-button, #ffffff);text-decoration:none;} .ds-btn-primary:hover{background:var(--color-button-hover, #115e59);} .ds-btn-primary:focus-visible{outline:2px solid var(--color-primary, #0f766e);outline-offset:2px;}"
+      "description": "La acción principal de un grupo: relleno tamago con tinta encima.",
+      "html": "<a class=\"ds-btn-pri\" href=\"#\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14\"/></svg>Descargar CV (PDF)</a>",
+      "css": ".ds-btn-pri { display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 0 24px; border: 1px solid transparent; border-radius: 3px; background: var(--acc, #f2b92f); color: var(--on-acc, #0b1022); font: 700 1rem/1.2 var(--font, \"Zen Kaku Gothic New\", sans-serif); text-decoration: none; transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-pri:hover { background: color-mix(in srgb, var(--acc, #f2b92f) 82%, white); } .ds-btn-pri:active { transform: translateY(1px); } .ds-btn-pri:focus-visible { outline: 2px solid var(--acc-ink, #7a5200); outline-offset: 3px; }"
     },
     {
-      "name": "Outline Button",
+      "name": "Botón de contorno",
       "kind": "button",
-      "refersTo": "button-outline",
-      "description": "Acción secundaria (Escribirme): contorno de 1px y texto teal; hover con relleno al 12%.",
-      "html": "<a class=\"ds-btn-outline\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\"/><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"/></svg>Escribirme</a>",
-      "css": ".ds-btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border:1px solid transparent;border-radius:6px;font:650 16px/1 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);font-stretch:105%;white-space:nowrap;cursor:pointer;transition:background-color 150ms,border-color 150ms;border-color:var(--color-primary, #0f766e);color:var(--color-primary, #0f766e);text-decoration:none;} .ds-btn-outline:hover{background:color-mix(in srgb, var(--color-primary, #0f766e) 12%, transparent);} .ds-btn-outline:focus-visible{outline:2px solid var(--color-primary, #0f766e);outline-offset:2px;}"
+      "refersTo": "button-secondary",
+      "description": "Acción secundaria: contorno de tinta que se rellena de tinta en hover.",
+      "html": "<a class=\"ds-btn-sec\" href=\"#\">Escribirme</a>",
+      "css": ".ds-btn-sec { display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 0 24px; border: 1px solid var(--ink, #0b1022); border-radius: 3px; background: none; color: var(--ink, #0b1022); font: 700 1rem/1.2 var(--font, \"Zen Kaku Gothic New\", sans-serif); text-decoration: none; transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-sec:hover { background: var(--ink, #0b1022); color: var(--cell, #f8f9fb); } .ds-btn-sec:active { transform: translateY(1px); } .ds-btn-sec:focus-visible { outline: 2px solid var(--acc-ink, #7a5200); outline-offset: 3px; }"
     },
     {
-      "name": "Ref Pills",
+      "name": "Chips de tecnología",
       "kind": "chip",
-      "refersTo": "pill-ref",
-      "description": "Refs de git del commit HEAD: la de la rama va rellena; las demás, de contorno.",
-      "html": "<span class=\"ds-pill ds-pill-fill\">HEAD -&gt; main</span> <span class=\"ds-pill\">open-to-work</span>",
-      "css": ".ds-pill{display:inline-block;padding:2px 10px;border:1px solid var(--color-primary, #0f766e);border-radius:999px;color:var(--color-primary, #0f766e);font:500 13px/1.5 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);font-variant-numeric:tabular-nums;} .ds-pill-fill{background:var(--color-primary, #0f766e);color:var(--color-on-button, #ffffff);font-weight:700;}"
+      "refersTo": "chip",
+      "description": "Chip neutro, chip de IA con tamago al 30 % y chip activo del filtro.",
+      "html": "<ul class=\"ds-chips\"><li><button class=\"ds-chip\" type=\"button\" aria-pressed=\"false\">Go</button></li><li><button class=\"ds-chip ds-ai\" type=\"button\" aria-pressed=\"false\">RAG</button></li><li><button class=\"ds-chip\" type=\"button\" aria-pressed=\"true\">Rust</button></li></ul>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; } .ds-chip { padding: 4px 12px; border: 0; border-radius: 2px; background: var(--chip, #edf0f5); color: var(--ink, #0b1022); font: 500 1rem/1.5 var(--font, \"Zen Kaku Gothic New\", sans-serif); cursor: pointer; transition: background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1); } .ds-chip:hover { background: color-mix(in srgb, var(--ink, #0b1022) 12%, var(--chip, #edf0f5)); } .ds-ai { background: color-mix(in srgb, var(--acc, #f2b92f) 30%, var(--cell, #f8f9fb)); } .ds-ai:hover { background: color-mix(in srgb, var(--acc, #f2b92f) 50%, var(--cell, #f8f9fb)); } .ds-chip[aria-pressed=\"true\"] { background: var(--acc, #f2b92f); color: var(--on-acc, #0b1022); } .ds-chip:focus-visible { outline: 2px solid var(--acc-ink, #7a5200); outline-offset: 3px; }"
     },
     {
-      "name": "Tech Chips",
-      "kind": "chip",
-      "refersTo": "chip-tech",
-      "description": "Argumento de git log -- tech: subrayado fino, relleno al pulsarse, contorno al iluminarse por un commit.",
-      "html": "<ul class=\"ds-chips\"><li><button class=\"ds-chip\" type=\"button\">rust <span class=\"ds-count\">4</span></button></li><li><button class=\"ds-chip ds-lit\" type=\"button\">angular <span class=\"ds-count\">3</span></button></li><li><button class=\"ds-chip\" aria-pressed=\"true\" type=\"button\">go <span class=\"ds-count\">2</span></button></li></ul>",
-      "css": ".ds-chips{display:flex;gap:0 20px;margin:0;padding:0 8px;list-style:none;} .ds-chip{--rule:color-mix(in srgb, var(--color-text-muted, #586070) 70%, transparent);display:inline-flex;align-items:center;gap:8px;min-height:36px;margin-inline:-8px;padding:5px 8px;border:0;border-radius:6px;background:linear-gradient(var(--rule),var(--rule)) 8px calc(100% - 6px) / calc(100% - 16px) 1px no-repeat;color:var(--color-text-primary, #111827);font:400 13px/1.5 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);font-variant-numeric:tabular-nums;cursor:pointer;transition:background-color 150ms,color 150ms;} .ds-chip:hover{--rule:var(--color-primary, #0f766e);color:var(--color-primary, #0f766e);} .ds-chip.ds-lit{--rule:var(--color-primary, #0f766e);box-shadow:inset 0 0 0 1px var(--color-primary, #0f766e);} .ds-count{color:var(--color-text-muted, #586070);} .ds-chip[aria-pressed='true']{background:var(--color-primary, #0f766e);color:var(--color-on-button, #ffffff);} .ds-chip[aria-pressed='true'] .ds-count{color:inherit;} .ds-chip:focus-visible{outline:2px solid var(--color-primary, #0f766e);outline-offset:2px;}"
-    },
-    {
-      "name": "Evidence Marks",
-      "kind": "custom",
-      "refersTo": "commit-graph",
-      "description": "Leyenda de nodos: la evidencia es una forma (lleno = código público, anillo = demo en vivo, discontinuo = código bajo petición), nunca un color nuevo.",
-      "html": "<ul class=\"ds-marks\"><li><span class=\"ds-mark\" data-e=\"code\"></span>Código público</li><li><span class=\"ds-mark\" data-e=\"demo\"></span>Demo en vivo</li><li><span class=\"ds-mark\" data-e=\"private\"></span>Código bajo petición</li></ul>",
-      "css": ".ds-marks{display:grid;gap:10px;margin:0;padding:0;list-style:none;color:var(--color-primary, #0f766e);font:400 13px/1.5 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);} .ds-marks li{display:flex;align-items:center;gap:10px;color:var(--color-on-surface-variant, #4b5563);} .ds-mark{display:inline-block;box-sizing:border-box;width:14px;height:14px;border-radius:50%;color:var(--color-primary, #0f766e);} .ds-mark[data-e='code']{background:currentColor;} .ds-mark[data-e='demo']{border:2px solid currentColor;background:var(--color-background, #f3f4f6);} .ds-mark[data-e='private']{border:2px dashed currentColor;background:var(--color-background, #f3f4f6);}"
-    },
-    {
-      "name": "Commit Row",
-      "kind": "custom",
-      "refersTo": "commit-row",
-      "description": "Fila de commit en escritorio: carril con nodo, metadatos mono, título y resumen, tecnologías y acción, separada por una línea de 1px.",
-      "html": "<div class=\"ds-row\"><div class=\"ds-lane\"><i class=\"ds-line\"></i><span class=\"ds-node\"></span></div><div class=\"ds-body\"><p class=\"ds-meta\">d35ba14<br>jun 2026<br><span class=\"ds-ev\"><span class=\"ds-dot\"></span>Código público</span></p><div><h3 class=\"ds-title\">URL State Monitor</h3><p class=\"ds-sum\">Aplicación en Go que monitoriza el estado de varias URLs y guarda las métricas de respuesta en una base de datos.</p></div><p class=\"ds-ids\">go mysql</p></div></div>",
-      "css": ".ds-row{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:20px;max-width:760px;} .ds-lane{position:relative;} .ds-line{position:absolute;top:0;bottom:0;left:19px;width:2px;background:var(--color-primary, #0f766e);} .ds-node{position:absolute;top:33px;left:12px;width:16px;height:16px;border-radius:50%;background:var(--color-primary, #0f766e);} .ds-body{display:grid;grid-template-columns:140px minmax(0,1fr) 110px;column-gap:24px;padding:22px 0 26px;border-top:1px solid var(--color-surface-border, #e5e7eb);color:var(--color-on-background, #1f2937);font:400 17px/1.6 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);} .ds-meta{margin:0;color:var(--color-on-surface-variant, #4b5563);font:400 13px/1.5 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);font-variant-numeric:tabular-nums;} .ds-ev{display:inline-flex;align-items:center;gap:8px;} .ds-dot{width:11px;height:11px;border-radius:50%;background:var(--color-primary, #0f766e);} .ds-title{margin:0;color:var(--color-text-primary, #111827);font:650 24px/1.2 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);font-stretch:110%;letter-spacing:-0.01em;} .ds-sum{margin:10px 0 0;color:var(--color-on-surface-variant, #4b5563);} .ds-ids{margin:0;color:var(--color-text-muted, #586070);font:400 13px/1.5 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);}"
-    },
-    {
-      "name": "Header Navigation",
+      "name": "Conmutador segmentado",
       "kind": "nav",
-      "refersTo": "button-primary",
-      "description": "Barra de 64px con marca teal, enlaces de 15px, herramientas de idioma (mono) y tema, y el botón de CV.",
-      "html": "<header class=\"ds-bar\"><a class=\"ds-brand\" href=\"#\">chuwi-dev</a><nav class=\"ds-links\"><a href=\"#\">Stack</a><a href=\"#\">Historial</a><a href=\"#\">Contacto</a><button class=\"ds-tool\" type=\"button\">EN</button></nav><a class=\"ds-cv\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><path d=\"m7 10 5 5 5-5\"/><path d=\"M12 15V3\"/></svg>Descargar CV</a></header>",
-      "css": ".ds-bar{display:flex;align-items:center;gap:8px;height:64px;padding:0 24px;border-bottom:1px solid var(--color-surface-border, #e5e7eb);background:var(--color-background, #f3f4f6);} .ds-brand{margin-right:auto;color:var(--color-primary, #0f766e);font:800 21px/1.2 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);font-stretch:118%;letter-spacing:-0.02em;text-decoration:none;} .ds-links{display:flex;align-items:center;gap:4px;} .ds-links a{display:inline-flex;align-items:center;min-height:40px;padding:0 12px;border-radius:6px;color:var(--color-on-surface-variant, #4b5563);font:500 15px/1 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);text-decoration:none;} .ds-links a:hover{color:var(--color-primary, #0f766e);} .ds-tool{min-width:44px;height:44px;border:0;border-radius:6px;background:transparent;color:var(--color-on-surface-variant, #4b5563);font:400 13px/1 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);cursor:pointer;} .ds-tool:hover{color:var(--color-primary, #0f766e);background:color-mix(in srgb, var(--color-primary, #0f766e) 10%, transparent);} .ds-cv{display:inline-flex;align-items:center;gap:8px;min-height:40px;margin-left:8px;padding:0 14px;border-radius:6px;background:var(--color-button, #0f766e);color:var(--color-on-button, #ffffff);font:650 15px/1 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);font-stretch:105%;text-decoration:none;} .ds-cv:hover{background:var(--color-button-hover, #115e59);}"
+      "refersTo": "segmented-cell",
+      "description": "El mismo componente para idioma y tema: celdas de 44 px, activo relleno de tinta.",
+      "html": "<div class=\"ds-ctrls\"><div class=\"ds-switch\" role=\"group\" aria-label=\"Idioma\"><span aria-current=\"true\">ES</span><a href=\"#\">EN</a></div><div class=\"ds-switch\" role=\"group\" aria-label=\"Tema\"><button type=\"button\" aria-pressed=\"true\" aria-label=\"Claro\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/></svg></button><button type=\"button\" aria-pressed=\"false\" aria-label=\"Oscuro\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z\"/></svg></button></div></div>",
+      "css": ".ds-ctrls { display: flex; gap: 8px; } .ds-switch { display: inline-flex; border: 1px solid var(--line, #cbd1dc); border-radius: 3px; background: var(--cell, #f8f9fb); } .ds-switch > * { display: grid; place-items: center; width: 44px; height: 34px; padding: 0; border: 0; background: none; color: var(--ink-2, #465069); font: 700 0.875rem/1 var(--font, \"Zen Kaku Gothic New\", sans-serif); text-decoration: none; cursor: pointer; transition: background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s cubic-bezier(0.22, 1, 0.36, 1); } .ds-switch > * + * { border-left: 1px solid var(--line, #cbd1dc); } .ds-switch > a:hover, .ds-switch > button:hover { background: var(--chip, #edf0f5); color: var(--ink, #0b1022); } .ds-switch > [aria-pressed=\"true\"], .ds-switch > [aria-current=\"true\"] { background: var(--ink, #0b1022); color: var(--cell, #f8f9fb); } .ds-switch > *:focus-visible { outline: 2px solid var(--acc-ink, #7a5200); outline-offset: 3px; }"
     },
     {
-      "name": "Shortcut Key",
+      "name": "Etiqueta de evidencia",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Metadato con borde de línea que dice qué se puede comprobar de un proyecto.",
+      "html": "<span class=\"ds-tag\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M8 7l-5 5 5 5M16 7l5 5-5 5\"/></svg>Código público</span>",
+      "css": ".ds-tag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border: 1px solid var(--line, #cbd1dc); border-radius: 2px; color: var(--ink, #0b1022); font: 700 0.875rem/1.5 var(--font, \"Zen Kaku Gothic New\", sans-serif); }"
+    },
+    {
+      "name": "Compartimento de proyecto",
       "kind": "custom",
-      "refersTo": "shortcut-key",
-      "description": "Tecla del diálogo de atajos: kbd mono en teal con contorno de 1px y descripción atenuada.",
-      "html": "<dl class=\"ds-keys\"><div><dt><kbd>j</kbd></dt><dd>Commit siguiente</dd></div><div><dt><kbd>/</kbd></dt><dd>Ir al filtro del stack</dd></div></dl>",
-      "css": ".ds-keys{width:22rem;margin:0;padding:8px 24px;border:1px solid var(--color-surface-border, #e5e7eb);border-radius:8px;background:var(--color-surface-card, #ffffff);} .ds-keys div{display:grid;grid-template-columns:4.5rem 1fr;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--color-surface-border, #e5e7eb);} .ds-keys div:first-child{border-top:0;} .ds-keys dt,.ds-keys dd{margin:0;} .ds-keys kbd{display:inline-block;min-width:2.25rem;padding:2px 8px;border:1px solid var(--color-surface-border, #e5e7eb);border-radius:4px;color:var(--color-primary, #0f766e);font:400 13px/1.5 var(--font-mono, 'Martian Mono Variable', ui-monospace, Menlo, monospace);text-align:center;} .ds-keys dd{color:var(--color-on-surface-variant, #4b5563);font:400 15px/1.6 var(--font-sans, 'Archivo Variable', ui-sans-serif, system-ui, sans-serif);}"
+      "refersTo": "compartment",
+      "description": "El compartimento entero es el enlace; se levanta 3 px con sombra difusa en hover o foco.",
+      "html": "<article class=\"ds-project\"><div class=\"ds-meta\"><span class=\"ds-ptag\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M8 7l-5 5 5 5M16 7l5 5-5 5\"/></svg>Código público</span><span class=\"ds-when\">2025</span></div><h3 class=\"ds-ptitle\"><a class=\"ds-stretch\" href=\"#\">Proyecto</a></h3><p class=\"ds-lead\">Qué hace en una frase.</p><ul class=\"ds-facts\"><li>Un punto comprobable.</li><li>Otro punto comprobable.</li></ul><span class=\"ds-action\">Ver código<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M7 17L17 7M8 7h9v9\"/></svg></span></article>",
+      "css": ".ds-project { position: relative; display: flex; flex-direction: column; gap: 16px; padding: 32px; background: var(--cell, #f8f9fb); color: var(--ink, #0b1022); border-radius: 3px; font-family: var(--font, \"Zen Kaku Gothic New\", sans-serif); transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1); } .ds-project:hover, .ds-project:has(:focus-visible) { transform: translateY(-3px); box-shadow: 0 16px 28px -20px var(--lift, rgb(11 16 34 / 0.5)); } .ds-project:has(.ds-stretch:focus-visible) { outline: 2px solid var(--acc-ink, #7a5200); outline-offset: 3px; } .ds-meta { display: flex; align-items: center; gap: 8px; } .ds-ptag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border: 1px solid var(--line, #cbd1dc); border-radius: 2px; font-size: 0.875rem; font-weight: 700; } .ds-when { margin-left: auto; color: var(--ink-2, #465069); font-size: 0.875rem; } .ds-ptitle { margin: 0; font-size: 1.875rem; font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; } .ds-stretch { color: inherit; text-decoration: none; } .ds-stretch:focus-visible { outline: none; } .ds-stretch::after { content: \"\"; position: absolute; inset: 0; } .ds-lead { margin: 0; font-size: 1.125rem; font-weight: 500; line-height: 1.4; } .ds-facts { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line, #cbd1dc); } .ds-facts li { padding: 8px 0; border-bottom: 1px solid var(--line, #cbd1dc); } .ds-action { display: inline-flex; align-items: center; gap: 4px; color: var(--acc-ink, #7a5200); font-size: 0.875rem; font-weight: 700; }"
+    },
+    {
+      "name": "Compartimento de la frase",
+      "kind": "custom",
+      "refersTo": "statement",
+      "description": "Frase a todo el ancho, en un solo color, con fondo de tinta y texto de compartimento.",
+      "html": "<p class=\"ds-statement\">El código calcula.<br>El modelo explica.</p>",
+      "css": ".ds-statement { margin: 0; padding: 64px 48px; border-radius: 3px; background: var(--ink, #0b1022); color: var(--cell, #f8f9fb); font: 900 4.5rem/1 var(--font, \"Zen Kaku Gothic New\", sans-serif); letter-spacing: -0.045em; }"
+    },
+    {
+      "name": "Tapa de contacto",
+      "kind": "custom",
+      "refersTo": "lid",
+      "description": "La tela del furoshiki cierra la caja con un nudo cuadrado tamago sobre su borde.",
+      "html": "<section class=\"ds-lid\"><i class=\"ds-knot\" aria-hidden=\"true\"></i><div class=\"ds-lid-cell\"><h2 class=\"ds-lid-title\">Hablemos</h2><p class=\"ds-lid-text\">Texto de contacto sobre la tela.</p><div class=\"ds-lid-cta\"><a class=\"ds-lid-pri\" href=\"#\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14\"/></svg>Descargar CV (PDF)</a><a class=\"ds-lid-sec\" href=\"#\">Escribirme</a></div></div></section>",
+      "css": ".ds-lid { position: relative; margin-top: 32px; padding: 8px; border-radius: 3px; background: var(--cloth-2, #1a285a); font-family: var(--font, \"Zen Kaku Gothic New\", sans-serif); } .ds-knot { position: absolute; top: -28px; left: 50%; width: 56px; height: 56px; margin-left: -28px; background: var(--acc, #f2b92f); } .ds-lid-cell { padding: 64px 48px; border-radius: 3px; background: var(--cloth, #22336f); color: var(--on-cloth, #eef1f8); } .ds-lid-title { margin: 0; font-size: 4.5rem; font-weight: 900; line-height: 1; letter-spacing: -0.045em; } .ds-lid-text { margin: 24px 0 0; color: var(--on-cloth-2, #b9c2da); font-size: 1.1875rem; } .ds-lid-cta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; } .ds-lid-pri, .ds-lid-sec { display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 0 24px; border: 1px solid transparent; border-radius: 3px; font-weight: 700; text-decoration: none; transition: background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s cubic-bezier(0.22, 1, 0.36, 1); } .ds-lid-pri { background: var(--acc, #f2b92f); color: var(--on-acc, #0b1022); } .ds-lid-pri:hover { background: color-mix(in srgb, var(--acc, #f2b92f) 82%, white); } .ds-lid-sec { border-color: var(--on-cloth, #eef1f8); color: var(--on-cloth, #eef1f8); } .ds-lid-sec:hover { background: var(--on-cloth, #eef1f8); color: var(--cloth, #22336f); } .ds-lid-pri:focus-visible, .ds-lid-sec:focus-visible { outline: 2px solid var(--acc, #f2b92f); outline-offset: 3px; }"
     }
   ],
   "narrative": {
-    "northStar": "El historial desde HEAD",
-    "overview": "La página es un git log --graph leído hacia atrás: arriba está HEAD (Sergio hoy, con su foto como nodo del carril principal) y cada entrada es un commit sobre un carril teal que baja hasta el commit raíz. El sistema entero se deriva de esa metáfora: una sola rejilla de carriles que alinea todo lo demás, un único tono cromático (teal) sobre neutros azul-grisáceos, y un vocabulario de marcas (lleno, anillo, discontinuo) que dice qué se puede comprobar de cada commit sin recurrir a más color.\n\nLa densidad es de registro, no de tarjetas: las filas se separan con una línea de 1px y no se encierran en cajas. El carácter lo pone Archivo en su eje de ancho (titulares anchos y apretados, cuerpo a ancho normal) frente a Martian Mono, reservado a lo que de verdad es un dato o un comando.\n\nEl rechazo confirmado es el portfolio de desarrollador por defecto: hero partido con foto, roles tecleados, nube de pastillas de tecnología y rejilla de tarjetas iguales. El fondo es ambiental y nunca compite con los datos.",
+    "northStar": "El jūbako que se monta",
+    "overview": "La página es una caja bento japonesa de pisos (jūbako) que se ensambla delante del visitante. Cada piso es una bandeja; dentro, compartimentos sin borde ni sombra en reposo, separados solo por un hueco de 8 px igual al padding de la bandeja. Cada compartimento guarda una sola cosa y su tamaño lo dicta su peso, no el deseo de igualar alturas: un proyecto principal ocupa 8 o 12 columnas, uno menor 4. La caja va envuelta en un furoshiki índigo (aizome) que se abre al cargar y vuelve a cerrarse como tapa al final, con un nudo cuadrado en tamago.\n\nEl sistema es moderno y minimal, cuadrado casi por completo (3 px y 2 px de radio) y de una sola familia tipográfica. La densidad es alta pero ordenada: la rejilla de 12 columnas y el hueco constante hacen el trabajo de los bordes y las sombras. El color está casi todo en grises azulados fríos; el tamago es un relleno escaso que marca la acción y la evidencia, y el índigo de la tela solo aparece en el envoltorio.\n\nEl movimiento es de montaje: la tela se abre, cada compartimento entra desde su lado ya opaco y los pisos siguientes se colocan al entrar en pantalla. Se rechaza de forma explícita la bento grid genérica de SaaS (icono, título y texto en celdas iguales, degradados, cristal, brillos) y el hero partido con foto.",
     "keyCharacteristics": [
-      "Un único tono cromático, teal, en dos temas (claro y oscuro) con la misma estructura.",
-      "Una rejilla [carriles | contenido] compartida por hero, stack, historial y pie.",
-      "La evidencia de cada commit es una forma (lleno, anillo, discontinuo), nunca un color añadido.",
-      "Plano: sin sombras de caída; la profundidad es un escalón tonal más líneas de 1px.",
-      "Archivo variable con eje de ancho para titulares; Martian Mono solo para datos.",
-      "Movimiento contenido: el trazado de carriles al cargar, el plegado de filas y un fondo ambiental; todo apagado con prefers-reduced-motion."
+      "Bandeja con compartimentos: hueco y padding de bandeja idénticos (8 px).",
+      "Tamaño de compartimento proporcional al peso del contenido.",
+      "Radios de 3 px en bandejas, compartimentos, botones y segmentados; 2 px en chips, etiquetas y citas.",
+      "Una sola familia, Zen Kaku Gothic New, con titulares a peso 900 y tracking muy cerrado.",
+      "Índigo aizome como tela y tamago como único acento de relleno.",
+      "Tema oscuro profundo con compartimentos hundidos respecto a la bandeja.",
+      "Una única curva de animación para todo el sistema."
     ],
     "rules": [
       {
-        "name": "The One Ink Rule",
-        "body": "El teal es la única tinta cromática. No existe un segundo tono ni un color de estado: lo que cambia entre estados es la forma, el grosor o el relleno, nunca el matiz.",
+        "name": "The Tamago Fill Rule",
+        "body": "El tamago rellena superficies; en el tema claro nunca colorea texto, que usa el ámbar profundo. Sobre la tela puede además trazar el anillo de foco y el subrayado de los enlaces.",
         "section": "colors"
       },
       {
-        "name": "The Mark Not Color Rule",
-        "body": "La evidencia de un commit (código público, demo, código bajo petición) se dice con la forma del nodo: lleno, anillo, discontinuo. Un estado nuevo pide una forma nueva, no un color nuevo.",
+        "name": "The Ink Fill Rule",
+        "body": "El relleno de tinta con texto de compartimento significa «activo o seleccionado»: segmentado actual, pausa pulsada, hover del botón de contorno, píldora del filtro y enlace de salto. Fuera de esos estados solo lo llevan el compartimento de la frase a todo el ancho y tres de los rectángulos del logotipo.",
         "section": "colors"
       },
       {
-        "name": "The Lane Ramp Rule",
-        "body": "Los tres carriles recorren la escala teal. En claro: #0f766e, #0d9488, #14b8a6; en oscuro: #4fdbc8, #14b8a6, #0f766e. El carril principal (0) siempre es el extremo de más contraste con el fondo.",
+        "name": "The Single Signal Rule",
+        "body": "Rojo y verde tienen un solo uso cada uno (la cifra descartada con su veredicto, el cuadrado de «Disponible»). No se reutilizan como colores de estado genéricos.",
         "section": "colors"
       },
       {
-        "name": "The Mono Is Data Rule",
-        "body": "Martian Mono solo para texto que parezca de terminal o de registro: hashes, fechas, ids, refs, comandos, teclas. Nunca para titulares ni para párrafos.",
+        "name": "The One Family Rule",
+        "body": "Una sola familia; la jerarquía sale del peso (400 a 900) y del tracking (-0.045em en display y headlines). No hay monoespaciada ni segunda familia.",
         "section": "typography"
       },
       {
-        "name": "The Width Axis Rule",
-        "body": "Peso y ancho suben juntos: cuanto mayor el titular, más ancho (105–120%) y más tracking negativo (-0.01 a -0.03em); el cuerpo se queda a 100% y sin tracking.",
+        "name": "The Whole Headline Rule",
+        "body": "Un titular va entero en un color; ninguna palabra suelta se resalta en otro color ni en otro peso.",
         "section": "typography"
       },
       {
-        "name": "The One Grid Rule",
-        "body": "Todo bloque de página cuelga de la rejilla de carriles y comparte su borde izquierdo de contenido; ningún bloque define su propio margen.",
+        "name": "The Equal Gap Rule",
+        "body": "El hueco entre compartimentos y el padding de la bandeja son el mismo valor (8 px). Nada separa compartimentos salvo ese hueco.",
         "section": "layout"
       },
       {
-        "name": "The Single Interruption Rule",
-        "body": "Una sola banda a todo ancho cruza los carriles, la de la entrada destacada. El resto del historial es filas planas separadas por una línea.",
+        "name": "The Weight Sizes Rule",
+        "body": "El tamaño de un compartimento lo decide el peso de lo que guarda; las capturas mantienen 16/10 y nunca se estiran para igualar alturas, el sobrante queda bajo el texto.",
         "section": "layout"
       },
       {
-        "name": "The Flat Ledger Rule",
-        "body": "Sin sombras de caída ni elevaciones: los estados se marcan con contorno, grosor de trazo o relleno, nunca con sombra.",
+        "name": "The Flat At Rest Rule",
+        "body": "Ningún compartimento lleva sombra ni borde en reposo; la sombra es siempre difusa, nunca desplazada en bloque, y solo responde a hover, foco o a un elemento flotante.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Sunken Night Rule",
+        "body": "En oscuro el compartimento queda por debajo de la bandeja (#070b17 frente a #0b1020); no se invierte esa relación para «iluminar» tarjetas.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "Do usar el teal como única tinta cromática y cambiar de estado por forma, grosor o relleno (The One Ink Rule).",
-      "Do decir la evidencia con la forma del nodo: lleno, anillo, discontinuo (The Mark Not Color Rule).",
-      "Do colgar cada bloque nuevo de la rejilla [carriles | contenido] y respetar los valores por tramo de avatar, lane-step, graph-gap y page-pad.",
-      "Do separar filas con una línea de 1px (mist en claro, graphite en oscuro) y mantener la profundidad como un escalón tonal.",
-      "Do componer los titulares con peso 650–800, ancho 105–120% y tracking negativo, y el cuerpo a 17px, 1.6, ancho 100%, con medida máxima de 68ch.",
-      "Do reservar Martian Mono (13px, cifras tabulares) para hashes, fechas, ids, refs, comandos y teclas.",
-      "Do usar iconos del sprite propio (trazo de 2px, extremos redondeados, 1.15em) y respetar prefers-reduced-motion en todo movimiento.",
-      "Do diferenciar el resaltado (contorno fino, trazo más grueso) del filtro (relleno y plegado)."
+      "Do separar compartimentos solo con el hueco de 8 px, igual al padding de la bandeja.",
+      "Do dimensionar cada compartimento por el peso de su contenido, en la rejilla de 12 columnas.",
+      "Do usar la curva cubic-bezier(0.22, 1, 0.36, 1) en toda animación y transición: 0,2 s al pulsar, 0,25 s en cambios de color de controles, 0,35 s en levantar y filtrar, 0,8 s en las entradas.",
+      "Do hacer entrar los compartimentos desde su lado (22 px desde la izquierda, la derecha o abajo) siempre opacos, con 80 ms de escalonado en el primer piso y con `animation-timeline: view()` y `animation-range: entry 0% entry 55%` dentro de `@supports` en los siguientes.",
+      "Do animar en entradas y en el furoshiki solo transform, opacity, clip-path y visibility; el color, el fondo y la sombra solo cambian como respuesta a hover, foco o filtro.",
+      "Do quitar animaciones y transiciones con `prefers-reduced-motion: reduce` y dejar todo visible y quieto.",
+      "Do mantener 4,5:1 en todo texto, también en el que el filtro atenúa: se cambia a tinta secundaria, nunca se baja su opacidad.",
+      "Do usar iconos SVG de trazo de 2 px con remates cuadrados."
     ],
     "donts": [
-      "Don't introducir un segundo tono ni colores de estado (verde de éxito, rojo de error, ámbar de aviso).",
-      "Don't usar sombras de caída ni elevaciones para destacar un elemento.",
-      "Don't convertir el historial en una rejilla de tarjetas iguales ni encerrar las filas en cajas; la única banda a todo ancho es la de la entrada destacada.",
-      "Don't usar el relleno de un chip para un resaltado: el relleno es el filtro.",
-      "Don't subir la opacidad ni la velocidad del fondo vivo, ni colocar sobre él nada que compita con los datos.",
-      "Don't usar Martian Mono en titulares ni en párrafos, ni Archivo ensanchado por encima de 125%.",
-      "Don't romper el carril principal al plegar una fila: los carriles siguen siempre."
+      "Don't construir la bento grid genérica: celdas iguales con icono, título y texto, degradados, cristal o brillos.",
+      "Don't partir el hero en texto a un lado y foto al otro.",
+      "Don't dar borde ni sombra en reposo a un compartimento, ni usar sombras desplazadas en bloque.",
+      "Don't redondear más de 3 px; el círculo del icono del sol es la única curva.",
+      "Don't usar `ease` ni `linear`.",
+      "Don't escribir texto en tamago en el tema claro.",
+      "Don't colorear una palabra suelta de un titular.",
+      "Don't poner etiquetas en mayúsculas con tracking abierto; las únicas mayúsculas son los códigos de idioma ES y EN y las siglas.",
+      "Don't unir metadatos con puntos medios ni poner «→» como glifo en enlaces y botones; la dirección la da el icono externo dibujado.",
+      "Don't usar el rojo y el verde fuera de su único uso."
     ]
   }
 }

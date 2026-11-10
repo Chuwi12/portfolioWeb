@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+import { UI } from '../i18n/ui';
+import { PATH } from '../lib/site';
+
+const langs = ['es', 'en'] as const;
+---
+
+<Base
+  lang="es"
+  title={`${UI.es.notFoundTitle} / ${UI.en.notFoundTitle}`}
+  description={UI.es.notFoundText}
+  noindex
+>
+  <header class="wrap bar">
+    <a class="brand" href="/">
+      <span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      chuwi-dev
+    </a>
+  </header>
+  <main id="main" class="wrap">
+    <div class="tier">
+      <div class="box">
+        {
+          langs.map((l) => (
+            <section class="cell s6 empty" lang={l}>
+              {l === 'es' ? <h1>{UI[l].notFoundTitle}</h1> : <h2>{UI[l].notFoundTitle}</h2>}
+              <p>{UI[l].notFoundText}</p>
+              <a class="btn btn-pri" href={PATH[l]}>
+                {UI[l].notFoundBack}
+              </a>
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .bar {
+    display: flex;
+    align-items: center;
+    height: 76px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-12);
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .logo {
+    display: grid;
+    grid-template-columns: 8px 12px;
+    grid-template-rows: 12px 8px;
+    gap: 2px;
+  }
+  .logo i {
+    background: var(--ink);
+  }
+  .logo i:nth-child(2) {
+    background: var(--acc);
+  }
+  .empty {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--sp-24);
+    min-height: 360px;
+  }
+  h1,
+  h2 {
+    font-size: var(--fs-6xl);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+  p {
+    color: var(--ink-2);
+    font-size: var(--fs-pitch);
+  }
+  @media (max-width: 639px) {
+    h1,
+    h2 {
+      font-size: var(--fs-4xl);
+    }
+    .empty {
+      min-height: 0;
+    }
+  }
+</style>

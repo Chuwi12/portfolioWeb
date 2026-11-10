@@ -2,9 +2,6 @@
 
 # Compiled output
 /dist
-/tmp
-/out-tsc
-/bazel-out
 
 # Node
 /node_modules
@@ -22,22 +19,11 @@ yarn-error.log
 
 # Visual Studio Code
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
 !.vscode/extensions.json
-!.vscode/mcp.json
 .history/*
 
 # Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
 /coverage
-/libpeerconnection.log
-testem.log
-/typings
-__screenshots__/
 
 # System files
 .DS_Store
@@ -71,3 +57,6 @@ Thumbs.db
 # Entorno y enlace local de Vercel
 .env*
 .vercel/
+
+# Astro
+/.astro
