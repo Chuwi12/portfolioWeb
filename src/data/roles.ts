@@ -3,6 +3,19 @@ import type { Role } from './types';
 /** De más reciente a más antiguo dentro de cada tipo. Fechas del CV y del historial anterior. */
 export const ROLES: readonly Role[] = [
   {
+    id: 'galdeca',
+    kind: 'job',
+    title: { es: 'Desarrollador Full Stack y AI Engineer', en: 'Full Stack & AI Engineer' },
+    org: { es: 'Galdeca TSF', en: 'Galdeca TSF' },
+    detail: { es: 'Startup Factory', en: 'Startup Factory' },
+    period: { start: '2026-11' },
+    summary: {
+      es: 'Desarrollo full stack de plataformas y productos digitales en la factoría de startups e integración de soluciones de IA aplicada y agentes en flujos de producción.',
+      en: 'Full stack development of digital products and web platforms across startup factory ventures, integrating applied AI solutions and agents into production workflows.',
+    },
+    nets: ['typescript', 'python', 'react', 'rag', 'docker'],
+  },
+  {
     id: 'vass',
     kind: 'job',
     title: { es: 'Desarrollador Full Stack Salesforce', en: 'Salesforce Full Stack Developer' },
