@@ -22,8 +22,8 @@ export const PROJECTS: readonly Project[] = [
       en: 'Investment analysis with a local LLM and figures you can trace',
     },
     summary: {
-      es: 'Evalúa si un activo parece buena inversión con datos de mercado en vivo y un LLM local con Ollama. El código calcula las cifras y el modelo las explica. Un verificador marca o descarta las cifras del modelo que no están en los datos, y cada afirmación cita su fuente.',
-      en: 'It assesses whether an asset looks like a good investment using live market data and a local LLM on Ollama. The code computes the figures and the model explains them. A verifier flags or drops any model figure that is not in the data, and every claim cites its source.',
+      es: 'Evalúa si un activo parece buena inversión con datos de mercado en vivo. Un verificador marca o descarta las cifras del modelo que no están en los datos, y cada afirmación cita su fuente.',
+      en: 'It assesses whether an asset looks like a good investment using live market data. A verifier flags or drops any model figure that is not in the data, and every claim cites its source.',
     },
     highlights: [
       {
@@ -31,16 +31,12 @@ export const PROJECTS: readonly Project[] = [
         en: '1,200+ tests: 931 backend and 286 frontend.',
       },
       {
-        es: 'Publica su propio backtest aunque no le favorece: los factores de precio de su puntuación no mostraron ventaja y ninguno de los 12 tests prerregistrados superó el umbral.',
-        en: 'It publishes its own backtest even though the result is unflattering: the price factors of its score showed no edge, and none of the 12 preregistered tests cleared the threshold.',
+        es: 'Publica su backtest aunque no le favorece: ninguno de los 12 tests prerregistrados superó el umbral.',
+        en: 'It publishes its own backtest even though the result is unflattering: none of the 12 preregistered tests cleared the threshold.',
       },
       {
         es: 'Chat con tool calling sobre datos en vivo y RAG híbrido (FTS5 y embeddings).',
         en: 'Chat with tool calling over live data, and hybrid RAG (FTS5 and embeddings).',
-      },
-      {
-        es: 'Privada por construcción: el modelo corre en local y el servidor solo escucha en loopback.',
-        en: 'Private by construction: the model runs locally and the server only listens on loopback.',
       },
     ],
     nets: ['rust', 'axum', 'sqlite', 'react', 'typescript', 'vite', 'ollama', 'rag'],
@@ -67,8 +63,8 @@ export const PROJECTS: readonly Project[] = [
       en: '50/30/20 personal finance with an advisor that reviews each month',
     },
     summary: {
-      es: 'Reparte los ingresos entre necesidades, deseos y ahorro, y un asesor con LLM local analiza cada mes. Rust calcula las cifras y el modelo solo las explica. Los datos no salen de la máquina porque el modelo corre en Ollama.',
-      en: 'It splits income between needs, wants and savings, and an advisor on a local LLM reviews each month. Rust computes the figures and the model only explains them. Data never leaves the machine because the model runs on Ollama.',
+      es: 'Rust calcula las cifras exactas y se las pasa al asesor, que no tiene acceso a la base de datos de finanzas. El modelo corre en Ollama, así que los datos no salen de la máquina.',
+      en: 'Rust computes the exact figures and passes them to the advisor, which has no access to the finance database. The model runs on Ollama, so data never leaves the machine.',
     },
     highlights: [
       {
@@ -80,12 +76,8 @@ export const PROJECTS: readonly Project[] = [
         en: 'Memory with RAG: every analysis and conversation is stored with its embedding in pgvector.',
       },
       {
-        es: 'Servicio Node y TypeScript con LangChain.js, sin acceso a la base de datos de finanzas: solo ve las cifras que le pasa Rust.',
-        en: 'A Node and TypeScript service with LangChain.js and no access to the finance database: it only sees the figures Rust passes to it.',
-      },
-      {
-        es: 'La captura es la salida real de un modelo de 4B sin retocar: las cifras son exactas porque las calcula Rust; los fallos de lectura son del modelo.',
-        en: "The screenshot is the untouched output of a 4B model: the figures are exact because Rust computes them; the reading mistakes are the model's.",
+        es: 'La captura es la salida real de un modelo de 4B sin retocar: las cifras son exactas, los fallos de lectura son del modelo.',
+        en: "The screenshot is the untouched output of a 4B model: the figures are exact, the reading mistakes are the model's.",
       },
     ],
     nets: [
@@ -121,12 +113,12 @@ export const PROJECTS: readonly Project[] = [
     zone: 'ai',
     title: { es: 'Chatbot del proyecto final (TFG)', en: 'Final project chatbot (TFG)' },
     tagline: {
-      es: 'Un chatbot con un modelo de lenguaje propio, hecho en equipo',
-      en: 'A chatbot with our own language model, built as a team',
+      es: 'Un chatbot con un modelo de lenguaje propio',
+      en: 'A chatbot with our own language model',
     },
     summary: {
-      es: 'Proyecto final de ciclo hecho en equipo. Interfaz en Angular, API en Python con FastAPI y un modelo de lenguaje propio entrenado con PyTorch.',
-      en: 'The final project of my higher vocational diploma, built as a team. An Angular interface, a Python API with FastAPI and our own language model trained with PyTorch.',
+      es: 'El proyecto final con el que cerré el grado superior de DAM.',
+      en: 'The final project that closed my DAM higher vocational diploma.',
     },
     highlights: [
       {
@@ -134,12 +126,8 @@ export const PROJECTS: readonly Project[] = [
         en: 'An Angular interface that talks to a Python API (FastAPI).',
       },
       {
-        es: 'Modelo de lenguaje propio entrenado con PyTorch.',
-        en: 'Our own language model, trained with PyTorch.',
-      },
-      {
-        es: 'Proyecto en equipo con el que cerré el grado superior de DAM.',
-        en: 'The team project that completed my DAM higher vocational diploma.',
+        es: 'El modelo de lenguaje se entrenó con PyTorch.',
+        en: 'The language model was trained with PyTorch.',
       },
     ],
     nets: ['angular', 'typescript', 'python', 'fastapi', 'pytorch'],
@@ -160,18 +148,14 @@ export const PROJECTS: readonly Project[] = [
       en: 'An HR platform on 17 Go microservices',
     },
     summary: {
-      es: 'Plataforma de RR. HH. para empresas: fichaje, turnos, nóminas, documentos y mensajería interna. Son 17 microservicios en Go que se comunican por eventos, con PostgreSQL, Docker y un cliente web en React.',
-      en: 'HR platform for companies: time tracking, shift scheduling, payroll, documents and internal messaging. It is 17 Go microservices that communicate through events, with PostgreSQL, Docker and a React web client.',
+      es: 'Cubre fichaje, turnos, nóminas, documentos y mensajería interna. Los servicios se comunican por eventos.',
+      en: 'It covers time tracking, shift scheduling, payroll, documents and internal messaging. The services communicate through events.',
     },
     highlights: [
-      {
-        es: '17 microservicios en Go comunicados por eventos.',
-        en: '17 Go microservices communicating through events.',
-      },
       { es: 'Más de 300 commits de desarrollo.', en: 'More than 300 commits.' },
       {
-        es: 'Mensajería interna en tiempo real cifrada de extremo a extremo.',
-        en: 'Real-time internal messaging with end-to-end encryption.',
+        es: 'Mensajes en tiempo real cifrados de extremo a extremo.',
+        en: 'Real-time messages with end-to-end encryption.',
       },
       {
         es: 'Cliente web con organigrama interactivo.',
@@ -193,17 +177,13 @@ export const PROJECTS: readonly Project[] = [
       en: 'This very site: static, bilingual, with a light and a dark theme',
     },
     summary: {
-      es: 'El sitio que estás leyendo. Está hecho con Astro 7 y TypeScript, se genera de forma estática y no usa ningún framework en el cliente. Va en español y en inglés, con tema claro y oscuro.',
-      en: 'The site you are reading. It is built with Astro 7 and TypeScript, generated statically with no client framework. It comes in Spanish and English, with a light and a dark theme.',
+      es: 'Hecho con Astro 7 y TypeScript, sin ningún framework en el cliente.',
+      en: 'Built with Astro 7 and TypeScript, with no client framework.',
     },
     highlights: [
       {
         es: 'Una URL por idioma: español en / e inglés en /en/.',
         en: 'One URL per language: Spanish at / and English at /en/.',
-      },
-      {
-        es: 'Selector de idioma y selector de tema claro y oscuro.',
-        en: 'A language switch and a light and dark theme switch.',
       },
       {
         es: 'Al pulsar una tecnología del stack se encienden los proyectos que la usan.',
@@ -229,8 +209,8 @@ export const PROJECTS: readonly Project[] = [
       en: 'Website and online booking for a fictional restaurant, with a live admin panel',
     },
     summary: {
-      es: 'Web de un restaurante ficticio (nombre, carta y opiniones inventados) con reservas online y un panel que las muestra en directo. En la demo pública las reservas no se guardan: cada instancia arranca con datos de ejemplo.',
-      en: 'Website for a fictional restaurant (made-up name, menu and reviews) with online booking and a panel that shows bookings live. On the public demo bookings are not kept: each instance starts with sample data.',
+      es: 'El nombre, la carta y las opiniones son inventados. En la demo pública las reservas no se guardan: cada instancia arranca con datos de ejemplo.',
+      en: 'The name, menu and reviews are made up. On the public demo bookings are not kept: each instance starts with sample data.',
     },
     highlights: [
       {
@@ -265,22 +245,18 @@ export const PROJECTS: readonly Project[] = [
       en: 'Modular CRM/ERP where each client sees only what they subscribe to',
     },
     summary: {
-      es: 'Cada cliente accede solo a los módulos que tiene contratados: proyectos, tickets, contratos y facturación. La API en Rust aísla los datos de cada cliente y el panel está en Angular 20.',
-      en: "Each client only accesses the modules they subscribe to: projects, tickets, contracts and invoicing. The Rust API isolates each client's data and the admin panel is built in Angular 20.",
+      es: 'Incluye proyectos, tickets, contratos y facturación, con un panel en Angular 20.',
+      en: 'It includes projects, tickets, contracts and invoicing, with an Angular 20 admin panel.',
     },
     highlights: [
       { es: 'Respuestas por debajo de 50 ms.', en: 'Response times under 50 ms.' },
       {
-        es: 'Aislamiento estricto de los datos entre clientes.',
-        en: 'Strict data isolation between clients.',
+        es: 'La API en Rust aísla estrictamente los datos de cada cliente.',
+        en: "The Rust API strictly isolates each client's data.",
       },
       {
-        es: 'Facturación con numeración legal y rectificativas.',
-        en: 'Invoicing with legally compliant numbering and credit notes.',
-      },
-      {
-        es: 'Despliegue propio con HTTPS automático.',
-        en: 'Self-managed deployment with automatic HTTPS.',
+        es: 'Numeración legal de facturas y rectificativas.',
+        en: 'Legally compliant invoice numbering and credit notes.',
       },
     ],
     nets: ['rust', 'postgresql', 'angular', 'typescript', 'docker'],
@@ -297,18 +273,17 @@ export const PROJECTS: readonly Project[] = [
       en: 'Accounting for Spanish freelancers and small businesses',
     },
     summary: {
-      es: 'Contabilidad para autónomos y pymes españolas. Backend en Rust con arquitectura hexagonal e interfaz en React.',
-      en: 'Accounting for Spanish freelancers and small businesses. A Rust backend on a hexagonal architecture and a React interface.',
+      es: 'Backend en Rust con arquitectura hexagonal e interfaz en React.',
+      en: 'A Rust backend on a hexagonal architecture, with a React interface.',
     },
     highlights: [
       {
-        es: 'Arquitectura hexagonal: toda la lógica de negocio se prueba sin base de datos.',
-        en: 'Hexagonal architecture: all business logic is tested without a database.',
+        es: 'Toda la lógica de negocio se prueba sin base de datos.',
+        en: 'All business logic is tested without a database.',
       },
-      { es: 'Acceso con doble factor (TOTP).', en: 'Two-factor sign-in (TOTP).' },
       {
-        es: 'Protección contra ataques de fuerza bruta.',
-        en: 'Protection against brute-force attacks.',
+        es: 'Acceso con doble factor (TOTP) y protección contra ataques de fuerza bruta.',
+        en: 'Two-factor sign-in (TOTP) and brute-force protection.',
       },
     ],
     nets: ['rust', 'redis', 'react', 'typescript'],
@@ -325,8 +300,8 @@ export const PROJECTS: readonly Project[] = [
       en: 'An interactive page for asking someone on a date, styled as a scrapbook',
     },
     summary: {
-      es: 'Web interactiva en formato scrapbook para proponer una cita y elegir plan, comida, vestimenta, fecha y hora. Está hecha con React y Vite.',
-      en: 'Interactive scrapbook-style page for asking someone on a date and choosing the plan, food, outfit, date and time. Built with React and Vite.',
+      es: 'Permite elegir plan, comida, vestimenta, fecha y hora.',
+      en: 'It lets you choose the plan, food, outfit, date and time.',
     },
     highlights: [
       {
@@ -358,22 +333,12 @@ export const PROJECTS: readonly Project[] = [
       en: 'Accounting SaaS for freelancers with an immutable audit trail',
     },
     summary: {
-      es: 'Caja diaria por canal, gastos con historial de auditoría, importación desde Excel e informes exportables. Backend en Rust (axum) sobre SQLite en Turso y acceso con Clerk.',
-      en: 'Daily takings per channel, expenses with an audit trail, Excel import and exportable reports. Rust (axum) backend on SQLite in Turso, with Clerk handling sign-in.',
+      es: 'Caja diaria por canal, importación desde Excel e informes exportables a PDF, Excel y CSV. Backend en Rust sobre SQLite en Turso.',
+      en: 'Daily takings per channel, Excel import and reports exportable to PDF, Excel and CSV. A Rust backend on SQLite in Turso.',
     },
     highlights: [
-      {
-        es: 'Gastos con historial de auditoría inmutable.',
-        en: 'Expenses with an immutable audit trail.',
-      },
-      {
-        es: 'Aislamiento por usuario en cada consulta.',
-        en: 'Per-user isolation in every query.',
-      },
-      {
-        es: 'Tokens JWT de Clerk validados con JWKS.',
-        en: 'Clerk JWTs verified through JWKS.',
-      },
+      { es: 'Aislamiento por usuario en cada consulta.', en: 'Per-user isolation in every query.' },
+      { es: 'Tokens JWT de Clerk validados con JWKS.', en: 'Clerk JWTs verified through JWKS.' },
     ],
     nets: ['rust', 'axum', 'react', 'typescript', 'sqlite', 'clerk', 'docker', 'vercel'],
     evidence: 'demo',
@@ -393,17 +358,14 @@ export const PROJECTS: readonly Project[] = [
     ref: 'U12',
     zone: 'platform',
     title: { es: 'URL State Monitor', en: 'URL State Monitor' },
-    tagline: {
-      es: 'Monitor de URLs en Go con métricas en MySQL',
-      en: 'URL monitor in Go with metrics in MySQL',
-    },
+    tagline: { es: 'Monitor de URLs escrito en Go', en: 'A URL monitor written in Go' },
     summary: {
-      es: 'Aplicación en Go que comprueba el estado de varias URLs y guarda cómo responden.',
-      en: 'A Go application that checks the status of several URLs and records how they respond.',
+      es: 'Comprueba el estado de varias URLs.',
+      en: 'It checks the status of several URLs.',
     },
     highlights: [
       {
-        es: 'Lee las direcciones desde un archivo .txt.',
+        es: 'Lee las direcciones de un archivo .txt.',
         en: 'Reads the addresses from a .txt file.',
       },
       {
@@ -422,18 +384,21 @@ export const PROJECTS: readonly Project[] = [
     zone: 'platform',
     title: { es: 'Art Space', en: 'Art Space' },
     tagline: {
-      es: 'App Android en Kotlin con Jetpack Compose, hecha en equipo',
-      en: 'Android app in Kotlin with Jetpack Compose, built as a team',
+      es: 'App Android en Kotlin con Jetpack Compose',
+      en: 'Android app in Kotlin with Jetpack Compose',
     },
     summary: {
-      es: 'Galería de imágenes con título, autor y año que se recorre con los botones anterior y siguiente. Usa la interfaz declarativa y el estado local de Compose.',
-      en: "An image gallery with title, artist and year, navigated with previous and next buttons. It uses Compose's declarative UI and local state.",
+      es: 'Una galería de imágenes que se recorre con los botones anterior y siguiente.',
+      en: 'An image gallery navigated with previous and next buttons.',
     },
     highlights: [
-      { es: 'Kotlin con Jetpack Compose.', en: 'Kotlin with Jetpack Compose.' },
       {
         es: 'Cada obra muestra título, autor y año.',
         en: 'Each artwork shows its title, artist and year.',
+      },
+      {
+        es: 'Interfaz declarativa y estado local de Compose.',
+        en: "Compose's declarative UI and local state.",
       },
     ],
     nets: ['kotlin', 'android'],

@@ -3,7 +3,7 @@ import Icon from './Icon.astro';
 import Switch from './Switch.astro';
 import { UI } from '../i18n/ui';
 import { PATH } from '../lib/site';
-import type { Lang } from '../data';
+import { PROFILE, type Lang } from '../data';
 
 interface Props {
   lang: Lang;
@@ -24,6 +24,9 @@ const langs: Lang[] = ['es', 'en'];
   <a class="brand" href={PATH[lang]} aria-label={`chuwi-dev, ${ui.homeLabel}`}>
     <span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     chuwi-dev
+  </a>
+  <a class="cv btn btn-pri btn-sm" href={PROFILE.cv[lang]} download>
+    <Icon name="download" size={16} />CV
   </a>
   <button class="burger" type="button" popovertarget="menu" aria-label={ui.menuOpen}>
     <Icon name="menu" size={24} />
@@ -72,6 +75,10 @@ const langs: Lang[] = ['es', 'en'];
     align-items: center;
     gap: var(--sp-24);
     height: 76px;
+    /* El texto de la barra no se apoya nunca en la celosía del fondo; el fondo se ciñe al ancho de
+       la caja, sin el padding de .wrap. */
+    background: var(--bg);
+    background-clip: content-box;
   }
   .brand {
     display: flex;
@@ -146,7 +153,25 @@ const langs: Lang[] = ['es', 'en'];
     display: none;
   }
 
+  /* El botón del CV solo va en la barra móvil, que es fija; en escritorio está en el piso 1. */
+  .cv {
+    display: none;
+  }
   @media (max-width: 1023px) {
+    /* Barra fija arriba, compacta y con el fondo del tema; el CV siempre a mano. */
+    .bar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      height: 60px;
+      gap: var(--sp-12);
+      background: var(--bg);
+      background-clip: border-box;
+      border-bottom: 1px solid var(--line);
+    }
+    .cv {
+      display: inline-flex;
+    }
     .burger {
       display: grid;
     }

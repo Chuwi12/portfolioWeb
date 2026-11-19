@@ -10,15 +10,27 @@
 html {
   background: var(--bg);
   color: var(--ink);
-  font: 400 var(--fs-lg) / 1.6 var(--font);
+  /* La raíz se queda en 16 px: los tamaños en rem (la escala de pasos) son los nominales. El texto
+     corrido toma su tamaño en body. */
+  font-family: var(--font);
+  font-size: 100%;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scrollbar-color: var(--ink-2) var(--bg);
   scroll-behavior: smooth;
 }
+@media (max-width: 1023px) {
+  html {
+    /* La barra fija tapa lo que queda justo debajo al saltar a un ancla. */
+    scroll-padding-top: 72px;
+  }
+}
 body {
   min-height: 100svh;
   overflow-x: clip;
+  font-size: var(--fs-lg);
+  font-weight: 400;
+  line-height: 1.6;
   font-variant-numeric: tabular-nums;
 }
 
@@ -53,7 +65,8 @@ a {
 }
 h1,
 h2,
-h3 {
+h3,
+h4 {
   text-wrap: balance;
 }
 p,

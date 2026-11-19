@@ -56,6 +56,7 @@ const es = {
   stackMatches: 'Proyectos que la usan',
   stackBuilt: 'Con lo que construyo',
   techListLabel: 'Tecnologías',
+  chipsMore: 'y {n} más: {list}',
   stackArchitecture: 'Arquitectura: microservicios, hexagonal, multi-tenant, WebSockets.',
   stackSecurity: 'Seguridad: JWT, MFA/TOTP, cifrado de extremo a extremo.',
 
@@ -143,6 +144,7 @@ const en: Record<UiKey, string> = {
   stackMatches: 'Projects that use it',
   stackBuilt: 'What I build with',
   techListLabel: 'Technologies',
+  chipsMore: 'and {n} more: {list}',
   stackArchitecture: 'Architecture: microservices, hexagonal, multi-tenant, WebSockets.',
   stackSecurity: 'Security: JWT, MFA/TOTP, end-to-end encryption.',
 
@@ -212,7 +214,7 @@ export const DEMO: Record<Lang, Demo> = {
     verdict: '«74\u00a0%» no está en los datos: descartada',
     note: 'Demostración ilustrativa con datos ficticios',
     link: 'Ver el proyecto',
-    pause: 'Pausar',
+    pause: 'Pausar todo',
   },
   en: {
     label: 'Demo of the invest-ai verifier',
@@ -230,7 +232,7 @@ export const DEMO: Record<Lang, Demo> = {
     verdict: '"74%" is not in the data: dropped',
     note: 'Illustrative demo with made-up data',
     link: 'See the project',
-    pause: 'Pause',
+    pause: 'Pause all',
   },
 };
 

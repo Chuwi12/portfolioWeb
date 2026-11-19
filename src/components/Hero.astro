@@ -75,7 +75,7 @@ const stack = topNets(13);
 
 <style>
   .tier {
-    margin-top: var(--sp-4);
+    /* Pegada a la barra: por un hueco asomaría la celosía del fondo como una línea de rayitas. */
     /* Los compartimentos entran desde 22 px fuera de su sitio: que no asomen de la tela. */
     overflow: clip;
   }
@@ -141,7 +141,7 @@ const stack = topNets(13);
     grid-row: 1;
   }
   .status {
-    grid-column: 1 / 4;
+    grid-column: 1 / 5;
     grid-row: 2;
     display: flex;
     flex-direction: column;
@@ -168,7 +168,7 @@ const stack = topNets(13);
     line-height: 1.5;
   }
   .stack {
-    grid-column: 4 / 10;
+    grid-column: 5 / 10;
     grid-row: 2;
     display: flex;
     align-items: center;
@@ -188,6 +188,17 @@ const stack = topNets(13);
     object-position: 50% 22%;
   }
 
+  /* «Disponible para trabajar» no se parte en una línea y el estado ocupa 4 columnas. */
+  @media (min-width: 1024px) {
+    .v {
+      white-space: nowrap;
+    }
+  }
+  @media (max-width: 1439px) {
+    .v {
+      font-size: var(--fs-lg);
+    }
+  }
   @media (max-width: 1199px) {
     h1 {
       font-size: var(--fs-7xl);
@@ -258,12 +269,14 @@ const stack = topNets(13);
       margin: -32px;
       background: var(--acc);
       pointer-events: none;
-      animation: knot 0.35s var(--ease) both;
+      animation: knot 0.35s var(--ease) 0.35s both;
     }
     .flap {
       position: absolute;
       inset: 0;
-      background: var(--cloth);
+      background-color: var(--cloth);
+      /* Sashiko hitomezashi: puntadas discontinuas en cuadrícula, estáticas y tenues. */
+      background-image: url('../assets/sashiko.svg');
       backface-visibility: hidden;
       animation: open 0.9s var(--ease) both;
     }
@@ -271,27 +284,27 @@ const stack = topNets(13);
       clip-path: polygon(0 0, 100% 0, 50% calc(50% + 1px));
       transform-origin: 50% 0;
       --rot: rotateX(-104deg);
-      animation-delay: 0.45s;
-      background: var(--cloth-2);
+      animation-delay: 0.8s;
+      background-color: var(--cloth-2);
     }
     .flap.b {
       clip-path: polygon(0 100%, 100% 100%, 50% calc(50% - 1px));
       transform-origin: 50% 100%;
       --rot: rotateX(104deg);
-      animation-delay: 0.38s;
-      background: var(--cloth-2);
+      animation-delay: 0.73s;
+      background-color: var(--cloth-2);
     }
     .flap.l {
       clip-path: polygon(0 0, 0 100%, calc(50% + 1px) 50%);
       transform-origin: 0 50%;
       --rot: rotateY(104deg);
-      animation-delay: 0.3s;
+      animation-delay: 0.65s;
     }
     .flap.r {
       clip-path: polygon(100% 0, 100% 100%, calc(50% - 1px) 50%);
       transform-origin: 100% 50%;
       --rot: rotateY(-104deg);
-      animation-delay: 0.22s;
+      animation-delay: 0.57s;
     }
   }
   @keyframes open {

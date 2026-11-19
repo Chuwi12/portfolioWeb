@@ -52,7 +52,7 @@ siempre como tal. No es una llamada real a ningún modelo.
 | Respuesta del modelo | El margen bruto subió al 61,2 % [D1] y la deuda neta bajó un 8 % [D2]. El consenso espera un 74 % el año que viene. | Gross margin rose to 61.2% [D1] and net debt fell 8% [D2]. Consensus expects 74% next year. |
 | Veredicto | «74 %» no está en los datos: descartada | "74%" is not in the data: dropped |
 | Pie | Demostración ilustrativa con datos ficticios · Ver el proyecto | Illustrative demo with made-up data · See the project |
-| Control | Pausar (botón conmutador con `aria-pressed`; el texto no cambia) | Pause (toggle button with `aria-pressed`; the label does not change) |
+| Control | Pausar todo (botón conmutador con `aria-pressed`; el texto no cambia; detiene la demo y la luz del fondo) | Pause all (toggle button with `aria-pressed`; the label does not change; it stops the demo and the background light) |
 
 ## 3. Zona IA
 

@@ -1,0 +1,58 @@
+---
+import { UI } from '../i18n/ui';
+import type { Lang } from '../data';
+
+interface Props {
+  lang: Lang;
+}
+const ui = UI[Astro.props.lang];
+---
+
+<!-- Píldora fija del filtro de stack. Va fuera de las bandejas: sus animaciones crean un bloque
+     contenedor y la píldora dejaría de ir pegada al viewport. -->
+<div id="tec-pill" class="pill">
+  <span id="tec-pill-text" aria-hidden="true"></span>
+  <button type="button" class="btn btn-pri btn-sm" data-tec-clear>{ui.stackClear}</button>
+</div>
+
+<style>
+  .pill {
+    position: fixed;
+    left: 50%;
+    bottom: var(--sp-16);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: var(--sp-16);
+    padding: var(--sp-8) var(--sp-8) var(--sp-8) var(--sp-16);
+    border-radius: var(--r);
+    background: var(--ink);
+    color: var(--cell);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    box-shadow: 0 16px 28px -16px var(--lift);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 12px);
+    transition:
+      opacity 0.35s var(--ease),
+      transform 0.35s var(--ease),
+      visibility 0.35s var(--ease);
+  }
+  .pill:global([data-open]) {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+  @media (max-width: 639px) {
+    .pill {
+      left: var(--sp-16);
+      right: var(--sp-16);
+      justify-content: space-between;
+      transform: translateY(12px);
+    }
+    .pill:global([data-open]) {
+      transform: none;
+    }
+  }
+</style>

@@ -70,7 +70,6 @@ for (const chunk of d.answer.split(/(\{[^}]+\}|\[[^\]]+\])/)) {
   .demo {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     gap: var(--sp-16);
     padding: var(--sp-32);
   }
@@ -170,6 +169,14 @@ for (const chunk of d.answer.split(/(\{[^}]+\}|\[[^\]]+\])/)) {
     white-space: nowrap;
   }
 
+  /* Respuesta y veredicto, juntos y centrados en el espacio que sobre: sin agujeros entre las demás
+     piezas (el margen automático reparte el sobrante por encima y por debajo). */
+  .a {
+    margin-top: auto;
+  }
+  .verdict {
+    margin-bottom: auto;
+  }
   .q {
     align-self: flex-end;
     max-width: 90%;

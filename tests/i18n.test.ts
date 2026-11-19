@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { NetGroup } from '../src/data';
 import { NETS } from '../src/data';
 import { DEMO, GROUP_LABEL, GROUP_ORDER, UI } from '../src/i18n/ui';
+import { noteChips } from '../src/lib/site';
 
 const keys = (o: object) => Object.keys(o).sort();
 const placeholders = (s: string) => (s.match(/\{\w+\}/g) ?? []).sort();
@@ -19,6 +20,22 @@ describe('ui.ts', () => {
     // main.ts rellena {n} y {tech}; Contact y Project, {email}, {title} y {start}.
     expect(placeholders(UI.es.stackMany)).toEqual(['{n}', '{tech}']);
     expect(placeholders(UI.es.stackOne)).toEqual(['{tech}']);
+    expect(placeholders(UI.es.chipsMore)).toEqual(['{list}', '{n}']);
+  });
+
+  it('las notas del stack son «Título: a, b, c.» y noteChips las parte sin chips vacíos', () => {
+    for (const lang of ['es', 'en'] as const)
+      for (const note of [UI[lang].stackArchitecture, UI[lang].stackSecurity]) {
+        expect(note, `${lang}: un solo «: » y punto final`).toMatch(/^[^:]+: [^:]+\.$/);
+        const { label, items } = noteChips(note);
+        expect(label, note).toBeTruthy();
+        expect(items.length, note).toBeGreaterThan(0);
+        expect(items.at(-1), 'el último chip no arrastra el punto final').not.toMatch(/\.$/);
+        expect(
+          items.every((i) => i.trim() !== ''),
+          note,
+        ).toBe(true);
+      }
   });
 
   it('ningún texto se queda sin traducir (salvo nombres que son iguales en los dos idiomas)', () => {

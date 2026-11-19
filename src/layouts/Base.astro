@@ -5,6 +5,7 @@ import font500 from '@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-l
 import font700 from '@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-latin-700-normal.woff2?url';
 import font900 from '@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-latin-900-normal.woff2?url';
 import themeInit from '../scripts/theme-init.js?raw';
+import Kumiko from '../components/Kumiko.astro';
 import { UI } from '../i18n/ui';
 import { THEME_COLORS } from '../theme';
 import { otherLang, SITE, url } from '../lib/site';
@@ -70,6 +71,7 @@ const og = `${SITE}/og.png`;
   </head>
   <body>
     <a class="skip" href="#main">{ui.skipLink}</a>
+    <Kumiko />
     <slot />
     <script>
       import '../scripts/main';

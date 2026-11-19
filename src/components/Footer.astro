@@ -9,17 +9,21 @@ const ui = UI[Astro.props.lang];
 ---
 
 <footer class="wrap">
-  <p>{ui.footerCookies}</p>
-  <p>{ui.footerRights}</p>
+  <div class="inner">
+    <p>{ui.footerCookies}</p>
+    <p>{ui.footerRights}</p>
+  </div>
 </footer>
 
 <style>
-  footer {
+  /* Fondo liso al ancho de la caja: el texto del pie no se apoya nunca en la celosía del fondo. */
+  .inner {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: var(--sp-8) var(--sp-24);
     padding-block: var(--sp-32) var(--sp-48);
+    background: var(--bg);
     color: var(--ink-2);
     font-size: var(--fs-sm);
   }

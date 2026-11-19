@@ -1,0 +1,209 @@
+---
+/**
+ * Fondo: celosía kumiko (triángulos con radios asanoha, celda de 48 × 83,138 px) fija al viewport y
+ * detrás de todo. Una segunda copia en tamago se ve solo dentro de bandas de luz: una horizontal
+ * (18 % del alto) que baja una vez al cargar (4 s) y después baja ligada al scroll, y una vertical
+ * (18 % del ancho) que cruza sola de izquierda a derecha en bucle, cada 16 s. Sin JS; con movimiento
+ * reducido solo queda la celosía, quieta; por debajo de 768 px no se muestra.
+ */
+const D =
+  'M0 0H48M0 41.569H48M0 0L24 41.569M48 0L24 41.569M24 41.569L0 83.138M24 41.569L48 83.138' +
+  'M24 13.856L0 0M24 13.856L48 0M24 13.856L24 41.569M24 69.282L24 41.569M24 69.282L0 83.138M24 69.282L48 83.138';
+---
+
+<div class="kumiko" aria-hidden="true">
+  <svg class="lattice base" width="100%" height="100%" focusable="false">
+    <defs>
+      <pattern id="kumiko-a" width="48" height="83.138" patternUnits="userSpaceOnUse">
+        <path class="line" d={D}></path>
+      </pattern>
+      <pattern id="kumiko-b" width="48" height="83.138" patternUnits="userSpaceOnUse">
+        <path class="light" d={D}></path>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#kumiko-a)"></rect>
+  </svg>
+  <div class="sweep load">
+    <div class="band">
+      <svg class="lattice glow" width="100%" height="100%" focusable="false">
+        <rect width="100%" height="100%" fill="url(#kumiko-b)"></rect>
+      </svg>
+    </div>
+  </div>
+  <div class="sweep follow">
+    <div class="band">
+      <svg class="lattice glow" width="100%" height="100%" focusable="false">
+        <rect width="100%" height="100%" fill="url(#kumiko-b)"></rect>
+      </svg>
+    </div>
+  </div>
+  <div class="sweep loop">
+    <div class="band">
+      <svg class="lattice glow" width="100%" height="100%" focusable="false">
+        <rect width="100%" height="100%" fill="url(#kumiko-b)"></rect>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<style>
+  .kumiko {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .lattice {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+  .lattice :global(path) {
+    fill: none;
+    stroke-width: 1.2;
+  }
+  .lattice :global(.line) {
+    stroke: var(--kumiko);
+  }
+  .lattice :global(.light) {
+    stroke: var(--glow);
+  }
+
+  /* La banda (18 % del alto) baja y, dentro, la celosía se contradesplaza lo mismo: así la luz
+     recorre una celosía que no se mueve. Solo transform. */
+  .sweep {
+    position: absolute;
+    inset: 0;
+  }
+  .band {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 18vh;
+    overflow: hidden;
+    opacity: var(--glow-o);
+    transform: translateY(-18vh);
+    --fade: linear-gradient(
+      var(--dir, 180deg),
+      transparent,
+      currentColor 28%,
+      currentColor 72%,
+      transparent
+    );
+    -webkit-mask-image: var(--fade);
+    mask-image: var(--fade);
+    will-change: transform;
+  }
+  .band .glow {
+    top: 0;
+    height: 100vh;
+    transform: translateY(18vh);
+    will-change: transform;
+  }
+  .follow {
+    opacity: 0;
+  }
+  /* La banda que cruza sola es vertical: 18 % del ancho, de arriba abajo. */
+  .loop .band {
+    right: auto;
+    bottom: 0;
+    width: 18vw;
+    height: auto;
+    transform: translateX(-18vw);
+    --dir: 90deg;
+  }
+  .loop .glow {
+    width: 100vw;
+    /* base.css limita los svg al ancho de su padre: esta celosía es más ancha que su banda. */
+    max-width: none;
+    height: 100%;
+    transform: translateX(18vw);
+  }
+
+  @keyframes band-move {
+    from {
+      transform: translateY(-18vh);
+    }
+    to {
+      transform: translateY(100vh);
+    }
+  }
+  @keyframes lattice-move {
+    from {
+      transform: translateY(18vh);
+    }
+    to {
+      transform: translateY(-100vh);
+    }
+  }
+  @keyframes band-cross {
+    from {
+      transform: translateX(-18vw);
+    }
+    to {
+      transform: translateX(100vw);
+    }
+  }
+  @keyframes lattice-cross {
+    from {
+      transform: translateX(18vw);
+    }
+    to {
+      transform: translateX(-100vw);
+    }
+  }
+  @keyframes appear {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .kumiko {
+      display: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sweep {
+      display: none;
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    /* Una vez al cargar, unos 4 s, cuando la tela ya se ha abierto. */
+    .load .band {
+      animation: band-move 4s cubic-bezier(0.45, 0, 0.55, 1) 0.8s both;
+    }
+    .load .glow {
+      animation: lattice-move 4s cubic-bezier(0.45, 0, 0.55, 1) 0.8s both;
+    }
+    /* Sola, sin interacción (pedido del usuario): cruza de izquierda a derecha cada 16 s, en bucle,
+       desde que termina la de carga. Mismos tiempos en banda y celosía, o la luz se descuadra.
+       Solo mientras la demo está viva (`is-live`, de demo.ts): su botón «Pausar» detiene también
+       esta luz (WCAG 2.2.2) y, sin JS, que no hay botón, el bucle no arranca. */
+    :global(html:has(.demo.is-live)) .loop .band {
+      animation: band-cross 16s cubic-bezier(0.45, 0, 0.55, 1) 5s infinite;
+    }
+    :global(html:has(.demo.is-live)) .loop .glow {
+      animation: lattice-cross 16s cubic-bezier(0.45, 0, 0.55, 1) 5s infinite;
+    }
+    /* Además, otra ligada al scroll. */
+    @supports (animation-timeline: scroll()) {
+      .follow {
+        animation: appear 0.4s var(--ease) 5s forwards;
+      }
+      .follow .band {
+        animation: band-move linear both;
+      }
+      .follow .glow {
+        animation: lattice-move linear both;
+      }
+      /* En una regla aparte: el minificador la fundiría en el atajo `animation` y Chrome no admite
+         la línea de tiempo dentro del atajo. */
+      .follow :is(.band, .glow) {
+        animation-timeline: scroll(root);
+      }
+    }
+  }
+</style>

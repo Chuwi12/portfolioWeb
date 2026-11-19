@@ -18,80 +18,126 @@ const rows = [
 ];
 ---
 
-<section id="contacto" class="lid tier tier-scroll" aria-labelledby="contact-title">
-  <i class="knot" aria-hidden="true"></i>
-  <div class="box">
-    <div class="cell s12 from-b">
-      <div class="ask">
-        <h2 id="contact-title">{ui.contactTitle}</h2>
-        <p>{ui.contactText}</p>
-        <div class="cta">
-          <a class="btn btn-pri" href={PROFILE.cv[lang]} download>
-            <Icon name="download" />{ui.cvDownload}
-          </a>
-          <a class="btn btn-sec" href={`mailto:${PROFILE.email}`}>
-            <Icon name="mail" />{ui.emailMe}
-          </a>
-          <button
-            type="button"
-            class="btn btn-sec js-only"
-            data-copy={PROFILE.email}
-            data-ok={ui.copied}
-            data-err={fill(ui.copyError, { email: PROFILE.email })}
-          >
-            <Icon name="copy" />{ui.copyEmail}
-          </button>
+<div class="lid-wrap">
+  <!-- El nudo: el cuadrado tamago girado 45° con dos orejas de tela; cae y se asienta al entrar. -->
+  <svg class="knot" viewBox="0 0 120 64" aria-hidden="true" focusable="false">
+    <path class="ear" d="M50 32L6 8L16 32L6 56Z"></path>
+    <path class="fold" d="M50 32L16 32L6 56Z"></path>
+    <path class="ear" d="M70 32L114 8L104 32L114 56Z"></path>
+    <path class="fold" d="M70 32L104 32L114 56Z"></path>
+    <rect class="tie" x="48" y="20" width="24" height="24" transform="rotate(45 60 32)"></rect>
+  </svg>
+  <section id="contacto" class="lid tier tier-scroll" aria-labelledby="contact-title">
+    <div class="box">
+      <div class="cell s12 from-b">
+        <div class="ask">
+          <h2 id="contact-title">{ui.contactTitle}</h2>
+          <p>{ui.contactText}</p>
+          <div class="cta">
+            <a class="btn btn-pri" href={PROFILE.cv[lang]} download>
+              <Icon name="download" />{ui.cvDownload}
+            </a>
+            <a class="btn btn-sec" href={`mailto:${PROFILE.email}`}>
+              <Icon name="mail" />{ui.emailMe}
+            </a>
+            <button
+              type="button"
+              class="btn btn-sec js-only"
+              data-copy={PROFILE.email}
+              data-ok={ui.copied}
+              data-err={fill(ui.copyError, { email: PROFILE.email })}
+            >
+              <Icon name="copy" />{ui.copyEmail}
+            </button>
+          </div>
+          <p id="copy-status" class="copy-status" role="status"></p>
         </div>
-        <p id="copy-status" class="copy-status" role="status"></p>
+        <dl class="data">
+          {
+            rows.map((r) => (
+              <div>
+                <dt>{r.label}</dt>
+                <dd>
+                  {r.href ? (
+                    <a
+                      href={r.href}
+                      {...(r.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    >
+                      {r.text.includes('@') ? (
+                        <>
+                          {r.text.split('@')[0]}@<wbr />
+                          {r.text.split('@')[1]}
+                        </>
+                      ) : (
+                        r.text
+                      )}
+                      {r.external && <span class="sr-only"> {ui.externalLink}</span>}
+                    </a>
+                  ) : (
+                    r.text
+                  )}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
       </div>
-      <dl class="data">
-        {
-          rows.map((r) => (
-            <div>
-              <dt>{r.label}</dt>
-              <dd>
-                {r.href ? (
-                  <a
-                    href={r.href}
-                    {...(r.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  >
-                    {r.text}
-                    {r.external && <span class="sr-only"> {ui.externalLink}</span>}
-                  </a>
-                ) : (
-                  r.text
-                )}
-              </dd>
-            </div>
-          ))
-        }
-      </dl>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <style>
-  /* Tapa final: la tela del furoshiki cierra la caja, con su nudo cuadrado sobre el borde. */
+  /* Tapa final: la tela del furoshiki cierra la caja, con su nudo sobre el borde. */
+  .lid-wrap {
+    position: relative;
+    margin-top: calc(var(--floor-gap) + var(--sp-16));
+  }
   .lid {
-    margin-top: var(--sp-48);
     background: var(--cloth-2);
   }
   .knot {
     position: absolute;
-    top: -28px;
+    top: -32px;
     left: 50%;
     z-index: 2;
-    width: 56px;
-    height: 56px;
-    margin-left: -28px;
-    background: var(--acc);
+    width: 120px;
+    height: 64px;
+    margin-left: -60px;
+  }
+  .ear {
+    fill: var(--cloth);
+  }
+  .fold {
+    fill: var(--cloth-2);
+  }
+  .tie {
+    fill: var(--acc);
+  }
+  @keyframes drop {
+    from {
+      transform: translateY(-36px) rotate(-7deg);
+    }
+    to {
+      transform: none;
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .knot {
+        animation: drop var(--ease) backwards;
+        animation-timeline: view();
+        animation-range: entry 0% entry 100%;
+      }
+    }
   }
   .cell {
     display: grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     gap: var(--sp-48);
     padding: var(--sp-64) var(--sp-48);
-    background: var(--cloth);
+    background-color: var(--cloth);
+    /* Sashiko hitomezashi: puntadas discontinuas en cuadrícula, estáticas y tenues. */
+    background-image: url('../assets/sashiko.svg');
     color: var(--on-cloth);
   }
   h2 {
@@ -145,7 +191,6 @@ const rows = [
     font-size: var(--fs-sm);
   }
   dd {
-    overflow-wrap: anywhere;
     font-size: var(--fs-lg);
     font-weight: 500;
   }
@@ -179,6 +224,15 @@ const rows = [
     .data > div {
       grid-template-columns: 1fr;
       gap: var(--sp-2);
+    }
+  }
+  /* Con la columna estrecha el email no cabe: letra algo menor y solo puede partirse tras la @. */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .data > div {
+      grid-template-columns: 5.5rem minmax(0, 1fr);
+    }
+    dd {
+      font-size: var(--fs-base);
     }
   }
 </style>
