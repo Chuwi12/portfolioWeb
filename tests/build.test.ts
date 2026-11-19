@@ -4,9 +4,9 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { FAQ, NETS, PROFILE, PROJECTS, ROLES, type Lang } from '../src/data';
-import { fill, UI } from '../src/i18n/ui';
+import { DEMO, fill, UI } from '../src/i18n/ui';
 import { planZone } from '../src/lib/layout';
-import { formatPeriod, stackGroups } from '../src/lib/site';
+import { formatPeriod, netLabel, stackGroups } from '../src/lib/site';
 import { vetoed } from './vetoed';
 
 // Estos tests leen el HTML de dist/: ejecuta antes `bun run build`.
@@ -334,6 +334,11 @@ describe.each(pages)('$file', ({ lang, canonical, cv, otherCv, switchTo }) => {
 
     // Filtro: cada botón es una red filtrable y deja proyectos al pulsarse.
     const techs = by((e) => 'data-tech' in e.a).map((e) => e.a['data-tech']);
+    // main.ts escribe la tecnología activa con data-label: sin él saldría el id («rust»).
+    for (const e of by((e) => 'data-tech' in e.a))
+      expect(e.a['data-label'], `data-label de ${e.a['data-tech']}`).toBe(
+        netLabel(e.a['data-tech'] ?? ''),
+      );
     expect([...techs].sort()).toEqual(
       stackGroups()
         .flatMap((g) => g.nets.map((n) => n.id))
@@ -356,6 +361,15 @@ describe.each(pages)('$file', ({ lang, canonical, cv, otherCv, switchTo }) => {
     }
     for (const c of by((e) => 'data-chip' in e.a))
       expect(NETS.some((n) => n.id === c.a['data-chip'])).toBe(true);
+    // Los chips «+n» guardan las redes ocultas que main.ts enciende al filtrar.
+    const more = by((e) => 'data-chip-more' in e.a);
+    expect(more.length, 'algún proyecto tiene más redes de las que caben').toBeGreaterThan(0);
+    for (const m of more)
+      for (const id of (m.a['data-chip-more'] ?? '').split(' '))
+        expect(
+          NETS.some((n) => n.id === id),
+          `data-chip-more: red ${id}`,
+        ).toBe(true);
 
     const one = (id: string) => {
       const found = by((e) => e.a.id === id);
@@ -365,6 +379,8 @@ describe.each(pages)('$file', ({ lang, canonical, cv, otherCv, switchTo }) => {
     expect(one('tec-status')).toMatchObject({ 'data-one': ui.stackOne, 'data-many': ui.stackMany });
     expect(ui.stackMany).toContain('{n}');
     for (const id of ['tec-matches', 'tec-pill', 'tec-pill-text', 'copy-status', 'menu']) one(id);
+    // main.ts devuelve el foco a este título al quitar el filtro: debe poder recibirlo.
+    expect(one('stack-title')).toMatchObject({ tabindex: '-1' });
     expect('popover' in one('menu')).toBe(true);
     expect(
       by((e) => 'data-tec-clear' in e.a).length,
@@ -392,6 +408,15 @@ describe.each(pages)('$file', ({ lang, canonical, cv, otherCv, switchTo }) => {
     expect(cls('tok')).toBeGreaterThan(5);
     expect(cls('bad'), 'demo.ts exige exactamente una cifra .bad').toBe(1);
     expect(cls('verdict')).toBe(1);
+    // demo.ts engancha el botón de pausa y alterna su aria-pressed.
+    const pause = elements(demo).filter(
+      (e) => e.name === 'button' && e.a.class?.split(/\s+/).includes('pause'),
+    );
+    expect(pause, 'botón .pause de la demo').toHaveLength(1);
+    expect(pause[0]?.a).toMatchObject({ type: 'button', 'aria-pressed': 'false' });
+    expect(text(/<button\b[^>]*\bpause\b[^>]*>([\s\S]*?)<\/button>/.exec(demo)?.[1] ?? '')).toBe(
+      DEMO[lang].pause,
+    );
   });
 
   it('proyectos y puestos: orden y rejilla de planZone, título, evidencia, periodo y redes', () => {
@@ -406,6 +431,10 @@ describe.each(pages)('$file', ({ lang, canonical, cv, otherCv, switchTo }) => {
       const classes = b.a.class?.split(/\s+/) ?? [];
       expect(classes.includes('tw'), `${p.id}: clase tw (tercero de fila de tres)`).toBe(!!wide);
       expect(classes, p.id).toEqual(expect.arrayContaining([grid, `from-${from}`, 'project']));
+      expect(
+        'data-project' in b.a,
+        `${p.id}: main.ts cuenta los proyectos con [data-project]`,
+      ).toBe(true);
       expect(b.a['data-nets'], p.id).toBe(p.nets.join(' '));
       expect(b.a['data-label'], p.id).toBe(p.title[lang]);
 
@@ -433,11 +462,30 @@ describe.each(pages)('$file', ({ lang, canonical, cv, otherCv, switchTo }) => {
       }
       for (const alt of p.image ? [p.image.alt[lang]] : [])
         expect(tags(b.inner, 'img')[0]?.alt, p.id).toBe(alt);
+      // A la vista, las 6 primeras redes y un chip «+n» con el resto; el filtro las usa todas.
+      const MAX_CHIPS = 6;
+      const chips = tags(b.inner, 'li');
+      const shown = chips.filter((l) => 'data-chip' in l).map((l) => l['data-chip']);
+      const more = chips.filter((l) => 'data-chip-more' in l);
+      const hidden = p.nets.slice(MAX_CHIPS);
+      expect(shown, `${p.id}: chips visibles`).toEqual(p.nets.slice(0, MAX_CHIPS));
+      if (hidden.length === 0) expect(more, `${p.id}: «+n» sobra si caben todas`).toHaveLength(0);
+      else {
+        expect(more, `${p.id}: falta el chip «+n»`).toHaveLength(1);
+        const names = hidden.map(netLabel).join(', ');
+        const li = /<li\b[^>]*data-chip-more[^>]*>([\s\S]*?)<\/li>/.exec(b.inner)?.[1] ?? '';
+        const span = (re: RegExp) => text(re.exec(li)?.[1] ?? '');
+        expect(span(/<span\b[^>]*aria-hidden="true"[^>]*>([^<]*)<\/span>/), `${p.id}: número`).toBe(
+          `+${hidden.length}`,
+        );
+        expect(span(/<span\b[^>]*\bsr-only\b[^>]*>([^<]*)<\/span>/), `${p.id}: texto oculto`).toBe(
+          fill(ui.chipsMore, { n: hidden.length, list: names }),
+        );
+      }
+      // Visibles más ocultas = exactamente las redes del proyecto, sin perder ni repetir ninguna.
       expect(
-        tags(b.inner, 'li')
-          .filter((l) => 'data-chip' in l)
-          .map((l) => l['data-chip']),
-        p.id,
+        [...shown, ...(more[0]?.['data-chip-more']?.split(' ') ?? [])],
+        `${p.id}: unión de chips`,
       ).toEqual(p.nets);
     });
 

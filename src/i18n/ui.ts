@@ -56,6 +56,7 @@ const es = {
   stackMatches: 'Proyectos que la usan',
   stackBuilt: 'Con lo que construyo',
   techListLabel: 'Tecnologías',
+  chipsMore: 'y {n} más: {list}',
   stackArchitecture: 'Arquitectura: microservicios, hexagonal, multi-tenant, WebSockets.',
   stackSecurity: 'Seguridad: JWT, MFA/TOTP, cifrado de extremo a extremo.',
 
@@ -143,6 +144,7 @@ const en: Record<UiKey, string> = {
   stackMatches: 'Projects that use it',
   stackBuilt: 'What I build with',
   techListLabel: 'Technologies',
+  chipsMore: 'and {n} more: {list}',
   stackArchitecture: 'Architecture: microservices, hexagonal, multi-tenant, WebSockets.',
   stackSecurity: 'Security: JWT, MFA/TOTP, end-to-end encryption.',
 

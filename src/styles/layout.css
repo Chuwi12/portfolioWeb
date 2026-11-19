@@ -1,6 +1,7 @@
 /* Caja: bandejas (pisos) con compartimentos. Las animaciones de montaje viven aquí. */
 .wrap {
-  max-width: 1440px;
+  /* Con más de 1200 px sobran márgenes de verdad (120 px a 1440): ahí se ve el fondo kumiko. */
+  max-width: 1200px;
   margin-inline: auto;
   padding-inline: var(--sp-24);
 }
@@ -12,6 +13,8 @@
 
 .tier {
   position: relative;
+  /* Nada asoma fuera de su bandeja mientras sus compartimentos entran. */
+  overflow: clip;
   background: var(--tray);
   padding: var(--gap);
   border-radius: var(--r);
@@ -82,14 +85,22 @@
 /* Los pisos son bandejas apiladas de una misma caja: separadas solo por el hueco y con su titular
    dentro, como tira superior. */
 .floor {
-  margin-top: var(--gap);
+  margin-top: var(--floor-gap);
+}
+@media (min-width: 1024px) {
+  :root {
+    --floor-gap: 64px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --floor-gap: 32px;
+  }
 }
 .strip {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--sp-8) var(--sp-32);
+  display: grid;
+  justify-items: start;
+  gap: var(--sp-8);
   padding: var(--sp-32) var(--sp-24) var(--sp-24);
 }
 .floor-title {
@@ -115,37 +126,92 @@
 .from-l {
   --dx: -22px;
   --dy: 0px;
+  --clip-from: inset(0 100% 0 0);
 }
 .from-r {
   --dx: 22px;
   --dy: 0px;
+  --clip-from: inset(0 0 0 100%);
 }
 .from-b {
   --dx: 0px;
   --dy: 22px;
+  --clip-from: inset(100% 0 0 0);
 }
 @keyframes place {
   from {
     transform: translate(var(--dx, 0px), var(--dy, 14px));
   }
 }
+/* Pisos siguientes: la bandeja aterriza y cada compartimento encaja abriéndose desde su lado. */
+@keyframes land {
+  from {
+    transform: translateY(48px);
+    clip-path: inset(0 0 30% 0);
+  }
+  to {
+    transform: none;
+    clip-path: inset(0);
+  }
+}
+@keyframes place-scroll {
+  from {
+    transform: translate(var(--dx, 0px), var(--dy, 0px));
+    clip-path: var(--clip-from, inset(0));
+  }
+  to {
+    transform: none;
+    clip-path: inset(0);
+  }
+}
 
-/* Piso 1: tras abrirse la tela, con 80 ms de escalonado. */
+/* Piso 1: tras abrirse la tela (el nudo se ve entero 350 ms antes de soltarse), con 80 ms de
+   escalonado. */
 @media (prefers-reduced-motion: no-preference) {
   .tier-first .cell {
     animation: place 0.8s var(--ease) backwards;
-    animation-delay: calc(1.05s + var(--i, 0) * 80ms);
+    animation-delay: calc(1.4s + var(--i, 0) * 80ms);
   }
 }
-/* Pisos siguientes: al entrar en pantalla, solo con scroll-driven; sin soporte quedan quietos. */
+/* Pisos siguientes: al entrar en pantalla, solo con scroll-driven; sin soporte quedan quietos y
+   visibles. Con movimiento reducido, quietos. */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
-    .tier-scroll .cell {
-      animation: place var(--ease) backwards;
+    .tier-scroll {
+      animation: land var(--ease) backwards;
       animation-timeline: view();
-      animation-range: entry 0% entry 55%;
+      animation-range: entry 0% entry 480px;
+    }
+    .tier-scroll .cell {
+      animation: place-scroll var(--ease) backwards;
+      animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 24px) entry calc(340px + var(--i, 0) * 24px);
     }
   }
+}
+.tier-scroll .box > :nth-child(1) {
+  --i: 0;
+}
+.tier-scroll .box > :nth-child(2) {
+  --i: 1;
+}
+.tier-scroll .box > :nth-child(3) {
+  --i: 2;
+}
+.tier-scroll .box > :nth-child(4) {
+  --i: 3;
+}
+.tier-scroll .box > :nth-child(5) {
+  --i: 4;
+}
+.tier-scroll .box > :nth-child(6) {
+  --i: 5;
+}
+.tier-scroll .box > :nth-child(7) {
+  --i: 6;
+}
+.tier-scroll .box > :nth-child(n + 8) {
+  --i: 7;
 }
 
 /* Compartimentos que reaccionan: enlace de proyecto y filtro de stack. */
@@ -161,19 +227,22 @@ li[data-nets] {
 .lift:hover,
 .lift:has(:focus-visible) {
   transform: translateY(-3px);
-  box-shadow: 0 16px 28px -20px var(--lift);
+  box-shadow: 0 10px 18px -12px var(--lift);
 }
-/* Filtro de stack: lo que no usa la tecnología encoge, su captura y sus chips bajan al 35 % y su
-   texto pasa a tinta secundaria (sigue siendo legible y enlazable). */
-.chips,
-.shot {
+/* Filtro de stack: lo que no usa la tecnología encoge, su captura baja al 35 % y su texto y sus
+   chips pasan a tinta secundaria (4,5:1 o más, nada de opacidad sobre el texto). */
+.shot img {
   transition: opacity 0.35s var(--ease);
 }
 html[data-filter] [data-nets]:not([data-match]) {
   color: var(--ink-2);
 }
-html[data-filter] [data-nets]:not([data-match]) :is(.chips, .shot) {
+html[data-filter] [data-nets]:not([data-match]) .shot img {
   opacity: 0.35;
+}
+html[data-filter] [data-nets]:not([data-match]) .chip {
+  background: var(--chip);
+  color: var(--ink-2);
 }
 html[data-filter] .cell[data-nets]:not([data-match]) {
   transform: scale(0.98);

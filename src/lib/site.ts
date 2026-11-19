@@ -40,6 +40,15 @@ const projectUse = new Map<string, number>();
 for (const p of PROJECTS)
   for (const id of p.nets) projectUse.set(id, (projectUse.get(id) ?? 0) + 1);
 
+/** Cuántos proyectos usan una tecnología. */
+export const techCount = (id: string): number => projectUse.get(id) ?? 0;
+
+/** «Arquitectura: a, b, c.» -> título y elementos, para pintarlos como chips que no filtran. */
+export function noteChips(note: string): { label: string; items: string[] } {
+  const [label = '', rest = ''] = note.split(': ');
+  return { label, items: rest.replace(/\.$/, '').split(', ') };
+}
+
 /** Las tecnologías que usa al menos un proyecto: solo ellas filtran. */
 const filterable = NETS.filter((n) => projectUse.has(n.id));
 

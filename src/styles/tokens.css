@@ -104,12 +104,22 @@
   --no: #c23b2e;
   --ok: #2e9e62;
   --lift: rgb(11 16 34 / 0.5);
+
+  /* Frase de la caja: tinta sobre claro en claro; sobre la tela índigo en oscuro. */
+  --statement-bg: var(--ink);
+  --statement-fg: var(--cell);
+  /* Celosía kumiko del fondo y luz tamago que la recorre. */
+  --kumiko: #cdd3de;
+  --glow: #f2b92f;
+  --glow-o: 0.85;
+  /* Hueco entre pisos. */
+  --floor-gap: var(--gap);
 }
 
 :root[data-theme='dark'] {
   color-scheme: dark;
   --bg: #04060d;
-  --tray: #0b1020;
+  --tray: #161f3e;
   --cell: #070b17;
   --line: #161d35;
   --ink: #eef1f8;
@@ -120,6 +130,11 @@
   --no: #ff7464;
   --ok: #4cc787;
   --lift: rgb(0 0 0 / 0.8);
+  --statement-bg: var(--cloth);
+  --statement-fg: var(--on-cloth);
+  --kumiko: #121a33;
+  --glow: #f5c24a;
+  --glow-o: 0.45;
 }
 
 /* Sin JavaScript no hay data-theme: manda la preferencia del sistema. */
@@ -127,7 +142,7 @@
   :root:not([data-theme]) {
     color-scheme: dark;
     --bg: #04060d;
-    --tray: #0b1020;
+    --tray: #161f3e;
     --cell: #070b17;
     --line: #161d35;
     --ink: #eef1f8;
@@ -138,5 +153,10 @@
     --no: #ff7464;
     --ok: #4cc787;
     --lift: rgb(0 0 0 / 0.8);
+    --statement-bg: var(--cloth);
+    --statement-fg: var(--on-cloth);
+    --kumiko: #121a33;
+    --glow: #f5c24a;
+    --glow-o: 0.45;
   }
 }

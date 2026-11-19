@@ -42,6 +42,9 @@ const langs = ['es', 'en'] as const;
     display: flex;
     align-items: center;
     height: 76px;
+    /* Como la barra principal: el texto no se apoya en la celosía y el fondo se ciñe a la caja. */
+    background: var(--bg);
+    background-clip: content-box;
   }
   .brand {
     display: flex;

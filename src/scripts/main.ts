@@ -52,7 +52,9 @@ menu?.addEventListener('click', (e) => {
 });
 menu?.addEventListener('toggle', (e) => {
   const open = (e as ToggleEvent).newState === 'open';
-  $$('main, footer, .skip, .bar > :not(#menu)').forEach((el) => el.toggleAttribute('inert', open));
+  $$('main, footer, .skip, #tec-pill, .bar > :not(#menu)').forEach((el) =>
+    el.toggleAttribute('inert', open),
+  );
   if (!open && !viaLink) burger?.focus();
   viaLink = false;
 });
@@ -95,6 +97,10 @@ function setFilter(requested: string | null): void {
   );
   $$('[data-tech]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.tech === id)));
   $$('[data-chip]').forEach((c) => c.toggleAttribute('data-on', !!id && c.dataset.chip === id));
+  /* El chip «+n» se resalta si la tecnología activa es una de las que no caben a la vista. */
+  $$('[data-chip-more]').forEach((c) =>
+    c.toggleAttribute('data-on', !!id && (c.dataset.chipMore ?? '').split(' ').includes(id)),
+  );
   $$('[data-tec-clear]').forEach((b) => {
     if (b.closest('#tec-pill')) return;
     b.hidden = !id;
@@ -107,7 +113,7 @@ function setFilter(requested: string | null): void {
     if (id) {
       const found = [...$$('[data-match][id]')];
       const projects = found.filter((el) => el.hasAttribute('data-project'));
-      const tech = $(`[data-tech="${CSS.escape(id)}"]`)?.textContent?.trim() ?? id;
+      const tech = $(`[data-tech="${CSS.escape(id)}"]`)?.dataset.label ?? id;
       const template = (projects.length === 1 ? status.dataset.one : status.dataset.many) ?? '';
       status.textContent = template.replace('{n}', String(projects.length)).replace('{tech}', tech);
       if (pillText) pillText.textContent = status.textContent;

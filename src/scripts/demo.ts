@@ -41,11 +41,12 @@ export function startDemo(demo: HTMLElement): void {
   };
 
   async function play(id: number): Promise<void> {
-    // La primera vuelta espera a que se abra la tela del piso 1 (la demo está debajo).
+    // La primera vuelta espera a que se abra la tela del piso 1 (la demo está debajo): el nudo se
+    // suelta a los 350 ms y los picos acaban de abrirse hacia los 1,7 s.
     let first = true;
     while (id === run) {
       for (const el of marked) el.classList.remove('on', 'flag');
-      await wait(first ? 1900 : 500, id);
+      await wait(first ? 2300 : 500, id);
       first = false;
       for (const t of tokens) {
         if (id !== run) return;

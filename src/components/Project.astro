@@ -36,6 +36,10 @@ const stretched = p.evidence !== 'private' && ev.href !== undefined;
 /** A 4 columnas y sin captura: el resumen y, como mucho, dos puntos. */
 const compact = grid === 's4' && !p.image;
 const facts = compact ? p.highlights.slice(0, 2) : p.highlights;
+/** A la vista, como mucho 6 tecnologías y un chip «+n»; el filtro usa siempre todas. */
+const MAX_CHIPS = 6;
+const shown = p.nets.slice(0, MAX_CHIPS);
+const hidden = p.nets.slice(MAX_CHIPS);
 ---
 
 <article
@@ -105,11 +109,21 @@ const facts = compact ? p.highlights.slice(0, 2) : p.highlights;
     <div class="foot">
       <ul class="chips" aria-label={ui.techListLabel}>
         {
-          p.nets.map((id) => (
+          shown.map((id) => (
             <li class="chip" data-group={netById.get(id)?.group} data-chip={id}>
               {netLabel(id)}
             </li>
           ))
+        }
+        {
+          hidden.length > 0 && (
+            <li class="chip more" data-chip-more={hidden.join(' ')}>
+              <span aria-hidden="true">+{hidden.length}</span>
+              <span class="sr-only">
+                {fill(ui.chipsMore, { n: hidden.length, list: hidden.map(netLabel).join(', ') })}
+              </span>
+            </li>
+          )
         }
       </ul>
       {
@@ -150,7 +164,7 @@ const facts = compact ? p.highlights.slice(0, 2) : p.highlights;
     display: inline-flex;
     align-items: center;
     gap: var(--sp-4);
-    padding: var(--sp-2) var(--sp-8);
+    padding: 6px var(--sp-8);
     border: 1px solid var(--line);
     border-radius: var(--r-chip);
     font-size: var(--fs-sm);
@@ -210,6 +224,12 @@ const facts = compact ? p.highlights.slice(0, 2) : p.highlights;
   .pub.s6 .foot {
     margin-top: 0;
   }
+  /* Apilado, el sobrante de altura de la fila se reparte a partes iguales entre resumen, puntos y pie
+     (margen automático): aire entre las piezas en lugar de un agujero justo antes del pie. */
+  .sum,
+  .facts {
+    margin-top: auto;
+  }
   .foot {
     display: flex;
     flex-wrap: wrap;
@@ -258,7 +278,18 @@ const facts = compact ? p.highlights.slice(0, 2) : p.highlights;
     height: 100%;
     object-fit: cover;
     object-position: top;
-    transition: transform 0.6s var(--ease);
+    transition:
+      transform 0.6s var(--ease),
+      opacity 0.35s var(--ease);
+  }
+  /* Las capturas claras deslumbran sobre fondo oscuro: un poco menos de brillo solo en oscuro. */
+  :global(html[data-theme='dark']) .shot :global(img) {
+    filter: brightness(0.9);
+  }
+  @media (prefers-color-scheme: dark) {
+    :global(html:not([data-theme])) .shot :global(img) {
+      filter: brightness(0.9);
+    }
   }
   .lift:hover .shot :global(img),
   .lift:has(:focus-visible) .shot :global(img) {
@@ -282,9 +313,14 @@ const facts = compact ? p.highlights.slice(0, 2) : p.highlights;
       font-size: var(--fs-3xl);
     }
   }
-  /* Con captura y a la fila entera (s12, o `tw` en tablet) se parte en horizontal desde 700 px: el
-     texto a un lado y la captura al otro, con los puntos debajo en dos columnas. */
-  @container (min-width: 700px) {
+  /* Con captura se parte en horizontal desde 540 px de ancho de la propia celda. A la fila entera
+     (s12, o `tw` en tablet): el texto a un lado y la captura al otro, con los puntos debajo en dos
+     columnas. */
+  @container (min-width: 540px) {
+    .has-shot .sum,
+    .has-shot .facts {
+      margin-top: 0;
+    }
     .has-shot:is(.s12, .tw) .inner {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -358,6 +394,10 @@ const facts = compact ? p.highlights.slice(0, 2) : p.highlights;
     .featured h3 {
       font-size: var(--fs-5xl);
       letter-spacing: -0.04em;
+    }
+    .project:not(.has-shot) .sum,
+    .project:not(.has-shot) .facts {
+      margin-top: 0;
     }
     .project:not(.has-shot) .inner {
       display: grid;
