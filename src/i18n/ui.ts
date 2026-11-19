@@ -214,7 +214,7 @@ export const DEMO: Record<Lang, Demo> = {
     verdict: '«74\u00a0%» no está en los datos: descartada',
     note: 'Demostración ilustrativa con datos ficticios',
     link: 'Ver el proyecto',
-    pause: 'Pausar',
+    pause: 'Pausar todo',
   },
   en: {
     label: 'Demo of the invest-ai verifier',
@@ -232,7 +232,7 @@ export const DEMO: Record<Lang, Demo> = {
     verdict: '"74%" is not in the data: dropped',
     note: 'Illustrative demo with made-up data',
     link: 'See the project',
-    pause: 'Pause',
+    pause: 'Pause all',
   },
 };
 

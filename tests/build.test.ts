@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
@@ -510,6 +510,28 @@ describe.each(pages)('$file', ({ lang, canonical, cv, otherCv, switchTo }) => {
     const other = UI[lang === 'es' ? 'en' : 'es'];
     for (const k of ['cvDownload', 'aiTitle', 'faqTitle', 'contactTitle', 'openToWork'] as const)
       expect(decode(visible), `texto de ${k} en el otro idioma`).not.toContain(other[k]);
+  });
+});
+
+describe('fondo kumiko', () => {
+  it('la luz en bucle solo corre con la demo viva: «Pausar» la detiene y sin JS no arranca', () => {
+    const css = readdirSync(join(DIST, '_astro'))
+      .filter((f) => f.endsWith('.css'))
+      .map((f) => read(`_astro/${f}`))
+      .join('\n');
+    // Las reglas que animan el bucle (no sus @keyframes): la banda y su celosía.
+    const rules = css.match(/[^{}]*\{[^{}]*(?:band|lattice)-cross[^{}]*\}/g) ?? [];
+    expect(rules).toHaveLength(2);
+    for (const rule of rules) {
+      expect(rule, 'el bucle va detrás del estado vivo de la demo').toContain(
+        'html:has(.demo.is-live)',
+      );
+      expect(rule).toContain('infinite');
+    }
+    // `is-live` la pone y la quita demo.ts (pausa, movimiento reducido): si cambia de nombre, el
+    // bucle se quedaría sin arrancar o sin poder pararse.
+    const demo = fileURLToPath(new URL('../src/scripts/demo.ts', import.meta.url));
+    expect(readFileSync(demo, 'utf8')).toContain("classList.toggle('is-live'");
   });
 });
 
